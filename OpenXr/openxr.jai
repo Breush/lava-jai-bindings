@@ -109,12 +109,12 @@ PFN_PollEvent :: #type (
 PFN_ResultToString :: #type (
     instance : Instance,
     value : Result,
-    buffer : [64]u8
+    buffer : *u8 // [64]u8
 ) -> Result #foreign;
 PFN_StructureTypeToString :: #type (
     instance : Instance,
     value : StructureType,
-    buffer : [64]u8
+    buffer : *u8 // [64]u8
 ) -> Result #foreign;
 PFN_GetSystem :: #type (
     instance : Instance,
@@ -1951,13 +1951,13 @@ poll_event :: (
 result_to_string :: (
     instance : Instance,
     value : Result,
-    buffer : [64]u8
+    buffer : *u8 // [64]u8
 ) -> Result #foreign libopenxr "xrResultToString";
 
 structure_type_to_string :: (
     instance : Instance,
     value : StructureType,
-    buffer : [64]u8
+    buffer : *u8 // [64]u8
 ) -> Result #foreign libopenxr "xrStructureTypeToString";
 
 get_system :: (

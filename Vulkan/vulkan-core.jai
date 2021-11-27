@@ -9246,7 +9246,7 @@ cmd_set_depth_bias :: (
 
 cmd_set_blend_constants :: (
     commandBuffer : CommandBuffer,
-    blendConstants : [4]float32
+    blendConstants : *float32 // [4]float32
 ) -> void #foreign libvulkan "vkCmdSetBlendConstants";
 
 cmd_set_depth_bounds :: (
