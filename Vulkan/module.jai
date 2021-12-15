@@ -36,7 +36,7 @@ load_instance_proc :: (instance : Instance, proc : *$F, name : string) {
     (<<proc) = cast(type_of(<<proc)) get_instance_proc_addr(instance, name.data);
 
     if (<<proc) == null {
-        context.logger("Could load instance proc.\n", null, .{common_flags=Log_Flags.ERROR});
+        Basic.log("Could load instance proc %.", name, flags=.ERROR);
     }
 }
 
@@ -45,6 +45,6 @@ load_device_proc :: (device : Device, proc : *$F, name : string) {
     (<<proc) = cast(type_of(<<proc)) get_device_proc_addr(device, name.data);
 
     if (<<proc) == null {
-        context.logger("Could load device proc.\n", null, .{common_flags=Log_Flags.ERROR});
+        Basic.log("Could load device proc %.", name, flags=.ERROR);
     }
 }

@@ -4,7 +4,7 @@
         "name": "VK_LAYER_KHRONOS_validation",
         "type": "GLOBAL",
         "library_path": "./libVkLayer_khronos_validation.so",
-        "api_version": "1.2.162",
+        "api_version": "1.2.198",
         "implementation_version": "1",
         "description": "Khronos Validation Layer",
         "instance_extensions": [

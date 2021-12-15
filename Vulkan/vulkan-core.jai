@@ -7520,10 +7520,8 @@ AabbPositionsKHR :: struct {
 
 AccelerationStructureInstanceKHR :: struct {
     transform : TransformMatrixKHR;
-    instanceCustomIndex : u32;
-    mask : u32;
-    instanceShaderBindingTableRecordOffset : u32;
-    flags : GeometryInstanceFlagsKHR;
+    instanceCustomIndex24_mask8 : u32; // @note Was bitfields
+    instanceShaderBindingTableRecordOffset24_flags8 : u32; // @note Was bitfields
     accelerationStructureReference : u64;
 }
 
@@ -10811,14 +10809,14 @@ set_debug_utils_object_name_ext : (
 //     pPipelines : *Pipeline
 // ) -> Result #foreign libvulkan "vkCreateRayTracingPipelinesNV";
 
-// get_ray_tracing_shader_group_handles_khr :: (
-//     device : Device,
-//     pipeline : Pipeline,
-//     firstGroup : u32,
-//     groupCount : u32,
-//     dataSize : u64,
-//     pData : *void
-// ) -> Result #foreign libvulkan "vkGetRayTracingShaderGroupHandlesKHR";
+get_ray_tracing_shader_group_handles_khr : (
+    device : Device,
+    pipeline : Pipeline,
+    firstGroup : u32,
+    groupCount : u32,
+    dataSize : u64,
+    pData : *void
+) -> Result #foreign; // libvulkan "vkGetRayTracingShaderGroupHandlesKHR";
 
 // get_ray_tracing_shader_group_handles_nv :: (
 //     device : Device,
@@ -11158,25 +11156,25 @@ set_debug_utils_object_name_ext : (
 //     combinerOps : [2]FragmentShadingRateCombinerOpKHR
 // ) -> void #foreign libvulkan "vkCmdSetFragmentShadingRateEnumNV";
 
-// create_acceleration_structure_khr :: (
-//     device : Device,
-//     pCreateInfo : *AccelerationStructureCreateInfoKHR,
-//     pAllocator : *AllocationCallbacks,
-//     pAccelerationStructure : *AccelerationStructureKHR
-// ) -> Result #foreign libvulkan "vkCreateAccelerationStructureKHR";
+create_acceleration_structure_khr : (
+    device : Device,
+    pCreateInfo : *AccelerationStructureCreateInfoKHR,
+    pAllocator : *AllocationCallbacks,
+    pAccelerationStructure : *AccelerationStructureKHR
+) -> Result #foreign; // libvulkan "vkCreateAccelerationStructureKHR";
 
-// destroy_acceleration_structure_khr :: (
-//     device : Device,
-//     accelerationStructure : AccelerationStructureKHR,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroyAccelerationStructureKHR";
+destroy_acceleration_structure_khr : (
+    device : Device,
+    accelerationStructure : AccelerationStructureKHR,
+    pAllocator : *AllocationCallbacks
+) -> void #foreign; // libvulkan "vkDestroyAccelerationStructureKHR";
 
-// cmd_build_acceleration_structures_khr :: (
-//     commandBuffer : CommandBuffer,
-//     infoCount : u32,
-//     pInfos : *AccelerationStructureBuildGeometryInfoKHR,
-//     ppBuildRangeInfos : **AccelerationStructureBuildRangeInfoKHR
-// ) -> void #foreign libvulkan "vkCmdBuildAccelerationStructuresKHR";
+cmd_build_acceleration_structures_khr : (
+    commandBuffer : CommandBuffer,
+    infoCount : u32,
+    pInfos : *AccelerationStructureBuildGeometryInfoKHR,
+    ppBuildRangeInfos : **AccelerationStructureBuildRangeInfoKHR
+) -> void #foreign; // libvulkan "vkCmdBuildAccelerationStructuresKHR";
 
 // cmd_build_acceleration_structures_indirect_khr :: (
 //     commandBuffer : CommandBuffer,
@@ -11238,10 +11236,10 @@ set_debug_utils_object_name_ext : (
 //     pInfo : *CopyMemoryToAccelerationStructureInfoKHR
 // ) -> void #foreign libvulkan "vkCmdCopyMemoryToAccelerationStructureKHR";
 
-// get_acceleration_structure_device_address_khr :: (
-//     device : Device,
-//     pInfo : *AccelerationStructureDeviceAddressInfoKHR
-// ) -> DeviceAddress #foreign libvulkan "vkGetAccelerationStructureDeviceAddressKHR";
+get_acceleration_structure_device_address_khr : (
+    device : Device,
+    pInfo : *AccelerationStructureDeviceAddressInfoKHR
+) -> DeviceAddress #foreign; // libvulkan "vkGetAccelerationStructureDeviceAddressKHR";
 
 // cmd_write_acceleration_structures_properties_khr :: (
 //     commandBuffer : CommandBuffer,
@@ -11258,34 +11256,34 @@ set_debug_utils_object_name_ext : (
 //     pCompatibility : *AccelerationStructureCompatibilityKHR
 // ) -> void #foreign libvulkan "vkGetDeviceAccelerationStructureCompatibilityKHR";
 
-// get_acceleration_structure_build_sizes_khr :: (
-//     device : Device,
-//     buildType : AccelerationStructureBuildTypeKHR,
-//     pBuildInfo : *AccelerationStructureBuildGeometryInfoKHR,
-//     pMaxPrimitiveCounts : *u32,
-//     pSizeInfo : *AccelerationStructureBuildSizesInfoKHR
-// ) -> void #foreign libvulkan "vkGetAccelerationStructureBuildSizesKHR";
+get_acceleration_structure_build_sizes_khr : (
+    device : Device,
+    buildType : AccelerationStructureBuildTypeKHR,
+    pBuildInfo : *AccelerationStructureBuildGeometryInfoKHR,
+    pMaxPrimitiveCounts : *u32,
+    pSizeInfo : *AccelerationStructureBuildSizesInfoKHR
+) -> void #foreign; // libvulkan "vkGetAccelerationStructureBuildSizesKHR";
 
-// cmd_trace_rays_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pRaygenShaderBindingTable : *StridedDeviceAddressRegionKHR,
-//     pMissShaderBindingTable : *StridedDeviceAddressRegionKHR,
-//     pHitShaderBindingTable : *StridedDeviceAddressRegionKHR,
-//     pCallableShaderBindingTable : *StridedDeviceAddressRegionKHR,
-//     width : u32,
-//     height : u32,
-//     depth : u32
-// ) -> void #foreign libvulkan "vkCmdTraceRaysKHR";
+cmd_trace_rays_khr : (
+    commandBuffer : CommandBuffer,
+    pRaygenShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pMissShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pHitShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pCallableShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    width : u32,
+    height : u32,
+    depth : u32
+) -> void #foreign; // libvulkan "vkCmdTraceRaysKHR";
 
-// create_ray_tracing_pipelines_khr :: (
-//     device : Device,
-//     deferredOperation : DeferredOperationKHR,
-//     pipelineCache : PipelineCache,
-//     createInfoCount : u32,
-//     pCreateInfos : *RayTracingPipelineCreateInfoKHR,
-//     pAllocator : *AllocationCallbacks,
-//     pPipelines : *Pipeline
-// ) -> Result #foreign libvulkan "vkCreateRayTracingPipelinesKHR";
+create_ray_tracing_pipelines_khr : (
+    device : Device,
+    deferredOperation : DeferredOperationKHR,
+    pipelineCache : PipelineCache,
+    createInfoCount : u32,
+    pCreateInfos : *RayTracingPipelineCreateInfoKHR,
+    pAllocator : *AllocationCallbacks,
+    pPipelines : *Pipeline
+) -> Result #foreign; // libvulkan "vkCreateRayTracingPipelinesKHR";
 
 // get_ray_tracing_capture_replay_shader_group_handles_khr :: (
 //     device : Device,

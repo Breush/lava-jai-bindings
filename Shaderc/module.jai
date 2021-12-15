@@ -1,5 +1,7 @@
 libshaderc :: #foreign_library "libshaderc";
 
+// Version 2021.3
+
 H_ :: 1;
 ENV_H_ :: 1;
 STATUS_H_ :: 1;
