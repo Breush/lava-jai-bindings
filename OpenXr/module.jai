@@ -27,22 +27,26 @@ array_fill_stype :: inline (array : *[]$T, f : $F, arg1 : $T1, sType : Structure
     count : u32;
     f(arg1, 0, *count, null);
 
-    Basic.array_resize(array, count);
-    for *e : <<array {
-        e.type = sType;
+    if count > 0 {
+        Basic.array_resize(array, count);
+        for *e : <<array {
+            e.type = sType;
+        }
+        f(arg1, count, *count, xx *(<<array)[0]);
     }
-    f(arg1, count, *count, xx *(<<array)[0]);
 }
 
 array_fill_stype :: inline (array : *[]$T, f : $F, arg1 : $T1, arg2 : $T2, arg3 : $T3, sType : StructureType) {
     count : u32;
     f(arg1, arg2, arg3, 0, *count, null);
 
-    Basic.array_resize(array, count);
-    for *e : <<array {
-        e.type = sType;
+    if count > 0 {
+        Basic.array_resize(array, count);
+        for *e : <<array {
+            e.type = sType;
+        }
+        f(arg1, arg2, arg3, count, *count, xx *(<<array)[0]);
     }
-    f(arg1, arg2, arg3, count, *count, xx *(<<array)[0]);
 }
 
 array_fill_stype :: inline (array : [$N]$T, f : $F, arg1 : $T1, arg2 : $T2, arg3 : $T3, sType : StructureType) {
