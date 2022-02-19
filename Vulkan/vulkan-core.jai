@@ -719,149 +719,825 @@ CommandBufferUsageFlags :: Flags;
 QueryControlFlags :: Flags;
 CommandBufferResetFlags :: Flags;
 StencilFaceFlags :: Flags;
-PFN_AllocationFunction :: #type ();
-PFN_FreeFunction :: #type ();
-PFN_InternalAllocationNotification :: #type ();
-PFN_InternalFreeNotification :: #type ();
-PFN_ReallocationFunction :: #type ();
-PFN_VoidFunction :: #type ();
-PFN_CreateInstance :: #type ();
-PFN_DestroyInstance :: #type ();
-PFN_EnumeratePhysicalDevices :: #type ();
-PFN_GetPhysicalDeviceFeatures :: #type ();
-PFN_GetPhysicalDeviceFormatProperties :: #type ();
-PFN_GetPhysicalDeviceImageFormatProperties :: #type ();
-PFN_GetPhysicalDeviceProperties :: #type ();
-PFN_GetPhysicalDeviceQueueFamilyProperties :: #type ();
-PFN_GetPhysicalDeviceMemoryProperties :: #type ();
-PFN_GetInstanceProcAddr :: #type ();
-PFN_GetDeviceProcAddr :: #type ();
-PFN_CreateDevice :: #type ();
-PFN_DestroyDevice :: #type ();
-PFN_EnumerateInstanceExtensionProperties :: #type ();
-PFN_EnumerateDeviceExtensionProperties :: #type ();
-PFN_EnumerateInstanceLayerProperties :: #type ();
-PFN_EnumerateDeviceLayerProperties :: #type ();
-PFN_GetDeviceQueue :: #type ();
-PFN_QueueSubmit :: #type ();
-PFN_QueueWaitIdle :: #type ();
-PFN_DeviceWaitIdle :: #type ();
-PFN_AllocateMemory :: #type ();
-PFN_FreeMemory :: #type ();
-PFN_MapMemory :: #type ();
-PFN_UnmapMemory :: #type ();
-PFN_FlushMappedMemoryRanges :: #type ();
-PFN_InvalidateMappedMemoryRanges :: #type ();
-PFN_GetDeviceMemoryCommitment :: #type ();
-PFN_BindBufferMemory :: #type ();
-PFN_BindImageMemory :: #type ();
-PFN_GetBufferMemoryRequirements :: #type ();
-PFN_GetImageMemoryRequirements :: #type ();
-PFN_GetImageSparseMemoryRequirements :: #type ();
-PFN_GetPhysicalDeviceSparseImageFormatProperties :: #type ();
-PFN_QueueBindSparse :: #type ();
-PFN_CreateFence :: #type ();
-PFN_DestroyFence :: #type ();
-PFN_ResetFences :: #type ();
-PFN_GetFenceStatus :: #type ();
-PFN_WaitForFences :: #type ();
-PFN_CreateSemaphore :: #type ();
-PFN_DestroySemaphore :: #type ();
-PFN_CreateEvent :: #type ();
-PFN_DestroyEvent :: #type ();
-PFN_GetEventStatus :: #type ();
-PFN_SetEvent :: #type ();
-PFN_ResetEvent :: #type ();
-PFN_CreateQueryPool :: #type ();
-PFN_DestroyQueryPool :: #type ();
-PFN_GetQueryPoolResults :: #type ();
-PFN_CreateBuffer :: #type ();
-PFN_DestroyBuffer :: #type ();
-PFN_CreateBufferView :: #type ();
-PFN_DestroyBufferView :: #type ();
-PFN_CreateImage :: #type ();
-PFN_DestroyImage :: #type ();
-PFN_GetImageSubresourceLayout :: #type ();
-PFN_CreateImageView :: #type ();
-PFN_DestroyImageView :: #type ();
-PFN_CreateShaderModule :: #type ();
-PFN_DestroyShaderModule :: #type ();
-PFN_CreatePipelineCache :: #type ();
-PFN_DestroyPipelineCache :: #type ();
-PFN_GetPipelineCacheData :: #type ();
-PFN_MergePipelineCaches :: #type ();
-PFN_CreateGraphicsPipelines :: #type ();
-PFN_CreateComputePipelines :: #type ();
-PFN_DestroyPipeline :: #type ();
-PFN_CreatePipelineLayout :: #type ();
-PFN_DestroyPipelineLayout :: #type ();
-PFN_CreateSampler :: #type ();
-PFN_DestroySampler :: #type ();
-PFN_CreateDescriptorSetLayout :: #type ();
-PFN_DestroyDescriptorSetLayout :: #type ();
-PFN_CreateDescriptorPool :: #type ();
-PFN_DestroyDescriptorPool :: #type ();
-PFN_ResetDescriptorPool :: #type ();
-PFN_AllocateDescriptorSets :: #type ();
-PFN_FreeDescriptorSets :: #type ();
-PFN_UpdateDescriptorSets :: #type ();
-PFN_CreateFramebuffer :: #type ();
-PFN_DestroyFramebuffer :: #type ();
-PFN_CreateRenderPass :: #type ();
-PFN_DestroyRenderPass :: #type ();
-PFN_GetRenderAreaGranularity :: #type ();
-PFN_CreateCommandPool :: #type ();
-PFN_DestroyCommandPool :: #type ();
-PFN_ResetCommandPool :: #type ();
-PFN_AllocateCommandBuffers :: #type ();
-PFN_FreeCommandBuffers :: #type ();
-PFN_BeginCommandBuffer :: #type ();
-PFN_EndCommandBuffer :: #type ();
-PFN_ResetCommandBuffer :: #type ();
-PFN_CmdBindPipeline :: #type ();
-PFN_CmdSetViewport :: #type ();
-PFN_CmdSetScissor :: #type ();
-PFN_CmdSetLineWidth :: #type ();
-PFN_CmdSetDepthBias :: #type ();
-PFN_CmdSetBlendConstants :: #type ();
-PFN_CmdSetDepthBounds :: #type ();
-PFN_CmdSetStencilCompareMask :: #type ();
-PFN_CmdSetStencilWriteMask :: #type ();
-PFN_CmdSetStencilReference :: #type ();
-PFN_CmdBindDescriptorSets :: #type ();
-PFN_CmdBindIndexBuffer :: #type ();
-PFN_CmdBindVertexBuffers :: #type ();
-PFN_CmdDraw :: #type ();
-PFN_CmdDrawIndexed :: #type ();
-PFN_CmdDrawIndirect :: #type ();
-PFN_CmdDrawIndexedIndirect :: #type ();
-PFN_CmdDispatch :: #type ();
-PFN_CmdDispatchIndirect :: #type ();
-PFN_CmdCopyBuffer :: #type ();
-PFN_CmdCopyImage :: #type ();
-PFN_CmdBlitImage :: #type ();
-PFN_CmdCopyBufferToImage :: #type ();
-PFN_CmdCopyImageToBuffer :: #type ();
-PFN_CmdUpdateBuffer :: #type ();
-PFN_CmdFillBuffer :: #type ();
-PFN_CmdClearColorImage :: #type ();
-PFN_CmdClearDepthStencilImage :: #type ();
-PFN_CmdClearAttachments :: #type ();
-PFN_CmdResolveImage :: #type ();
-PFN_CmdSetEvent :: #type ();
-PFN_CmdResetEvent :: #type ();
-PFN_CmdWaitEvents :: #type ();
-PFN_CmdPipelineBarrier :: #type ();
-PFN_CmdBeginQuery :: #type ();
-PFN_CmdEndQuery :: #type ();
-PFN_CmdResetQueryPool :: #type ();
-PFN_CmdWriteTimestamp :: #type ();
-PFN_CmdCopyQueryPoolResults :: #type ();
-PFN_CmdPushConstants :: #type ();
-PFN_CmdBeginRenderPass :: #type ();
-PFN_CmdNextSubpass :: #type ();
-PFN_CmdEndRenderPass :: #type ();
-PFN_CmdExecuteCommands :: #type ();
+PFN_AllocationFunction :: #type (
+    pUserData : *void,
+    size : u64,
+    alignment : u64,
+    allocationScope : SystemAllocationScope
+) -> *void #c_call;
+PFN_FreeFunction :: #type (
+    pUserData : *void,
+    pMemory : *void
+) #c_call;
+PFN_InternalAllocationNotification :: #type (
+    pUserData : *void,
+    size : u64,
+    allocationType : InternalAllocationType,
+    allocationScope : SystemAllocationScope
+) #c_call;
+PFN_InternalFreeNotification :: #type (
+    pUserData : *void,
+    size : u64,
+    allocationType : InternalAllocationType,
+    allocationScope : SystemAllocationScope
+) #c_call;
+PFN_ReallocationFunction :: #type (
+    pUserData : *void,
+    pOriginal : *void,
+    size : u64,
+    alignment : u64,
+    allocationScope : SystemAllocationScope
+) -> *void #c_call;
+PFN_VoidFunction :: #type () #c_call;
+PFN_CreateInstance :: #type (
+    pCreateInfo : *InstanceCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pInstance : *Instance
+) -> Result #c_call;
+PFN_DestroyInstance :: #type (
+    instance : Instance,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_EnumeratePhysicalDevices :: #type (
+    instance : Instance,
+    pPhysicalDeviceCount : *u32,
+    pPhysicalDevices : *PhysicalDevice
+) -> Result #c_call;
+PFN_GetPhysicalDeviceFeatures :: #type (
+    physicalDevice : PhysicalDevice,
+    pFeatures : *PhysicalDeviceFeatures
+) #c_call;
+PFN_GetPhysicalDeviceFormatProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    format : Format,
+    pFormatProperties : *FormatProperties
+) #c_call;
+PFN_GetPhysicalDeviceImageFormatProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    format : Format,
+    type : ImageType,
+    tiling : ImageTiling,
+    usage : ImageUsageFlags,
+    flags : ImageCreateFlags,
+    pImageFormatProperties : *ImageFormatProperties
+) -> Result #c_call;
+PFN_GetPhysicalDeviceProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    pProperties : *PhysicalDeviceProperties
+) #c_call;
+PFN_GetPhysicalDeviceQueueFamilyProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    pQueueFamilyPropertyCount : *u32,
+    pQueueFamilyProperties : *QueueFamilyProperties
+) #c_call;
+PFN_GetPhysicalDeviceMemoryProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    pMemoryProperties : *PhysicalDeviceMemoryProperties
+) #c_call;
+PFN_GetInstanceProcAddr :: #type (
+    instance : Instance,
+    pName : *u8
+) -> PFN_VoidFunction #c_call;
+PFN_GetDeviceProcAddr :: #type (
+    device : Device,
+    pName : *u8
+) -> PFN_VoidFunction #c_call;
+PFN_CreateDevice :: #type (
+    physicalDevice : PhysicalDevice,
+    pCreateInfo : *DeviceCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pDevice : *Device
+) -> Result #c_call;
+PFN_DestroyDevice :: #type (
+    device : Device,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_EnumerateInstanceExtensionProperties :: #type (
+    pLayerName : *u8,
+    pPropertyCount : *u32,
+    pProperties : *ExtensionProperties
+) -> Result #c_call;
+PFN_EnumerateDeviceExtensionProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    pLayerName : *u8,
+    pPropertyCount : *u32,
+    pProperties : *ExtensionProperties
+) -> Result #c_call;
+PFN_EnumerateInstanceLayerProperties :: #type (
+    pPropertyCount : *u32,
+    pProperties : *LayerProperties
+) -> Result #c_call;
+PFN_EnumerateDeviceLayerProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    pPropertyCount : *u32,
+    pProperties : *LayerProperties
+) -> Result #c_call;
+PFN_GetDeviceQueue :: #type (
+    device : Device,
+    queueFamilyIndex : u32,
+    queueIndex : u32,
+    pQueue : *Queue
+) #c_call;
+PFN_QueueSubmit :: #type (
+    queue : Queue,
+    submitCount : u32,
+    pSubmits : *SubmitInfo,
+    fence : Fence
+) -> Result #c_call;
+PFN_QueueWaitIdle :: #type (queue : Queue) -> Result #c_call;
+PFN_DeviceWaitIdle :: #type (device : Device) -> Result #c_call;
+PFN_AllocateMemory :: #type (
+    device : Device,
+    pAllocateInfo : *MemoryAllocateInfo,
+    pAllocator : *AllocationCallbacks,
+    pMemory : *DeviceMemory
+) -> Result #c_call;
+PFN_FreeMemory :: #type (
+    device : Device,
+    memory : DeviceMemory,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_MapMemory :: #type (
+    device : Device,
+    memory : DeviceMemory,
+    offset : DeviceSize,
+    size : DeviceSize,
+    flags : MemoryMapFlags,
+    ppData : **void
+) -> Result #c_call;
+PFN_UnmapMemory :: #type (
+    device : Device,
+    memory : DeviceMemory
+) #c_call;
+PFN_FlushMappedMemoryRanges :: #type (
+    device : Device,
+    memoryRangeCount : u32,
+    pMemoryRanges : *MappedMemoryRange
+) -> Result #c_call;
+PFN_InvalidateMappedMemoryRanges :: #type (
+    device : Device,
+    memoryRangeCount : u32,
+    pMemoryRanges : *MappedMemoryRange
+) -> Result #c_call;
+PFN_GetDeviceMemoryCommitment :: #type (
+    device : Device,
+    memory : DeviceMemory,
+    pCommittedMemoryInBytes : *DeviceSize
+) #c_call;
+PFN_BindBufferMemory :: #type (
+    device : Device,
+    buffer : Buffer,
+    memory : DeviceMemory,
+    memoryOffset : DeviceSize
+) -> Result #c_call;
+PFN_BindImageMemory :: #type (
+    device : Device,
+    image : Image,
+    memory : DeviceMemory,
+    memoryOffset : DeviceSize
+) -> Result #c_call;
+PFN_GetBufferMemoryRequirements :: #type (
+    device : Device,
+    buffer : Buffer,
+    pMemoryRequirements : *MemoryRequirements
+) #c_call;
+PFN_GetImageMemoryRequirements :: #type (
+    device : Device,
+    image : Image,
+    pMemoryRequirements : *MemoryRequirements
+) #c_call;
+PFN_GetImageSparseMemoryRequirements :: #type (
+    device : Device,
+    image : Image,
+    pSparseMemoryRequirementCount : *u32,
+    pSparseMemoryRequirements : *SparseImageMemoryRequirements
+) #c_call;
+PFN_GetPhysicalDeviceSparseImageFormatProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    format : Format,
+    type : ImageType,
+    samples : SampleCountFlagBits,
+    usage : ImageUsageFlags,
+    tiling : ImageTiling,
+    pPropertyCount : *u32,
+    pProperties : *SparseImageFormatProperties
+) #c_call;
+PFN_QueueBindSparse :: #type (
+    queue : Queue,
+    bindInfoCount : u32,
+    pBindInfo : *BindSparseInfo,
+    fence : Fence
+) -> Result #c_call;
+PFN_CreateFence :: #type (
+    device : Device,
+    pCreateInfo : *FenceCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pFence : *Fence
+) -> Result #c_call;
+PFN_DestroyFence :: #type (
+    device : Device,
+    fence : Fence,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_ResetFences :: #type (
+    device : Device,
+    fenceCount : u32,
+    pFences : *Fence
+) -> Result #c_call;
+PFN_GetFenceStatus :: #type (
+    device : Device,
+    fence : Fence
+) -> Result #c_call;
+PFN_WaitForFences :: #type (
+    device : Device,
+    fenceCount : u32,
+    pFences : *Fence,
+    waitAll : Bool32,
+    timeout : u64
+) -> Result #c_call;
+PFN_CreateSemaphore :: #type (
+    device : Device,
+    pCreateInfo : *SemaphoreCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pSemaphore : *Semaphore
+) -> Result #c_call;
+PFN_DestroySemaphore :: #type (
+    device : Device,
+    semaphore : Semaphore,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateEvent :: #type (
+    device : Device,
+    pCreateInfo : *EventCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pEvent : *Event
+) -> Result #c_call;
+PFN_DestroyEvent :: #type (
+    device : Device,
+    event : Event,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetEventStatus :: #type (
+    device : Device,
+    event : Event
+) -> Result #c_call;
+PFN_SetEvent :: #type (
+    device : Device,
+    event : Event
+) -> Result #c_call;
+PFN_ResetEvent :: #type (
+    device : Device,
+    event : Event
+) -> Result #c_call;
+PFN_CreateQueryPool :: #type (
+    device : Device,
+    pCreateInfo : *QueryPoolCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pQueryPool : *QueryPool
+) -> Result #c_call;
+PFN_DestroyQueryPool :: #type (
+    device : Device,
+    queryPool : QueryPool,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetQueryPoolResults :: #type (
+    device : Device,
+    queryPool : QueryPool,
+    firstQuery : u32,
+    queryCount : u32,
+    dataSize : u64,
+    pData : *void,
+    stride : DeviceSize,
+    flags : QueryResultFlags
+) -> Result #c_call;
+PFN_CreateBuffer :: #type (
+    device : Device,
+    pCreateInfo : *BufferCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pBuffer : *Buffer
+) -> Result #c_call;
+PFN_DestroyBuffer :: #type (
+    device : Device,
+    buffer : Buffer,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateBufferView :: #type (
+    device : Device,
+    pCreateInfo : *BufferViewCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pView : *BufferView
+) -> Result #c_call;
+PFN_DestroyBufferView :: #type (
+    device : Device,
+    bufferView : BufferView,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateImage :: #type (
+    device : Device,
+    pCreateInfo : *ImageCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pImage : *Image
+) -> Result #c_call;
+PFN_DestroyImage :: #type (
+    device : Device,
+    image : Image,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetImageSubresourceLayout :: #type (
+    device : Device,
+    image : Image,
+    pSubresource : *ImageSubresource,
+    pLayout : *SubresourceLayout
+) #c_call;
+PFN_CreateImageView :: #type (
+    device : Device,
+    pCreateInfo : *ImageViewCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pView : *ImageView
+) -> Result #c_call;
+PFN_DestroyImageView :: #type (
+    device : Device,
+    imageView : ImageView,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateShaderModule :: #type (
+    device : Device,
+    pCreateInfo : *ShaderModuleCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pShaderModule : *ShaderModule
+) -> Result #c_call;
+PFN_DestroyShaderModule :: #type (
+    device : Device,
+    shaderModule : ShaderModule,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreatePipelineCache :: #type (
+    device : Device,
+    pCreateInfo : *PipelineCacheCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pPipelineCache : *PipelineCache
+) -> Result #c_call;
+PFN_DestroyPipelineCache :: #type (
+    device : Device,
+    pipelineCache : PipelineCache,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetPipelineCacheData :: #type (
+    device : Device,
+    pipelineCache : PipelineCache,
+    pDataSize : *u64,
+    pData : *void
+) -> Result #c_call;
+PFN_MergePipelineCaches :: #type (
+    device : Device,
+    dstCache : PipelineCache,
+    srcCacheCount : u32,
+    pSrcCaches : *PipelineCache
+) -> Result #c_call;
+PFN_CreateGraphicsPipelines :: #type (
+    device : Device,
+    pipelineCache : PipelineCache,
+    createInfoCount : u32,
+    pCreateInfos : *GraphicsPipelineCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pPipelines : *Pipeline
+) -> Result #c_call;
+PFN_CreateComputePipelines :: #type (
+    device : Device,
+    pipelineCache : PipelineCache,
+    createInfoCount : u32,
+    pCreateInfos : *ComputePipelineCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pPipelines : *Pipeline
+) -> Result #c_call;
+PFN_DestroyPipeline :: #type (
+    device : Device,
+    pipeline : Pipeline,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreatePipelineLayout :: #type (
+    device : Device,
+    pCreateInfo : *PipelineLayoutCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pPipelineLayout : *PipelineLayout
+) -> Result #c_call;
+PFN_DestroyPipelineLayout :: #type (
+    device : Device,
+    pipelineLayout : PipelineLayout,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateSampler :: #type (
+    device : Device,
+    pCreateInfo : *SamplerCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pSampler : *Sampler
+) -> Result #c_call;
+PFN_DestroySampler :: #type (
+    device : Device,
+    sampler : Sampler,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateDescriptorSetLayout :: #type (
+    device : Device,
+    pCreateInfo : *DescriptorSetLayoutCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pSetLayout : *DescriptorSetLayout
+) -> Result #c_call;
+PFN_DestroyDescriptorSetLayout :: #type (
+    device : Device,
+    descriptorSetLayout : DescriptorSetLayout,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateDescriptorPool :: #type (
+    device : Device,
+    pCreateInfo : *DescriptorPoolCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pDescriptorPool : *DescriptorPool
+) -> Result #c_call;
+PFN_DestroyDescriptorPool :: #type (
+    device : Device,
+    descriptorPool : DescriptorPool,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_ResetDescriptorPool :: #type (
+    device : Device,
+    descriptorPool : DescriptorPool,
+    flags : DescriptorPoolResetFlags
+) -> Result #c_call;
+PFN_AllocateDescriptorSets :: #type (
+    device : Device,
+    pAllocateInfo : *DescriptorSetAllocateInfo,
+    pDescriptorSets : *DescriptorSet
+) -> Result #c_call;
+PFN_FreeDescriptorSets :: #type (
+    device : Device,
+    descriptorPool : DescriptorPool,
+    descriptorSetCount : u32,
+    pDescriptorSets : *DescriptorSet
+) -> Result #c_call;
+PFN_UpdateDescriptorSets :: #type (
+    device : Device,
+    descriptorWriteCount : u32,
+    pDescriptorWrites : *WriteDescriptorSet,
+    descriptorCopyCount : u32,
+    pDescriptorCopies : *CopyDescriptorSet
+) #c_call;
+PFN_CreateFramebuffer :: #type (
+    device : Device,
+    pCreateInfo : *FramebufferCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pFramebuffer : *Framebuffer
+) -> Result #c_call;
+PFN_DestroyFramebuffer :: #type (
+    device : Device,
+    framebuffer : Framebuffer,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateRenderPass :: #type (
+    device : Device,
+    pCreateInfo : *RenderPassCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pRenderPass : *RenderPass
+) -> Result #c_call;
+PFN_DestroyRenderPass :: #type (
+    device : Device,
+    renderPass : RenderPass,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetRenderAreaGranularity :: #type (
+    device : Device,
+    renderPass : RenderPass,
+    pGranularity : *Extent2D
+) #c_call;
+PFN_CreateCommandPool :: #type (
+    device : Device,
+    pCreateInfo : *CommandPoolCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pCommandPool : *CommandPool
+) -> Result #c_call;
+PFN_DestroyCommandPool :: #type (
+    device : Device,
+    commandPool : CommandPool,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_ResetCommandPool :: #type (
+    device : Device,
+    commandPool : CommandPool,
+    flags : CommandPoolResetFlags
+) -> Result #c_call;
+PFN_AllocateCommandBuffers :: #type (
+    device : Device,
+    pAllocateInfo : *CommandBufferAllocateInfo,
+    pCommandBuffers : *CommandBuffer
+) -> Result #c_call;
+PFN_FreeCommandBuffers :: #type (
+    device : Device,
+    commandPool : CommandPool,
+    commandBufferCount : u32,
+    pCommandBuffers : *CommandBuffer
+) #c_call;
+PFN_BeginCommandBuffer :: #type (
+    commandBuffer : CommandBuffer,
+    pBeginInfo : *CommandBufferBeginInfo
+) -> Result #c_call;
+PFN_EndCommandBuffer :: #type (commandBuffer : CommandBuffer) -> Result #c_call;
+PFN_ResetCommandBuffer :: #type (
+    commandBuffer : CommandBuffer,
+    flags : CommandBufferResetFlags
+) -> Result #c_call;
+PFN_CmdBindPipeline :: #type (
+    commandBuffer : CommandBuffer,
+    pipelineBindPoint : PipelineBindPoint,
+    pipeline : Pipeline
+) #c_call;
+PFN_CmdSetViewport :: #type (
+    commandBuffer : CommandBuffer,
+    firstViewport : u32,
+    viewportCount : u32,
+    pViewports : *Viewport
+) #c_call;
+PFN_CmdSetScissor :: #type (
+    commandBuffer : CommandBuffer,
+    firstScissor : u32,
+    scissorCount : u32,
+    pScissors : *Rect2D
+) #c_call;
+PFN_CmdSetLineWidth :: #type (
+    commandBuffer : CommandBuffer,
+    lineWidth : float32
+) #c_call;
+PFN_CmdSetDepthBias :: #type (
+    commandBuffer : CommandBuffer,
+    depthBiasConstantFactor : float32,
+    depthBiasClamp : float32,
+    depthBiasSlopeFactor : float32
+) #c_call;
+PFN_CmdSetBlendConstants :: #type (
+    commandBuffer : CommandBuffer,
+    blendConstants : *float32
+) #c_call;
+PFN_CmdSetDepthBounds :: #type (
+    commandBuffer : CommandBuffer,
+    minDepthBounds : float32,
+    maxDepthBounds : float32
+) #c_call;
+PFN_CmdSetStencilCompareMask :: #type (
+    commandBuffer : CommandBuffer,
+    faceMask : StencilFaceFlags,
+    compareMask : u32
+) #c_call;
+PFN_CmdSetStencilWriteMask :: #type (
+    commandBuffer : CommandBuffer,
+    faceMask : StencilFaceFlags,
+    writeMask : u32
+) #c_call;
+PFN_CmdSetStencilReference :: #type (
+    commandBuffer : CommandBuffer,
+    faceMask : StencilFaceFlags,
+    reference : u32
+) #c_call;
+PFN_CmdBindDescriptorSets :: #type (
+    commandBuffer : CommandBuffer,
+    pipelineBindPoint : PipelineBindPoint,
+    layout : PipelineLayout,
+    firstSet : u32,
+    descriptorSetCount : u32,
+    pDescriptorSets : *DescriptorSet,
+    dynamicOffsetCount : u32,
+    pDynamicOffsets : *u32
+) #c_call;
+PFN_CmdBindIndexBuffer :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    indexType : IndexType
+) #c_call;
+PFN_CmdBindVertexBuffers :: #type (
+    commandBuffer : CommandBuffer,
+    firstBinding : u32,
+    bindingCount : u32,
+    pBuffers : *Buffer,
+    pOffsets : *DeviceSize
+) #c_call;
+PFN_CmdDraw :: #type (
+    commandBuffer : CommandBuffer,
+    vertexCount : u32,
+    instanceCount : u32,
+    firstVertex : u32,
+    firstInstance : u32
+) #c_call;
+PFN_CmdDrawIndexed :: #type (
+    commandBuffer : CommandBuffer,
+    indexCount : u32,
+    instanceCount : u32,
+    firstIndex : u32,
+    vertexOffset : s32,
+    firstInstance : u32
+) #c_call;
+PFN_CmdDrawIndirect :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    drawCount : u32,
+    stride : u32
+) #c_call;
+PFN_CmdDrawIndexedIndirect :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    drawCount : u32,
+    stride : u32
+) #c_call;
+PFN_CmdDispatch :: #type (
+    commandBuffer : CommandBuffer,
+    groupCountX : u32,
+    groupCountY : u32,
+    groupCountZ : u32
+) #c_call;
+PFN_CmdDispatchIndirect :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize
+) #c_call;
+PFN_CmdCopyBuffer :: #type (
+    commandBuffer : CommandBuffer,
+    srcBuffer : Buffer,
+    dstBuffer : Buffer,
+    regionCount : u32,
+    pRegions : *BufferCopy
+) #c_call;
+PFN_CmdCopyImage :: #type (
+    commandBuffer : CommandBuffer,
+    srcImage : Image,
+    srcImageLayout : ImageLayout,
+    dstImage : Image,
+    dstImageLayout : ImageLayout,
+    regionCount : u32,
+    pRegions : *ImageCopy
+) #c_call;
+PFN_CmdBlitImage :: #type (
+    commandBuffer : CommandBuffer,
+    srcImage : Image,
+    srcImageLayout : ImageLayout,
+    dstImage : Image,
+    dstImageLayout : ImageLayout,
+    regionCount : u32,
+    pRegions : *ImageBlit,
+    filter : Filter
+) #c_call;
+PFN_CmdCopyBufferToImage :: #type (
+    commandBuffer : CommandBuffer,
+    srcBuffer : Buffer,
+    dstImage : Image,
+    dstImageLayout : ImageLayout,
+    regionCount : u32,
+    pRegions : *BufferImageCopy
+) #c_call;
+PFN_CmdCopyImageToBuffer :: #type (
+    commandBuffer : CommandBuffer,
+    srcImage : Image,
+    srcImageLayout : ImageLayout,
+    dstBuffer : Buffer,
+    regionCount : u32,
+    pRegions : *BufferImageCopy
+) #c_call;
+PFN_CmdUpdateBuffer :: #type (
+    commandBuffer : CommandBuffer,
+    dstBuffer : Buffer,
+    dstOffset : DeviceSize,
+    dataSize : DeviceSize,
+    pData : *void
+) #c_call;
+PFN_CmdFillBuffer :: #type (
+    commandBuffer : CommandBuffer,
+    dstBuffer : Buffer,
+    dstOffset : DeviceSize,
+    size : DeviceSize,
+    data : u32
+) #c_call;
+PFN_CmdClearColorImage :: #type (
+    commandBuffer : CommandBuffer,
+    image : Image,
+    imageLayout : ImageLayout,
+    pColor : *ClearColorValue,
+    rangeCount : u32,
+    pRanges : *ImageSubresourceRange
+) #c_call;
+PFN_CmdClearDepthStencilImage :: #type (
+    commandBuffer : CommandBuffer,
+    image : Image,
+    imageLayout : ImageLayout,
+    pDepthStencil : *ClearDepthStencilValue,
+    rangeCount : u32,
+    pRanges : *ImageSubresourceRange
+) #c_call;
+PFN_CmdClearAttachments :: #type (
+    commandBuffer : CommandBuffer,
+    attachmentCount : u32,
+    pAttachments : *ClearAttachment,
+    rectCount : u32,
+    pRects : *ClearRect
+) #c_call;
+PFN_CmdResolveImage :: #type (
+    commandBuffer : CommandBuffer,
+    srcImage : Image,
+    srcImageLayout : ImageLayout,
+    dstImage : Image,
+    dstImageLayout : ImageLayout,
+    regionCount : u32,
+    pRegions : *ImageResolve
+) #c_call;
+PFN_CmdSetEvent :: #type (
+    commandBuffer : CommandBuffer,
+    event : Event,
+    stageMask : PipelineStageFlags
+) #c_call;
+PFN_CmdResetEvent :: #type (
+    commandBuffer : CommandBuffer,
+    event : Event,
+    stageMask : PipelineStageFlags
+) #c_call;
+PFN_CmdWaitEvents :: #type (
+    commandBuffer : CommandBuffer,
+    eventCount : u32,
+    pEvents : *Event,
+    srcStageMask : PipelineStageFlags,
+    dstStageMask : PipelineStageFlags,
+    memoryBarrierCount : u32,
+    pMemoryBarriers : *MemoryBarrier,
+    bufferMemoryBarrierCount : u32,
+    pBufferMemoryBarriers : *BufferMemoryBarrier,
+    imageMemoryBarrierCount : u32,
+    pImageMemoryBarriers : *ImageMemoryBarrier
+) #c_call;
+PFN_CmdPipelineBarrier :: #type (
+    commandBuffer : CommandBuffer,
+    srcStageMask : PipelineStageFlags,
+    dstStageMask : PipelineStageFlags,
+    dependencyFlags : DependencyFlags,
+    memoryBarrierCount : u32,
+    pMemoryBarriers : *MemoryBarrier,
+    bufferMemoryBarrierCount : u32,
+    pBufferMemoryBarriers : *BufferMemoryBarrier,
+    imageMemoryBarrierCount : u32,
+    pImageMemoryBarriers : *ImageMemoryBarrier
+) #c_call;
+PFN_CmdBeginQuery :: #type (
+    commandBuffer : CommandBuffer,
+    queryPool : QueryPool,
+    query : u32,
+    flags : QueryControlFlags
+) #c_call;
+PFN_CmdEndQuery :: #type (
+    commandBuffer : CommandBuffer,
+    queryPool : QueryPool,
+    query : u32
+) #c_call;
+PFN_CmdResetQueryPool :: #type (
+    commandBuffer : CommandBuffer,
+    queryPool : QueryPool,
+    firstQuery : u32,
+    queryCount : u32
+) #c_call;
+PFN_CmdWriteTimestamp :: #type (
+    commandBuffer : CommandBuffer,
+    pipelineStage : PipelineStageFlagBits,
+    queryPool : QueryPool,
+    query : u32
+) #c_call;
+PFN_CmdCopyQueryPoolResults :: #type (
+    commandBuffer : CommandBuffer,
+    queryPool : QueryPool,
+    firstQuery : u32,
+    queryCount : u32,
+    dstBuffer : Buffer,
+    dstOffset : DeviceSize,
+    stride : DeviceSize,
+    flags : QueryResultFlags
+) #c_call;
+PFN_CmdPushConstants :: #type (
+    commandBuffer : CommandBuffer,
+    layout : PipelineLayout,
+    stageFlags : ShaderStageFlags,
+    offset : u32,
+    size : u32,
+    pValues : *void
+) #c_call;
+PFN_CmdBeginRenderPass :: #type (
+    commandBuffer : CommandBuffer,
+    pRenderPassBegin : *RenderPassBeginInfo,
+    contents : SubpassContents
+) #c_call;
+PFN_CmdNextSubpass :: #type (
+    commandBuffer : CommandBuffer,
+    contents : SubpassContents
+) #c_call;
+PFN_CmdEndRenderPass :: #type (commandBuffer : CommandBuffer) #c_call;
+PFN_CmdExecuteCommands :: #type (
+    commandBuffer : CommandBuffer,
+    commandBufferCount : u32,
+    pCommandBuffers : *CommandBuffer
+) #foreign;
 SamplerYcbcrConversion :: *SamplerYcbcrConversionT;
 DescriptorUpdateTemplate :: *DescriptorUpdateTemplateT;
 SubgroupFeatureFlags :: Flags;
@@ -879,83 +1555,358 @@ ExternalSemaphoreHandleTypeFlags :: Flags;
 ExternalSemaphoreFeatureFlags :: Flags;
 PhysicalDeviceVariablePointerFeatures :: PhysicalDeviceVariablePointersFeatures;
 PhysicalDeviceShaderDrawParameterFeatures :: PhysicalDeviceShaderDrawParametersFeatures;
-PFN_EnumerateInstanceVersion :: #type ();
-PFN_BindBufferMemory2 :: #type ();
-PFN_BindImageMemory2 :: #type ();
-PFN_GetDeviceGroupPeerMemoryFeatures :: #type ();
-PFN_CmdSetDeviceMask :: #type ();
-PFN_CmdDispatchBase :: #type ();
-PFN_EnumeratePhysicalDeviceGroups :: #type ();
-PFN_GetImageMemoryRequirements2 :: #type ();
-PFN_GetBufferMemoryRequirements2 :: #type ();
-PFN_GetImageSparseMemoryRequirements2 :: #type ();
-PFN_GetPhysicalDeviceFeatures2 :: #type ();
-PFN_GetPhysicalDeviceProperties2 :: #type ();
-PFN_GetPhysicalDeviceFormatProperties2 :: #type ();
-PFN_GetPhysicalDeviceImageFormatProperties2 :: #type ();
-PFN_GetPhysicalDeviceQueueFamilyProperties2 :: #type ();
-PFN_GetPhysicalDeviceMemoryProperties2 :: #type ();
-PFN_GetPhysicalDeviceSparseImageFormatProperties2 :: #type ();
-PFN_TrimCommandPool :: #type ();
-PFN_GetDeviceQueue2 :: #type ();
-PFN_CreateSamplerYcbcrConversion :: #type ();
-PFN_DestroySamplerYcbcrConversion :: #type ();
-PFN_CreateDescriptorUpdateTemplate :: #type ();
-PFN_DestroyDescriptorUpdateTemplate :: #type ();
-PFN_UpdateDescriptorSetWithTemplate :: #type ();
-PFN_GetPhysicalDeviceExternalBufferProperties :: #type ();
-PFN_GetPhysicalDeviceExternalFenceProperties :: #type ();
-PFN_GetPhysicalDeviceExternalSemaphoreProperties :: #type ();
-PFN_GetDescriptorSetLayoutSupport :: #type ();
+PFN_EnumerateInstanceVersion :: #type (pApiVersion : *u32) -> Result #c_call;
+PFN_BindBufferMemory2 :: #type (
+    device : Device,
+    bindInfoCount : u32,
+    pBindInfos : *BindBufferMemoryInfo
+) -> Result #c_call;
+PFN_BindImageMemory2 :: #type (
+    device : Device,
+    bindInfoCount : u32,
+    pBindInfos : *BindImageMemoryInfo
+) -> Result #c_call;
+PFN_GetDeviceGroupPeerMemoryFeatures :: #type (
+    device : Device,
+    heapIndex : u32,
+    localDeviceIndex : u32,
+    remoteDeviceIndex : u32,
+    pPeerMemoryFeatures : *PeerMemoryFeatureFlags
+) #c_call;
+PFN_CmdSetDeviceMask :: #type (
+    commandBuffer : CommandBuffer,
+    deviceMask : u32
+) #c_call;
+PFN_CmdDispatchBase :: #type (
+    commandBuffer : CommandBuffer,
+    baseGroupX : u32,
+    baseGroupY : u32,
+    baseGroupZ : u32,
+    groupCountX : u32,
+    groupCountY : u32,
+    groupCountZ : u32
+) #c_call;
+PFN_EnumeratePhysicalDeviceGroups :: #type (
+    instance : Instance,
+    pPhysicalDeviceGroupCount : *u32,
+    pPhysicalDeviceGroupProperties : *PhysicalDeviceGroupProperties
+) -> Result #c_call;
+PFN_GetImageMemoryRequirements2 :: #type (
+    device : Device,
+    pInfo : *ImageMemoryRequirementsInfo2,
+    pMemoryRequirements : *MemoryRequirements2
+) #c_call;
+PFN_GetBufferMemoryRequirements2 :: #type (
+    device : Device,
+    pInfo : *BufferMemoryRequirementsInfo2,
+    pMemoryRequirements : *MemoryRequirements2
+) #c_call;
+PFN_GetImageSparseMemoryRequirements2 :: #type (
+    device : Device,
+    pInfo : *ImageSparseMemoryRequirementsInfo2,
+    pSparseMemoryRequirementCount : *u32,
+    pSparseMemoryRequirements : *SparseImageMemoryRequirements2
+) #c_call;
+PFN_GetPhysicalDeviceFeatures2 :: #type (
+    physicalDevice : PhysicalDevice,
+    pFeatures : *PhysicalDeviceFeatures2
+) #c_call;
+PFN_GetPhysicalDeviceProperties2 :: #type (
+    physicalDevice : PhysicalDevice,
+    pProperties : *PhysicalDeviceProperties2
+) #c_call;
+PFN_GetPhysicalDeviceFormatProperties2 :: #type (
+    physicalDevice : PhysicalDevice,
+    format : Format,
+    pFormatProperties : *FormatProperties2
+) #c_call;
+PFN_GetPhysicalDeviceImageFormatProperties2 :: #type (
+    physicalDevice : PhysicalDevice,
+    pImageFormatInfo : *PhysicalDeviceImageFormatInfo2,
+    pImageFormatProperties : *ImageFormatProperties2
+) -> Result #c_call;
+PFN_GetPhysicalDeviceQueueFamilyProperties2 :: #type (
+    physicalDevice : PhysicalDevice,
+    pQueueFamilyPropertyCount : *u32,
+    pQueueFamilyProperties : *QueueFamilyProperties2
+) #c_call;
+PFN_GetPhysicalDeviceMemoryProperties2 :: #type (
+    physicalDevice : PhysicalDevice,
+    pMemoryProperties : *PhysicalDeviceMemoryProperties2
+) #c_call;
+PFN_GetPhysicalDeviceSparseImageFormatProperties2 :: #type (
+    physicalDevice : PhysicalDevice,
+    pFormatInfo : *PhysicalDeviceSparseImageFormatInfo2,
+    pPropertyCount : *u32,
+    pProperties : *SparseImageFormatProperties2
+) #c_call;
+PFN_TrimCommandPool :: #type (
+    device : Device,
+    commandPool : CommandPool,
+    flags : CommandPoolTrimFlags
+) #c_call;
+PFN_GetDeviceQueue2 :: #type (
+    device : Device,
+    pQueueInfo : *DeviceQueueInfo2,
+    pQueue : *Queue
+) #c_call;
+PFN_CreateSamplerYcbcrConversion :: #type (
+    device : Device,
+    pCreateInfo : *SamplerYcbcrConversionCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pYcbcrConversion : *SamplerYcbcrConversion
+) -> Result #c_call;
+PFN_DestroySamplerYcbcrConversion :: #type (
+    device : Device,
+    ycbcrConversion : SamplerYcbcrConversion,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CreateDescriptorUpdateTemplate :: #type (
+    device : Device,
+    pCreateInfo : *DescriptorUpdateTemplateCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pDescriptorUpdateTemplate : *DescriptorUpdateTemplate
+) -> Result #c_call;
+PFN_DestroyDescriptorUpdateTemplate :: #type (
+    device : Device,
+    descriptorUpdateTemplate : DescriptorUpdateTemplate,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_UpdateDescriptorSetWithTemplate :: #type (
+    device : Device,
+    descriptorSet : DescriptorSet,
+    descriptorUpdateTemplate : DescriptorUpdateTemplate,
+    pData : *void
+) #c_call;
+PFN_GetPhysicalDeviceExternalBufferProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    pExternalBufferInfo : *PhysicalDeviceExternalBufferInfo,
+    pExternalBufferProperties : *ExternalBufferProperties
+) #c_call;
+PFN_GetPhysicalDeviceExternalFenceProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    pExternalFenceInfo : *PhysicalDeviceExternalFenceInfo,
+    pExternalFenceProperties : *ExternalFenceProperties
+) #c_call;
+PFN_GetPhysicalDeviceExternalSemaphoreProperties :: #type (
+    physicalDevice : PhysicalDevice,
+    pExternalSemaphoreInfo : *PhysicalDeviceExternalSemaphoreInfo,
+    pExternalSemaphoreProperties : *ExternalSemaphoreProperties
+) #c_call;
+PFN_GetDescriptorSetLayoutSupport :: #type (
+    device : Device,
+    pCreateInfo : *DescriptorSetLayoutCreateInfo,
+    pSupport : *DescriptorSetLayoutSupport
+) #foreign;
 ResolveModeFlags :: Flags;
 DescriptorBindingFlags :: Flags;
 SemaphoreWaitFlags :: Flags;
-PFN_CmdDrawIndirectCount :: #type ();
-PFN_CmdDrawIndexedIndirectCount :: #type ();
-PFN_CreateRenderPass2 :: #type ();
-PFN_CmdBeginRenderPass2 :: #type ();
-PFN_CmdNextSubpass2 :: #type ();
-PFN_CmdEndRenderPass2 :: #type ();
-PFN_ResetQueryPool :: #type ();
-PFN_GetSemaphoreCounterValue :: #type ();
-PFN_WaitSemaphores :: #type ();
-PFN_SignalSemaphore :: #type ();
-PFN_GetBufferDeviceAddress :: #type ();
-PFN_GetBufferOpaqueCaptureAddress :: #type ();
-PFN_GetDeviceMemoryOpaqueCaptureAddress :: #type ();
+PFN_CmdDrawIndirectCount :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    countBuffer : Buffer,
+    countBufferOffset : DeviceSize,
+    maxDrawCount : u32,
+    stride : u32
+) #c_call;
+PFN_CmdDrawIndexedIndirectCount :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    countBuffer : Buffer,
+    countBufferOffset : DeviceSize,
+    maxDrawCount : u32,
+    stride : u32
+) #c_call;
+PFN_CreateRenderPass2 :: #type (
+    device : Device,
+    pCreateInfo : *RenderPassCreateInfo2,
+    pAllocator : *AllocationCallbacks,
+    pRenderPass : *RenderPass
+) -> Result #c_call;
+PFN_CmdBeginRenderPass2 :: #type (
+    commandBuffer : CommandBuffer,
+    pRenderPassBegin : *RenderPassBeginInfo,
+    pSubpassBeginInfo : *SubpassBeginInfo
+) #c_call;
+PFN_CmdNextSubpass2 :: #type (
+    commandBuffer : CommandBuffer,
+    pSubpassBeginInfo : *SubpassBeginInfo,
+    pSubpassEndInfo : *SubpassEndInfo
+) #c_call;
+PFN_CmdEndRenderPass2 :: #type (
+    commandBuffer : CommandBuffer,
+    pSubpassEndInfo : *SubpassEndInfo
+) #c_call;
+PFN_ResetQueryPool :: #type (
+    device : Device,
+    queryPool : QueryPool,
+    firstQuery : u32,
+    queryCount : u32
+) #c_call;
+PFN_GetSemaphoreCounterValue :: #type (
+    device : Device,
+    semaphore : Semaphore,
+    pValue : *u64
+) -> Result #c_call;
+PFN_WaitSemaphores :: #type (
+    device : Device,
+    pWaitInfo : *SemaphoreWaitInfo,
+    timeout : u64
+) -> Result #c_call;
+PFN_SignalSemaphore :: #type (
+    device : Device,
+    pSignalInfo : *SemaphoreSignalInfo
+) -> Result #c_call;
+PFN_GetBufferDeviceAddress :: #type (
+    device : Device,
+    pInfo : *BufferDeviceAddressInfo
+) -> DeviceAddress #c_call;
+PFN_GetBufferOpaqueCaptureAddress :: #type (
+    device : Device,
+    pInfo : *BufferDeviceAddressInfo
+) -> u64 #c_call;
+PFN_GetDeviceMemoryOpaqueCaptureAddress :: #type (
+    device : Device,
+    pInfo : *DeviceMemoryOpaqueCaptureAddressInfo
+) -> u64 #foreign;
 SurfaceKHR :: *SurfaceKHRT;
 CompositeAlphaFlagsKHR :: Flags;
 SurfaceTransformFlagsKHR :: Flags;
-PFN_DestroySurfaceKHR :: #type ();
-PFN_GetPhysicalDeviceSurfaceSupportKHR :: #type ();
-PFN_GetPhysicalDeviceSurfaceCapabilitiesKHR :: #type ();
-PFN_GetPhysicalDeviceSurfaceFormatsKHR :: #type ();
-PFN_GetPhysicalDeviceSurfacePresentModesKHR :: #type ();
+PFN_DestroySurfaceKHR :: #type (
+    instance : Instance,
+    surface : SurfaceKHR,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetPhysicalDeviceSurfaceSupportKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    queueFamilyIndex : u32,
+    surface : SurfaceKHR,
+    pSupported : *Bool32
+) -> Result #c_call;
+PFN_GetPhysicalDeviceSurfaceCapabilitiesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    surface : SurfaceKHR,
+    pSurfaceCapabilities : *SurfaceCapabilitiesKHR
+) -> Result #c_call;
+PFN_GetPhysicalDeviceSurfaceFormatsKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    surface : SurfaceKHR,
+    pSurfaceFormatCount : *u32,
+    pSurfaceFormats : *SurfaceFormatKHR
+) -> Result #c_call;
+PFN_GetPhysicalDeviceSurfacePresentModesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    surface : SurfaceKHR,
+    pPresentModeCount : *u32,
+    pPresentModes : *PresentModeKHR
+) -> Result #foreign;
 SwapchainKHR :: *SwapchainKHRT;
 SwapchainCreateFlagsKHR :: Flags;
 DeviceGroupPresentModeFlagsKHR :: Flags;
-PFN_CreateSwapchainKHR :: #type ();
-PFN_DestroySwapchainKHR :: #type ();
-PFN_GetSwapchainImagesKHR :: #type ();
-PFN_AcquireNextImageKHR :: #type ();
-PFN_QueuePresentKHR :: #type ();
-PFN_GetDeviceGroupPresentCapabilitiesKHR :: #type ();
-PFN_GetDeviceGroupSurfacePresentModesKHR :: #type ();
-PFN_GetPhysicalDevicePresentRectanglesKHR :: #type ();
-PFN_AcquireNextImage2KHR :: #type ();
+PFN_CreateSwapchainKHR :: #type (
+    device : Device,
+    pCreateInfo : *SwapchainCreateInfoKHR,
+    pAllocator : *AllocationCallbacks,
+    pSwapchain : *SwapchainKHR
+) -> Result #c_call;
+PFN_DestroySwapchainKHR :: #type (
+    device : Device,
+    swapchain : SwapchainKHR,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetSwapchainImagesKHR :: #type (
+    device : Device,
+    swapchain : SwapchainKHR,
+    pSwapchainImageCount : *u32,
+    pSwapchainImages : *Image
+) -> Result #c_call;
+PFN_AcquireNextImageKHR :: #type (
+    device : Device,
+    swapchain : SwapchainKHR,
+    timeout : u64,
+    semaphore : Semaphore,
+    fence : Fence,
+    pImageIndex : *u32
+) -> Result #c_call;
+PFN_QueuePresentKHR :: #type (
+    queue : Queue,
+    pPresentInfo : *PresentInfoKHR
+) -> Result #c_call;
+PFN_GetDeviceGroupPresentCapabilitiesKHR :: #type (
+    device : Device,
+    pDeviceGroupPresentCapabilities : *DeviceGroupPresentCapabilitiesKHR
+) -> Result #c_call;
+PFN_GetDeviceGroupSurfacePresentModesKHR :: #type (
+    device : Device,
+    surface : SurfaceKHR,
+    pModes : *DeviceGroupPresentModeFlagsKHR
+) -> Result #c_call;
+PFN_GetPhysicalDevicePresentRectanglesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    surface : SurfaceKHR,
+    pRectCount : *u32,
+    pRects : *Rect2D
+) -> Result #c_call;
+PFN_AcquireNextImage2KHR :: #type (
+    device : Device,
+    pAcquireInfo : *AcquireNextImageInfoKHR,
+    pImageIndex : *u32
+) -> Result #foreign;
 DisplayKHR :: *DisplayKHRT;
 DisplayModeKHR :: *DisplayModeKHRT;
 DisplayModeCreateFlagsKHR :: Flags;
 DisplayPlaneAlphaFlagsKHR :: Flags;
 DisplaySurfaceCreateFlagsKHR :: Flags;
-PFN_GetPhysicalDeviceDisplayPropertiesKHR :: #type ();
-PFN_GetPhysicalDeviceDisplayPlanePropertiesKHR :: #type ();
-PFN_GetDisplayPlaneSupportedDisplaysKHR :: #type ();
-PFN_GetDisplayModePropertiesKHR :: #type ();
-PFN_CreateDisplayModeKHR :: #type ();
-PFN_GetDisplayPlaneCapabilitiesKHR :: #type ();
-PFN_CreateDisplayPlaneSurfaceKHR :: #type ();
-PFN_CreateSharedSwapchainsKHR :: #type ();
+PFN_GetPhysicalDeviceDisplayPropertiesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pPropertyCount : *u32,
+    pProperties : *DisplayPropertiesKHR
+) -> Result #c_call;
+PFN_GetPhysicalDeviceDisplayPlanePropertiesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pPropertyCount : *u32,
+    pProperties : *DisplayPlanePropertiesKHR
+) -> Result #c_call;
+PFN_GetDisplayPlaneSupportedDisplaysKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    planeIndex : u32,
+    pDisplayCount : *u32,
+    pDisplays : *DisplayKHR
+) -> Result #c_call;
+PFN_GetDisplayModePropertiesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    display : DisplayKHR,
+    pPropertyCount : *u32,
+    pProperties : *DisplayModePropertiesKHR
+) -> Result #c_call;
+PFN_CreateDisplayModeKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    display : DisplayKHR,
+    pCreateInfo : *DisplayModeCreateInfoKHR,
+    pAllocator : *AllocationCallbacks,
+    pMode : *DisplayModeKHR
+) -> Result #c_call;
+PFN_GetDisplayPlaneCapabilitiesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    mode : DisplayModeKHR,
+    planeIndex : u32,
+    pCapabilities : *DisplayPlaneCapabilitiesKHR
+) -> Result #c_call;
+PFN_CreateDisplayPlaneSurfaceKHR :: #type (
+    instance : Instance,
+    pCreateInfo : *DisplaySurfaceCreateInfoKHR,
+    pAllocator : *AllocationCallbacks,
+    pSurface : *SurfaceKHR
+) -> Result #c_call;
+PFN_CreateSharedSwapchainsKHR :: #type (
+    device : Device,
+    swapchainCount : u32,
+    pCreateInfos : *SwapchainCreateInfoKHR,
+    pAllocator : *AllocationCallbacks,
+    pSwapchains : *SwapchainKHR
+) -> Result #foreign;
 RenderPassMultiviewCreateInfoKHR :: RenderPassMultiviewCreateInfo;
 PhysicalDeviceMultiviewFeaturesKHR :: PhysicalDeviceMultiviewFeatures;
 PhysicalDeviceMultiviewPropertiesKHR :: PhysicalDeviceMultiviewProperties;
@@ -968,13 +1919,39 @@ QueueFamilyProperties2KHR :: QueueFamilyProperties2;
 PhysicalDeviceMemoryProperties2KHR :: PhysicalDeviceMemoryProperties2;
 SparseImageFormatProperties2KHR :: SparseImageFormatProperties2;
 PhysicalDeviceSparseImageFormatInfo2KHR :: PhysicalDeviceSparseImageFormatInfo2;
-PFN_GetPhysicalDeviceFeatures2KHR :: #type ();
-PFN_GetPhysicalDeviceProperties2KHR :: #type ();
-PFN_GetPhysicalDeviceFormatProperties2KHR :: #type ();
-PFN_GetPhysicalDeviceImageFormatProperties2KHR :: #type ();
-PFN_GetPhysicalDeviceQueueFamilyProperties2KHR :: #type ();
-PFN_GetPhysicalDeviceMemoryProperties2KHR :: #type ();
-PFN_GetPhysicalDeviceSparseImageFormatProperties2KHR :: #type ();
+PFN_GetPhysicalDeviceFeatures2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pFeatures : *PhysicalDeviceFeatures2
+) #c_call;
+PFN_GetPhysicalDeviceProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pProperties : *PhysicalDeviceProperties2
+) #c_call;
+PFN_GetPhysicalDeviceFormatProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    format : Format,
+    pFormatProperties : *FormatProperties2
+) #c_call;
+PFN_GetPhysicalDeviceImageFormatProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pImageFormatInfo : *PhysicalDeviceImageFormatInfo2,
+    pImageFormatProperties : *ImageFormatProperties2
+) -> Result #c_call;
+PFN_GetPhysicalDeviceQueueFamilyProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pQueueFamilyPropertyCount : *u32,
+    pQueueFamilyProperties : *QueueFamilyProperties2
+) #c_call;
+PFN_GetPhysicalDeviceMemoryProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pMemoryProperties : *PhysicalDeviceMemoryProperties2
+) #c_call;
+PFN_GetPhysicalDeviceSparseImageFormatProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pFormatInfo : *PhysicalDeviceSparseImageFormatInfo2,
+    pPropertyCount : *u32,
+    pProperties : *SparseImageFormatProperties2
+) #foreign;
 PeerMemoryFeatureFlagsKHR :: PeerMemoryFeatureFlags;
 PeerMemoryFeatureFlagBitsKHR :: PeerMemoryFeatureFlagBits;
 MemoryAllocateFlagsKHR :: MemoryAllocateFlags;
@@ -986,14 +1963,39 @@ DeviceGroupSubmitInfoKHR :: DeviceGroupSubmitInfo;
 DeviceGroupBindSparseInfoKHR :: DeviceGroupBindSparseInfo;
 BindBufferMemoryDeviceGroupInfoKHR :: BindBufferMemoryDeviceGroupInfo;
 BindImageMemoryDeviceGroupInfoKHR :: BindImageMemoryDeviceGroupInfo;
-PFN_GetDeviceGroupPeerMemoryFeaturesKHR :: #type ();
-PFN_CmdSetDeviceMaskKHR :: #type ();
-PFN_CmdDispatchBaseKHR :: #type ();
+PFN_GetDeviceGroupPeerMemoryFeaturesKHR :: #type (
+    device : Device,
+    heapIndex : u32,
+    localDeviceIndex : u32,
+    remoteDeviceIndex : u32,
+    pPeerMemoryFeatures : *PeerMemoryFeatureFlags
+) #c_call;
+PFN_CmdSetDeviceMaskKHR :: #type (
+    commandBuffer : CommandBuffer,
+    deviceMask : u32
+) #c_call;
+PFN_CmdDispatchBaseKHR :: #type (
+    commandBuffer : CommandBuffer,
+    baseGroupX : u32,
+    baseGroupY : u32,
+    baseGroupZ : u32,
+    groupCountX : u32,
+    groupCountY : u32,
+    groupCountZ : u32
+) #foreign;
 CommandPoolTrimFlagsKHR :: CommandPoolTrimFlags;
-PFN_TrimCommandPoolKHR :: #type ();
+PFN_TrimCommandPoolKHR :: #type (
+    device : Device,
+    commandPool : CommandPool,
+    flags : CommandPoolTrimFlags
+) #foreign;
 PhysicalDeviceGroupPropertiesKHR :: PhysicalDeviceGroupProperties;
 DeviceGroupDeviceCreateInfoKHR :: DeviceGroupDeviceCreateInfo;
-PFN_EnumeratePhysicalDeviceGroupsKHR :: #type ();
+PFN_EnumeratePhysicalDeviceGroupsKHR :: #type (
+    instance : Instance,
+    pPhysicalDeviceGroupCount : *u32,
+    pPhysicalDeviceGroupProperties : *PhysicalDeviceGroupProperties
+) -> Result #foreign;
 ExternalMemoryHandleTypeFlagsKHR :: ExternalMemoryHandleTypeFlags;
 ExternalMemoryHandleTypeFlagBitsKHR :: ExternalMemoryHandleTypeFlagBits;
 ExternalMemoryFeatureFlagsKHR :: ExternalMemoryFeatureFlags;
@@ -1004,26 +2006,63 @@ ExternalImageFormatPropertiesKHR :: ExternalImageFormatProperties;
 PhysicalDeviceExternalBufferInfoKHR :: PhysicalDeviceExternalBufferInfo;
 ExternalBufferPropertiesKHR :: ExternalBufferProperties;
 PhysicalDeviceIDPropertiesKHR :: PhysicalDeviceIDProperties;
-PFN_GetPhysicalDeviceExternalBufferPropertiesKHR :: #type ();
+PFN_GetPhysicalDeviceExternalBufferPropertiesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pExternalBufferInfo : *PhysicalDeviceExternalBufferInfo,
+    pExternalBufferProperties : *ExternalBufferProperties
+) #foreign;
 ExternalMemoryImageCreateInfoKHR :: ExternalMemoryImageCreateInfo;
 ExternalMemoryBufferCreateInfoKHR :: ExternalMemoryBufferCreateInfo;
 ExportMemoryAllocateInfoKHR :: ExportMemoryAllocateInfo;
-PFN_GetMemoryFdKHR :: #type ();
-PFN_GetMemoryFdPropertiesKHR :: #type ();
+PFN_GetMemoryFdKHR :: #type (
+    device : Device,
+    pGetFdInfo : *MemoryGetFdInfoKHR,
+    pFd : *s32
+) -> Result #c_call;
+PFN_GetMemoryFdPropertiesKHR :: #type (
+    device : Device,
+    handleType : ExternalMemoryHandleTypeFlagBits,
+    fd : s32,
+    pMemoryFdProperties : *MemoryFdPropertiesKHR
+) -> Result #foreign;
 ExternalSemaphoreHandleTypeFlagsKHR :: ExternalSemaphoreHandleTypeFlags;
 ExternalSemaphoreHandleTypeFlagBitsKHR :: ExternalSemaphoreHandleTypeFlagBits;
 ExternalSemaphoreFeatureFlagsKHR :: ExternalSemaphoreFeatureFlags;
 ExternalSemaphoreFeatureFlagBitsKHR :: ExternalSemaphoreFeatureFlagBits;
 PhysicalDeviceExternalSemaphoreInfoKHR :: PhysicalDeviceExternalSemaphoreInfo;
 ExternalSemaphorePropertiesKHR :: ExternalSemaphoreProperties;
-PFN_GetPhysicalDeviceExternalSemaphorePropertiesKHR :: #type ();
+PFN_GetPhysicalDeviceExternalSemaphorePropertiesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pExternalSemaphoreInfo : *PhysicalDeviceExternalSemaphoreInfo,
+    pExternalSemaphoreProperties : *ExternalSemaphoreProperties
+) #foreign;
 SemaphoreImportFlagsKHR :: SemaphoreImportFlags;
 SemaphoreImportFlagBitsKHR :: SemaphoreImportFlagBits;
 ExportSemaphoreCreateInfoKHR :: ExportSemaphoreCreateInfo;
-PFN_ImportSemaphoreFdKHR :: #type ();
-PFN_GetSemaphoreFdKHR :: #type ();
-PFN_CmdPushDescriptorSetKHR :: #type ();
-PFN_CmdPushDescriptorSetWithTemplateKHR :: #type ();
+PFN_ImportSemaphoreFdKHR :: #type (
+    device : Device,
+    pImportSemaphoreFdInfo : *ImportSemaphoreFdInfoKHR
+) -> Result #c_call;
+PFN_GetSemaphoreFdKHR :: #type (
+    device : Device,
+    pGetFdInfo : *SemaphoreGetFdInfoKHR,
+    pFd : *s32
+) -> Result #c_call;
+PFN_CmdPushDescriptorSetKHR :: #type (
+    commandBuffer : CommandBuffer,
+    pipelineBindPoint : PipelineBindPoint,
+    layout : PipelineLayout,
+    set : u32,
+    descriptorWriteCount : u32,
+    pDescriptorWrites : *WriteDescriptorSet
+) #c_call;
+PFN_CmdPushDescriptorSetWithTemplateKHR :: #type (
+    commandBuffer : CommandBuffer,
+    descriptorUpdateTemplate : DescriptorUpdateTemplate,
+    layout : PipelineLayout,
+    set : u32,
+    pData : *void
+) #foreign;
 PhysicalDeviceShaderFloat16Int8FeaturesKHR :: PhysicalDeviceShaderFloat16Int8Features;
 PhysicalDeviceFloat16Int8FeaturesKHR :: PhysicalDeviceShaderFloat16Int8Features;
 PhysicalDevice16BitStorageFeaturesKHR :: PhysicalDevice16BitStorageFeatures;
@@ -1032,9 +2071,23 @@ DescriptorUpdateTemplateTypeKHR :: DescriptorUpdateTemplateType;
 DescriptorUpdateTemplateCreateFlagsKHR :: DescriptorUpdateTemplateCreateFlags;
 DescriptorUpdateTemplateEntryKHR :: DescriptorUpdateTemplateEntry;
 DescriptorUpdateTemplateCreateInfoKHR :: DescriptorUpdateTemplateCreateInfo;
-PFN_CreateDescriptorUpdateTemplateKHR :: #type ();
-PFN_DestroyDescriptorUpdateTemplateKHR :: #type ();
-PFN_UpdateDescriptorSetWithTemplateKHR :: #type ();
+PFN_CreateDescriptorUpdateTemplateKHR :: #type (
+    device : Device,
+    pCreateInfo : *DescriptorUpdateTemplateCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pDescriptorUpdateTemplate : *DescriptorUpdateTemplate
+) -> Result #c_call;
+PFN_DestroyDescriptorUpdateTemplateKHR :: #type (
+    device : Device,
+    descriptorUpdateTemplate : DescriptorUpdateTemplate,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_UpdateDescriptorSetWithTemplateKHR :: #type (
+    device : Device,
+    descriptorSet : DescriptorSet,
+    descriptorUpdateTemplate : DescriptorUpdateTemplate,
+    pData : *void
+) #foreign;
 PhysicalDeviceImagelessFramebufferFeaturesKHR :: PhysicalDeviceImagelessFramebufferFeatures;
 FramebufferAttachmentsCreateInfoKHR :: FramebufferAttachmentsCreateInfo;
 FramebufferAttachmentImageInfoKHR :: FramebufferAttachmentImageInfo;
@@ -1046,29 +2099,72 @@ SubpassDescription2KHR :: SubpassDescription2;
 SubpassDependency2KHR :: SubpassDependency2;
 SubpassBeginInfoKHR :: SubpassBeginInfo;
 SubpassEndInfoKHR :: SubpassEndInfo;
-PFN_CreateRenderPass2KHR :: #type ();
-PFN_CmdBeginRenderPass2KHR :: #type ();
-PFN_CmdNextSubpass2KHR :: #type ();
-PFN_CmdEndRenderPass2KHR :: #type ();
-PFN_GetSwapchainStatusKHR :: #type ();
+PFN_CreateRenderPass2KHR :: #type (
+    device : Device,
+    pCreateInfo : *RenderPassCreateInfo2,
+    pAllocator : *AllocationCallbacks,
+    pRenderPass : *RenderPass
+) -> Result #c_call;
+PFN_CmdBeginRenderPass2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pRenderPassBegin : *RenderPassBeginInfo,
+    pSubpassBeginInfo : *SubpassBeginInfo
+) #c_call;
+PFN_CmdNextSubpass2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pSubpassBeginInfo : *SubpassBeginInfo,
+    pSubpassEndInfo : *SubpassEndInfo
+) #c_call;
+PFN_CmdEndRenderPass2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pSubpassEndInfo : *SubpassEndInfo
+) #c_call;
+PFN_GetSwapchainStatusKHR :: #type (
+    device : Device,
+    swapchain : SwapchainKHR
+) -> Result #foreign;
 ExternalFenceHandleTypeFlagsKHR :: ExternalFenceHandleTypeFlags;
 ExternalFenceHandleTypeFlagBitsKHR :: ExternalFenceHandleTypeFlagBits;
 ExternalFenceFeatureFlagsKHR :: ExternalFenceFeatureFlags;
 ExternalFenceFeatureFlagBitsKHR :: ExternalFenceFeatureFlagBits;
 PhysicalDeviceExternalFenceInfoKHR :: PhysicalDeviceExternalFenceInfo;
 ExternalFencePropertiesKHR :: ExternalFenceProperties;
-PFN_GetPhysicalDeviceExternalFencePropertiesKHR :: #type ();
+PFN_GetPhysicalDeviceExternalFencePropertiesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pExternalFenceInfo : *PhysicalDeviceExternalFenceInfo,
+    pExternalFenceProperties : *ExternalFenceProperties
+) #foreign;
 FenceImportFlagsKHR :: FenceImportFlags;
 FenceImportFlagBitsKHR :: FenceImportFlagBits;
 ExportFenceCreateInfoKHR :: ExportFenceCreateInfo;
-PFN_ImportFenceFdKHR :: #type ();
-PFN_GetFenceFdKHR :: #type ();
+PFN_ImportFenceFdKHR :: #type (
+    device : Device,
+    pImportFenceFdInfo : *ImportFenceFdInfoKHR
+) -> Result #c_call;
+PFN_GetFenceFdKHR :: #type (
+    device : Device,
+    pGetFdInfo : *FenceGetFdInfoKHR,
+    pFd : *s32
+) -> Result #foreign;
 PerformanceCounterDescriptionFlagsKHR :: Flags;
 AcquireProfilingLockFlagsKHR :: Flags;
-PFN_EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR :: #type ();
-PFN_GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR :: #type ();
-PFN_AcquireProfilingLockKHR :: #type ();
-PFN_ReleaseProfilingLockKHR :: #type ();
+PFN_EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    queueFamilyIndex : u32,
+    pCounterCount : *u32,
+    pCounters : *PerformanceCounterKHR,
+    pCounterDescriptions : *PerformanceCounterDescriptionKHR
+) -> Result #c_call;
+PFN_GetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pPerformanceQueryCreateInfo : *QueryPoolPerformanceCreateInfoKHR,
+    pNumPasses : *u32
+) #c_call;
+PFN_AcquireProfilingLockKHR :: #type (
+    device : Device,
+    pInfo : *AcquireProfilingLockInfoKHR
+) -> Result #c_call;
+PFN_ReleaseProfilingLockKHR :: #type (device : Device) #foreign;
 PointClippingBehaviorKHR :: PointClippingBehavior;
 TessellationDomainOriginKHR :: TessellationDomainOrigin;
 PhysicalDevicePointClippingPropertiesKHR :: PhysicalDevicePointClippingProperties;
@@ -1076,14 +2172,40 @@ RenderPassInputAttachmentAspectCreateInfoKHR :: RenderPassInputAttachmentAspectC
 InputAttachmentAspectReferenceKHR :: InputAttachmentAspectReference;
 ImageViewUsageCreateInfoKHR :: ImageViewUsageCreateInfo;
 PipelineTessellationDomainOriginStateCreateInfoKHR :: PipelineTessellationDomainOriginStateCreateInfo;
-PFN_GetPhysicalDeviceSurfaceCapabilities2KHR :: #type ();
-PFN_GetPhysicalDeviceSurfaceFormats2KHR :: #type ();
+PFN_GetPhysicalDeviceSurfaceCapabilities2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pSurfaceInfo : *PhysicalDeviceSurfaceInfo2KHR,
+    pSurfaceCapabilities : *SurfaceCapabilities2KHR
+) -> Result #c_call;
+PFN_GetPhysicalDeviceSurfaceFormats2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pSurfaceInfo : *PhysicalDeviceSurfaceInfo2KHR,
+    pSurfaceFormatCount : *u32,
+    pSurfaceFormats : *SurfaceFormat2KHR
+) -> Result #foreign;
 PhysicalDeviceVariablePointerFeaturesKHR :: PhysicalDeviceVariablePointersFeatures;
 PhysicalDeviceVariablePointersFeaturesKHR :: PhysicalDeviceVariablePointersFeatures;
-PFN_GetPhysicalDeviceDisplayProperties2KHR :: #type ();
-PFN_GetPhysicalDeviceDisplayPlaneProperties2KHR :: #type ();
-PFN_GetDisplayModeProperties2KHR :: #type ();
-PFN_GetDisplayPlaneCapabilities2KHR :: #type ();
+PFN_GetPhysicalDeviceDisplayProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pPropertyCount : *u32,
+    pProperties : *DisplayProperties2KHR
+) -> Result #c_call;
+PFN_GetPhysicalDeviceDisplayPlaneProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pPropertyCount : *u32,
+    pProperties : *DisplayPlaneProperties2KHR
+) -> Result #c_call;
+PFN_GetDisplayModeProperties2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    display : DisplayKHR,
+    pPropertyCount : *u32,
+    pProperties : *DisplayModeProperties2KHR
+) -> Result #c_call;
+PFN_GetDisplayPlaneCapabilities2KHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pDisplayPlaneInfo : *DisplayPlaneInfo2KHR,
+    pCapabilities : *DisplayPlaneCapabilities2KHR
+) -> Result #foreign;
 MemoryDedicatedRequirementsKHR :: MemoryDedicatedRequirements;
 MemoryDedicatedAllocateInfoKHR :: MemoryDedicatedAllocateInfo;
 BufferMemoryRequirementsInfo2KHR :: BufferMemoryRequirementsInfo2;
@@ -1091,9 +2213,22 @@ ImageMemoryRequirementsInfo2KHR :: ImageMemoryRequirementsInfo2;
 ImageSparseMemoryRequirementsInfo2KHR :: ImageSparseMemoryRequirementsInfo2;
 MemoryRequirements2KHR :: MemoryRequirements2;
 SparseImageMemoryRequirements2KHR :: SparseImageMemoryRequirements2;
-PFN_GetImageMemoryRequirements2KHR :: #type ();
-PFN_GetBufferMemoryRequirements2KHR :: #type ();
-PFN_GetImageSparseMemoryRequirements2KHR :: #type ();
+PFN_GetImageMemoryRequirements2KHR :: #type (
+    device : Device,
+    pInfo : *ImageMemoryRequirementsInfo2,
+    pMemoryRequirements : *MemoryRequirements2
+) #c_call;
+PFN_GetBufferMemoryRequirements2KHR :: #type (
+    device : Device,
+    pInfo : *BufferMemoryRequirementsInfo2,
+    pMemoryRequirements : *MemoryRequirements2
+) #c_call;
+PFN_GetImageSparseMemoryRequirements2KHR :: #type (
+    device : Device,
+    pInfo : *ImageSparseMemoryRequirementsInfo2,
+    pSparseMemoryRequirementCount : *u32,
+    pSparseMemoryRequirements : *SparseImageMemoryRequirements2
+) #foreign;
 ImageFormatListCreateInfoKHR :: ImageFormatListCreateInfo;
 SamplerYcbcrConversionKHR :: SamplerYcbcrConversion;
 SamplerYcbcrModelConversionKHR :: SamplerYcbcrModelConversion;
@@ -1105,17 +2240,54 @@ BindImagePlaneMemoryInfoKHR :: BindImagePlaneMemoryInfo;
 ImagePlaneMemoryRequirementsInfoKHR :: ImagePlaneMemoryRequirementsInfo;
 PhysicalDeviceSamplerYcbcrConversionFeaturesKHR :: PhysicalDeviceSamplerYcbcrConversionFeatures;
 SamplerYcbcrConversionImageFormatPropertiesKHR :: SamplerYcbcrConversionImageFormatProperties;
-PFN_CreateSamplerYcbcrConversionKHR :: #type ();
-PFN_DestroySamplerYcbcrConversionKHR :: #type ();
+PFN_CreateSamplerYcbcrConversionKHR :: #type (
+    device : Device,
+    pCreateInfo : *SamplerYcbcrConversionCreateInfo,
+    pAllocator : *AllocationCallbacks,
+    pYcbcrConversion : *SamplerYcbcrConversion
+) -> Result #c_call;
+PFN_DestroySamplerYcbcrConversionKHR :: #type (
+    device : Device,
+    ycbcrConversion : SamplerYcbcrConversion,
+    pAllocator : *AllocationCallbacks
+) #foreign;
 BindBufferMemoryInfoKHR :: BindBufferMemoryInfo;
 BindImageMemoryInfoKHR :: BindImageMemoryInfo;
-PFN_BindBufferMemory2KHR :: #type ();
-PFN_BindImageMemory2KHR :: #type ();
+PFN_BindBufferMemory2KHR :: #type (
+    device : Device,
+    bindInfoCount : u32,
+    pBindInfos : *BindBufferMemoryInfo
+) -> Result #c_call;
+PFN_BindImageMemory2KHR :: #type (
+    device : Device,
+    bindInfoCount : u32,
+    pBindInfos : *BindImageMemoryInfo
+) -> Result #foreign;
 PhysicalDeviceMaintenance3PropertiesKHR :: PhysicalDeviceMaintenance3Properties;
 DescriptorSetLayoutSupportKHR :: DescriptorSetLayoutSupport;
-PFN_GetDescriptorSetLayoutSupportKHR :: #type ();
-PFN_CmdDrawIndirectCountKHR :: #type ();
-PFN_CmdDrawIndexedIndirectCountKHR :: #type ();
+PFN_GetDescriptorSetLayoutSupportKHR :: #type (
+    device : Device,
+    pCreateInfo : *DescriptorSetLayoutCreateInfo,
+    pSupport : *DescriptorSetLayoutSupport
+) #c_call;
+PFN_CmdDrawIndirectCountKHR :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    countBuffer : Buffer,
+    countBufferOffset : DeviceSize,
+    maxDrawCount : u32,
+    stride : u32
+) #c_call;
+PFN_CmdDrawIndexedIndirectCountKHR :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    countBuffer : Buffer,
+    countBufferOffset : DeviceSize,
+    maxDrawCount : u32,
+    stride : u32
+) #foreign;
 PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR :: PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
 PhysicalDevice8BitStorageFeaturesKHR :: PhysicalDevice8BitStorageFeatures;
 PhysicalDeviceShaderAtomicInt64FeaturesKHR :: PhysicalDeviceShaderAtomicInt64Features;
@@ -1137,12 +2309,31 @@ SemaphoreTypeCreateInfoKHR :: SemaphoreTypeCreateInfo;
 TimelineSemaphoreSubmitInfoKHR :: TimelineSemaphoreSubmitInfo;
 SemaphoreWaitInfoKHR :: SemaphoreWaitInfo;
 SemaphoreSignalInfoKHR :: SemaphoreSignalInfo;
-PFN_GetSemaphoreCounterValueKHR :: #type ();
-PFN_WaitSemaphoresKHR :: #type ();
-PFN_SignalSemaphoreKHR :: #type ();
+PFN_GetSemaphoreCounterValueKHR :: #type (
+    device : Device,
+    semaphore : Semaphore,
+    pValue : *u64
+) -> Result #c_call;
+PFN_WaitSemaphoresKHR :: #type (
+    device : Device,
+    pWaitInfo : *SemaphoreWaitInfo,
+    timeout : u64
+) -> Result #c_call;
+PFN_SignalSemaphoreKHR :: #type (
+    device : Device,
+    pSignalInfo : *SemaphoreSignalInfo
+) -> Result #foreign;
 PhysicalDeviceVulkanMemoryModelFeaturesKHR :: PhysicalDeviceVulkanMemoryModelFeatures;
-PFN_GetPhysicalDeviceFragmentShadingRatesKHR :: #type ();
-PFN_CmdSetFragmentShadingRateKHR :: #type ();
+PFN_GetPhysicalDeviceFragmentShadingRatesKHR :: #type (
+    physicalDevice : PhysicalDevice,
+    pFragmentShadingRateCount : *u32,
+    pFragmentShadingRates : *PhysicalDeviceFragmentShadingRateKHR
+) -> Result #c_call;
+PFN_CmdSetFragmentShadingRateKHR :: #type (
+    commandBuffer : CommandBuffer,
+    pFragmentSize : *Extent2D,
+    combinerOps : *FragmentShadingRateCombinerOpKHR
+) #foreign;
 PhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR :: PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
 AttachmentReferenceStencilLayoutKHR :: AttachmentReferenceStencilLayout;
 AttachmentDescriptionStencilLayoutKHR :: AttachmentDescriptionStencilLayout;
@@ -1152,100 +2343,396 @@ BufferDeviceAddressInfoKHR :: BufferDeviceAddressInfo;
 BufferOpaqueCaptureAddressCreateInfoKHR :: BufferOpaqueCaptureAddressCreateInfo;
 MemoryOpaqueCaptureAddressAllocateInfoKHR :: MemoryOpaqueCaptureAddressAllocateInfo;
 DeviceMemoryOpaqueCaptureAddressInfoKHR :: DeviceMemoryOpaqueCaptureAddressInfo;
-PFN_GetBufferDeviceAddressKHR :: #type ();
-PFN_GetBufferOpaqueCaptureAddressKHR :: #type ();
-PFN_GetDeviceMemoryOpaqueCaptureAddressKHR :: #type ();
+PFN_GetBufferDeviceAddressKHR :: #type (
+    device : Device,
+    pInfo : *BufferDeviceAddressInfo
+) -> DeviceAddress #c_call;
+PFN_GetBufferOpaqueCaptureAddressKHR :: #type (
+    device : Device,
+    pInfo : *BufferDeviceAddressInfo
+) -> u64 #c_call;
+PFN_GetDeviceMemoryOpaqueCaptureAddressKHR :: #type (
+    device : Device,
+    pInfo : *DeviceMemoryOpaqueCaptureAddressInfo
+) -> u64 #foreign;
 DeferredOperationKHR :: *DeferredOperationKHRT;
-PFN_CreateDeferredOperationKHR :: #type ();
-PFN_DestroyDeferredOperationKHR :: #type ();
-PFN_GetDeferredOperationMaxConcurrencyKHR :: #type ();
-PFN_GetDeferredOperationResultKHR :: #type ();
-PFN_DeferredOperationJoinKHR :: #type ();
-PFN_GetPipelineExecutablePropertiesKHR :: #type ();
-PFN_GetPipelineExecutableStatisticsKHR :: #type ();
-PFN_GetPipelineExecutableInternalRepresentationsKHR :: #type ();
-PFN_CmdCopyBuffer2KHR :: #type ();
-PFN_CmdCopyImage2KHR :: #type ();
-PFN_CmdCopyBufferToImage2KHR :: #type ();
-PFN_CmdCopyImageToBuffer2KHR :: #type ();
-PFN_CmdBlitImage2KHR :: #type ();
-PFN_CmdResolveImage2KHR :: #type ();
+PFN_CreateDeferredOperationKHR :: #type (
+    device : Device,
+    pAllocator : *AllocationCallbacks,
+    pDeferredOperation : *DeferredOperationKHR
+) -> Result #c_call;
+PFN_DestroyDeferredOperationKHR :: #type (
+    device : Device,
+    operation : DeferredOperationKHR,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetDeferredOperationMaxConcurrencyKHR :: #type (
+    device : Device,
+    operation : DeferredOperationKHR
+) -> u32 #c_call;
+PFN_GetDeferredOperationResultKHR :: #type (
+    device : Device,
+    operation : DeferredOperationKHR
+) -> Result #c_call;
+PFN_DeferredOperationJoinKHR :: #type (
+    device : Device,
+    operation : DeferredOperationKHR
+) -> Result #c_call;
+PFN_GetPipelineExecutablePropertiesKHR :: #type (
+    device : Device,
+    pPipelineInfo : *PipelineInfoKHR,
+    pExecutableCount : *u32,
+    pProperties : *PipelineExecutablePropertiesKHR
+) -> Result #c_call;
+PFN_GetPipelineExecutableStatisticsKHR :: #type (
+    device : Device,
+    pExecutableInfo : *PipelineExecutableInfoKHR,
+    pStatisticCount : *u32,
+    pStatistics : *PipelineExecutableStatisticKHR
+) -> Result #c_call;
+PFN_GetPipelineExecutableInternalRepresentationsKHR :: #type (
+    device : Device,
+    pExecutableInfo : *PipelineExecutableInfoKHR,
+    pInternalRepresentationCount : *u32,
+    pInternalRepresentations : *PipelineExecutableInternalRepresentationKHR
+) -> Result #c_call;
+PFN_CmdCopyBuffer2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pCopyBufferInfo : *CopyBufferInfo2KHR
+) #c_call;
+PFN_CmdCopyImage2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pCopyImageInfo : *CopyImageInfo2KHR
+) #c_call;
+PFN_CmdCopyBufferToImage2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pCopyBufferToImageInfo : *CopyBufferToImageInfo2KHR
+) #c_call;
+PFN_CmdCopyImageToBuffer2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pCopyImageToBufferInfo : *CopyImageToBufferInfo2KHR
+) #c_call;
+PFN_CmdBlitImage2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pBlitImageInfo : *BlitImageInfo2KHR
+) #c_call;
+PFN_CmdResolveImage2KHR :: #type (
+    commandBuffer : CommandBuffer,
+    pResolveImageInfo : *ResolveImageInfo2KHR
+) #foreign;
 DebugReportCallbackEXT :: *DebugReportCallbackEXTT;
 DebugReportFlagsEXT :: Flags;
-PFN_DebugReportCallbackEXT :: #type ();
-PFN_CreateDebugReportCallbackEXT :: #type ();
-PFN_DestroyDebugReportCallbackEXT :: #type ();
-PFN_DebugReportMessageEXT :: #type ();
-PFN_DebugMarkerSetObjectTagEXT :: #type ();
-PFN_DebugMarkerSetObjectNameEXT :: #type ();
-PFN_CmdDebugMarkerBeginEXT :: #type ();
-PFN_CmdDebugMarkerEndEXT :: #type ();
-PFN_CmdDebugMarkerInsertEXT :: #type ();
+PFN_DebugReportCallbackEXT :: #type (
+    flags : DebugReportFlagsEXT,
+    objectType : DebugReportObjectTypeEXT,
+    object : u64,
+    location : u64,
+    messageCode : s32,
+    pLayerPrefix : *u8,
+    pMessage : *u8,
+    pUserData : *void
+) -> Bool32 #c_call;
+PFN_CreateDebugReportCallbackEXT :: #type (
+    instance : Instance,
+    pCreateInfo : *DebugReportCallbackCreateInfoEXT,
+    pAllocator : *AllocationCallbacks,
+    pCallback : *DebugReportCallbackEXT
+) -> Result #c_call;
+PFN_DestroyDebugReportCallbackEXT :: #type (
+    instance : Instance,
+    callback : DebugReportCallbackEXT,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_DebugReportMessageEXT :: #type (
+    instance : Instance,
+    flags : DebugReportFlagsEXT,
+    objectType : DebugReportObjectTypeEXT,
+    object : u64,
+    location : u64,
+    messageCode : s32,
+    pLayerPrefix : *u8,
+    pMessage : *u8
+) #c_call;
+PFN_DebugMarkerSetObjectTagEXT :: #type (
+    device : Device,
+    pTagInfo : *DebugMarkerObjectTagInfoEXT
+) -> Result #c_call;
+PFN_DebugMarkerSetObjectNameEXT :: #type (
+    device : Device,
+    pNameInfo : *DebugMarkerObjectNameInfoEXT
+) -> Result #c_call;
+PFN_CmdDebugMarkerBeginEXT :: #type (
+    commandBuffer : CommandBuffer,
+    pMarkerInfo : *DebugMarkerMarkerInfoEXT
+) #c_call;
+PFN_CmdDebugMarkerEndEXT :: #type (commandBuffer : CommandBuffer) #c_call;
+PFN_CmdDebugMarkerInsertEXT :: #type (
+    commandBuffer : CommandBuffer,
+    pMarkerInfo : *DebugMarkerMarkerInfoEXT
+) #foreign;
 PipelineRasterizationStateStreamCreateFlagsEXT :: Flags;
-PFN_CmdBindTransformFeedbackBuffersEXT :: #type ();
-PFN_CmdBeginTransformFeedbackEXT :: #type ();
-PFN_CmdEndTransformFeedbackEXT :: #type ();
-PFN_CmdBeginQueryIndexedEXT :: #type ();
-PFN_CmdEndQueryIndexedEXT :: #type ();
-PFN_CmdDrawIndirectByteCountEXT :: #type ();
-PFN_GetImageViewHandleNVX :: #type ();
-PFN_GetImageViewAddressNVX :: #type ();
-PFN_CmdDrawIndirectCountAMD :: #type ();
-PFN_CmdDrawIndexedIndirectCountAMD :: #type ();
-PFN_GetShaderInfoAMD :: #type ();
+PFN_CmdBindTransformFeedbackBuffersEXT :: #type (
+    commandBuffer : CommandBuffer,
+    firstBinding : u32,
+    bindingCount : u32,
+    pBuffers : *Buffer,
+    pOffsets : *DeviceSize,
+    pSizes : *DeviceSize
+) #c_call;
+PFN_CmdBeginTransformFeedbackEXT :: #type (
+    commandBuffer : CommandBuffer,
+    firstCounterBuffer : u32,
+    counterBufferCount : u32,
+    pCounterBuffers : *Buffer,
+    pCounterBufferOffsets : *DeviceSize
+) #c_call;
+PFN_CmdEndTransformFeedbackEXT :: #type (
+    commandBuffer : CommandBuffer,
+    firstCounterBuffer : u32,
+    counterBufferCount : u32,
+    pCounterBuffers : *Buffer,
+    pCounterBufferOffsets : *DeviceSize
+) #c_call;
+PFN_CmdBeginQueryIndexedEXT :: #type (
+    commandBuffer : CommandBuffer,
+    queryPool : QueryPool,
+    query : u32,
+    flags : QueryControlFlags,
+    index : u32
+) #c_call;
+PFN_CmdEndQueryIndexedEXT :: #type (
+    commandBuffer : CommandBuffer,
+    queryPool : QueryPool,
+    query : u32,
+    index : u32
+) #c_call;
+PFN_CmdDrawIndirectByteCountEXT :: #type (
+    commandBuffer : CommandBuffer,
+    instanceCount : u32,
+    firstInstance : u32,
+    counterBuffer : Buffer,
+    counterBufferOffset : DeviceSize,
+    counterOffset : u32,
+    vertexStride : u32
+) #c_call;
+PFN_GetImageViewHandleNVX :: #type (
+    device : Device,
+    pInfo : *ImageViewHandleInfoNVX
+) -> u32 #c_call;
+PFN_GetImageViewAddressNVX :: #type (
+    device : Device,
+    imageView : ImageView,
+    pProperties : *ImageViewAddressPropertiesNVX
+) -> Result #c_call;
+PFN_CmdDrawIndirectCountAMD :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    countBuffer : Buffer,
+    countBufferOffset : DeviceSize,
+    maxDrawCount : u32,
+    stride : u32
+) #c_call;
+PFN_CmdDrawIndexedIndirectCountAMD :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    countBuffer : Buffer,
+    countBufferOffset : DeviceSize,
+    maxDrawCount : u32,
+    stride : u32
+) #c_call;
+PFN_GetShaderInfoAMD :: #type (
+    device : Device,
+    pipeline : Pipeline,
+    shaderStage : ShaderStageFlagBits,
+    infoType : ShaderInfoTypeAMD,
+    pInfoSize : *u64,
+    pInfo : *void
+) -> Result #foreign;
 ExternalMemoryHandleTypeFlagsNV :: Flags;
 ExternalMemoryFeatureFlagsNV :: Flags;
-PFN_GetPhysicalDeviceExternalImageFormatPropertiesNV :: #type ();
+PFN_GetPhysicalDeviceExternalImageFormatPropertiesNV :: #type (
+    physicalDevice : PhysicalDevice,
+    format : Format,
+    type : ImageType,
+    tiling : ImageTiling,
+    usage : ImageUsageFlags,
+    flags : ImageCreateFlags,
+    externalHandleType : ExternalMemoryHandleTypeFlagsNV,
+    pExternalImageFormatProperties : *ExternalImageFormatPropertiesNV
+) -> Result #foreign;
 ConditionalRenderingFlagsEXT :: Flags;
-PFN_CmdBeginConditionalRenderingEXT :: #type ();
-PFN_CmdEndConditionalRenderingEXT :: #type ();
-PFN_CmdSetViewportWScalingNV :: #type ();
-PFN_ReleaseDisplayEXT :: #type ();
+PFN_CmdBeginConditionalRenderingEXT :: #type (
+    commandBuffer : CommandBuffer,
+    pConditionalRenderingBegin : *ConditionalRenderingBeginInfoEXT
+) #c_call;
+PFN_CmdEndConditionalRenderingEXT :: #type (commandBuffer : CommandBuffer) #c_call;
+PFN_CmdSetViewportWScalingNV :: #type (
+    commandBuffer : CommandBuffer,
+    firstViewport : u32,
+    viewportCount : u32,
+    pViewportWScalings : *ViewportWScalingNV
+) #c_call;
+PFN_ReleaseDisplayEXT :: #type (
+    physicalDevice : PhysicalDevice,
+    display : DisplayKHR
+) -> Result #foreign;
 SurfaceCounterFlagsEXT :: Flags;
-PFN_GetPhysicalDeviceSurfaceCapabilities2EXT :: #type ();
-PFN_DisplayPowerControlEXT :: #type ();
-PFN_RegisterDeviceEventEXT :: #type ();
-PFN_RegisterDisplayEventEXT :: #type ();
-PFN_GetSwapchainCounterEXT :: #type ();
-PFN_GetRefreshCycleDurationGOOGLE :: #type ();
-PFN_GetPastPresentationTimingGOOGLE :: #type ();
+PFN_GetPhysicalDeviceSurfaceCapabilities2EXT :: #type (
+    physicalDevice : PhysicalDevice,
+    surface : SurfaceKHR,
+    pSurfaceCapabilities : *SurfaceCapabilities2EXT
+) -> Result #c_call;
+PFN_DisplayPowerControlEXT :: #type (
+    device : Device,
+    display : DisplayKHR,
+    pDisplayPowerInfo : *DisplayPowerInfoEXT
+) -> Result #c_call;
+PFN_RegisterDeviceEventEXT :: #type (
+    device : Device,
+    pDeviceEventInfo : *DeviceEventInfoEXT,
+    pAllocator : *AllocationCallbacks,
+    pFence : *Fence
+) -> Result #c_call;
+PFN_RegisterDisplayEventEXT :: #type (
+    device : Device,
+    display : DisplayKHR,
+    pDisplayEventInfo : *DisplayEventInfoEXT,
+    pAllocator : *AllocationCallbacks,
+    pFence : *Fence
+) -> Result #c_call;
+PFN_GetSwapchainCounterEXT :: #type (
+    device : Device,
+    swapchain : SwapchainKHR,
+    counter : SurfaceCounterFlagBitsEXT,
+    pCounterValue : *u64
+) -> Result #c_call;
+PFN_GetRefreshCycleDurationGOOGLE :: #type (
+    device : Device,
+    swapchain : SwapchainKHR,
+    pDisplayTimingProperties : *RefreshCycleDurationGOOGLE
+) -> Result #c_call;
+PFN_GetPastPresentationTimingGOOGLE :: #type (
+    device : Device,
+    swapchain : SwapchainKHR,
+    pPresentationTimingCount : *u32,
+    pPresentationTimings : *PastPresentationTimingGOOGLE
+) -> Result #foreign;
 PipelineViewportSwizzleStateCreateFlagsNV :: Flags;
 PipelineDiscardRectangleStateCreateFlagsEXT :: Flags;
-PFN_CmdSetDiscardRectangleEXT :: #type ();
+PFN_CmdSetDiscardRectangleEXT :: #type (
+    commandBuffer : CommandBuffer,
+    firstDiscardRectangle : u32,
+    discardRectangleCount : u32,
+    pDiscardRectangles : *Rect2D
+) #foreign;
 PipelineRasterizationConservativeStateCreateFlagsEXT :: Flags;
 PipelineRasterizationDepthClipStateCreateFlagsEXT :: Flags;
-PFN_SetHdrMetadataEXT :: #type ();
+PFN_SetHdrMetadataEXT :: #type (
+    device : Device,
+    swapchainCount : u32,
+    pSwapchains : *SwapchainKHR,
+    pMetadata : *HdrMetadataEXT
+) #foreign;
 DebugUtilsMessengerEXT :: *DebugUtilsMessengerEXTT;
 DebugUtilsMessengerCallbackDataFlagsEXT :: Flags;
 DebugUtilsMessageTypeFlagsEXT :: Flags;
 DebugUtilsMessageSeverityFlagsEXT :: Flags;
 DebugUtilsMessengerCreateFlagsEXT :: Flags;
-PFN_DebugUtilsMessengerCallbackEXT :: #type ();
-PFN_SetDebugUtilsObjectNameEXT :: #type ();
-PFN_SetDebugUtilsObjectTagEXT :: #type ();
-PFN_QueueBeginDebugUtilsLabelEXT :: #type ();
-PFN_QueueEndDebugUtilsLabelEXT :: #type ();
-PFN_QueueInsertDebugUtilsLabelEXT :: #type ();
-PFN_CmdBeginDebugUtilsLabelEXT :: #type ();
-PFN_CmdEndDebugUtilsLabelEXT :: #type ();
-PFN_CmdInsertDebugUtilsLabelEXT :: #type ();
-PFN_CreateDebugUtilsMessengerEXT :: #type ();
-PFN_DestroyDebugUtilsMessengerEXT :: #type ();
-PFN_SubmitDebugUtilsMessageEXT :: #type ();
+PFN_DebugUtilsMessengerCallbackEXT :: #type (
+    messageSeverity : DebugUtilsMessageSeverityFlagBitsEXT,
+    messageTypes : DebugUtilsMessageTypeFlagsEXT,
+    pCallbackData : *DebugUtilsMessengerCallbackDataEXT,
+    pUserData : *void
+) -> Bool32 #c_call;
+PFN_SetDebugUtilsObjectNameEXT :: #type (
+    device : Device,
+    pNameInfo : *DebugUtilsObjectNameInfoEXT
+) -> Result #c_call;
+PFN_SetDebugUtilsObjectTagEXT :: #type (
+    device : Device,
+    pTagInfo : *DebugUtilsObjectTagInfoEXT
+) -> Result #c_call;
+PFN_QueueBeginDebugUtilsLabelEXT :: #type (
+    queue : Queue,
+    pLabelInfo : *DebugUtilsLabelEXT
+) #c_call;
+PFN_QueueEndDebugUtilsLabelEXT :: #type (queue : Queue) #c_call;
+PFN_QueueInsertDebugUtilsLabelEXT :: #type (
+    queue : Queue,
+    pLabelInfo : *DebugUtilsLabelEXT
+) #c_call;
+PFN_CmdBeginDebugUtilsLabelEXT :: #type (
+    commandBuffer : CommandBuffer,
+    pLabelInfo : *DebugUtilsLabelEXT
+) #c_call;
+PFN_CmdEndDebugUtilsLabelEXT :: #type (commandBuffer : CommandBuffer) #c_call;
+PFN_CmdInsertDebugUtilsLabelEXT :: #type (
+    commandBuffer : CommandBuffer,
+    pLabelInfo : *DebugUtilsLabelEXT
+) #c_call;
+PFN_CreateDebugUtilsMessengerEXT :: #type (
+    instance : Instance,
+    pCreateInfo : *DebugUtilsMessengerCreateInfoEXT,
+    pAllocator : *AllocationCallbacks,
+    pMessenger : *DebugUtilsMessengerEXT
+) -> Result #c_call;
+PFN_DestroyDebugUtilsMessengerEXT :: #type (
+    instance : Instance,
+    messenger : DebugUtilsMessengerEXT,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_SubmitDebugUtilsMessageEXT :: #type (
+    instance : Instance,
+    messageSeverity : DebugUtilsMessageSeverityFlagBitsEXT,
+    messageTypes : DebugUtilsMessageTypeFlagsEXT,
+    pCallbackData : *DebugUtilsMessengerCallbackDataEXT
+) #foreign;
 SamplerReductionModeEXT :: SamplerReductionMode;
 SamplerReductionModeCreateInfoEXT :: SamplerReductionModeCreateInfo;
 PhysicalDeviceSamplerFilterMinmaxPropertiesEXT :: PhysicalDeviceSamplerFilterMinmaxProperties;
-PFN_CmdSetSampleLocationsEXT :: #type ();
-PFN_GetPhysicalDeviceMultisamplePropertiesEXT :: #type ();
+PFN_CmdSetSampleLocationsEXT :: #type (
+    commandBuffer : CommandBuffer,
+    pSampleLocationsInfo : *SampleLocationsInfoEXT
+) #c_call;
+PFN_GetPhysicalDeviceMultisamplePropertiesEXT :: #type (
+    physicalDevice : PhysicalDevice,
+    samples : SampleCountFlagBits,
+    pMultisampleProperties : *MultisamplePropertiesEXT
+) #foreign;
 PipelineCoverageToColorStateCreateFlagsNV :: Flags;
 PipelineCoverageModulationStateCreateFlagsNV :: Flags;
-PFN_GetImageDrmFormatModifierPropertiesEXT :: #type ();
+PFN_GetImageDrmFormatModifierPropertiesEXT :: #type (
+    device : Device,
+    image : Image,
+    pProperties : *ImageDrmFormatModifierPropertiesEXT
+) -> Result #foreign;
 ValidationCacheEXT :: *ValidationCacheEXTT;
 ValidationCacheCreateFlagsEXT :: Flags;
-PFN_CreateValidationCacheEXT :: #type ();
-PFN_DestroyValidationCacheEXT :: #type ();
-PFN_MergeValidationCachesEXT :: #type ();
-PFN_GetValidationCacheDataEXT :: #type ();
+PFN_CreateValidationCacheEXT :: #type (
+    device : Device,
+    pCreateInfo : *ValidationCacheCreateInfoEXT,
+    pAllocator : *AllocationCallbacks,
+    pValidationCache : *ValidationCacheEXT
+) -> Result #c_call;
+PFN_DestroyValidationCacheEXT :: #type (
+    device : Device,
+    validationCache : ValidationCacheEXT,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_MergeValidationCachesEXT :: #type (
+    device : Device,
+    dstCache : ValidationCacheEXT,
+    srcCacheCount : u32,
+    pSrcCaches : *ValidationCacheEXT
+) -> Result #c_call;
+PFN_GetValidationCacheDataEXT :: #type (
+    device : Device,
+    validationCache : ValidationCacheEXT,
+    pDataSize : *u64,
+    pData : *void
+) -> Result #foreign;
 DescriptorBindingFlagBitsEXT :: DescriptorBindingFlagBits;
 DescriptorBindingFlagsEXT :: DescriptorBindingFlags;
 DescriptorSetLayoutBindingFlagsCreateInfoEXT :: DescriptorSetLayoutBindingFlagsCreateInfo;
@@ -1253,9 +2740,23 @@ PhysicalDeviceDescriptorIndexingFeaturesEXT :: PhysicalDeviceDescriptorIndexingF
 PhysicalDeviceDescriptorIndexingPropertiesEXT :: PhysicalDeviceDescriptorIndexingProperties;
 DescriptorSetVariableDescriptorCountAllocateInfoEXT :: DescriptorSetVariableDescriptorCountAllocateInfo;
 DescriptorSetVariableDescriptorCountLayoutSupportEXT :: DescriptorSetVariableDescriptorCountLayoutSupport;
-PFN_CmdBindShadingRateImageNV :: #type ();
-PFN_CmdSetViewportShadingRatePaletteNV :: #type ();
-PFN_CmdSetCoarseSampleOrderNV :: #type ();
+PFN_CmdBindShadingRateImageNV :: #type (
+    commandBuffer : CommandBuffer,
+    imageView : ImageView,
+    imageLayout : ImageLayout
+) #c_call;
+PFN_CmdSetViewportShadingRatePaletteNV :: #type (
+    commandBuffer : CommandBuffer,
+    firstViewport : u32,
+    viewportCount : u32,
+    pShadingRatePalettes : *ShadingRatePaletteNV
+) #c_call;
+PFN_CmdSetCoarseSampleOrderNV :: #type (
+    commandBuffer : CommandBuffer,
+    sampleOrderType : CoarseSampleOrderTypeNV,
+    customSampleOrderCount : u32,
+    pCustomSampleOrders : *CoarseSampleOrderCustomNV
+) #foreign;
 AccelerationStructureNV :: *AccelerationStructureNVT;
 RayTracingShaderGroupTypeNV :: RayTracingShaderGroupTypeKHR;
 GeometryTypeNV :: GeometryTypeKHR;
@@ -1273,114 +2774,524 @@ BuildAccelerationStructureFlagBitsNV :: BuildAccelerationStructureFlagBitsKHR;
 TransformMatrixNV :: TransformMatrixKHR;
 AabbPositionsNV :: AabbPositionsKHR;
 AccelerationStructureInstanceNV :: AccelerationStructureInstanceKHR;
-PFN_CreateAccelerationStructureNV :: #type ();
-PFN_DestroyAccelerationStructureNV :: #type ();
-PFN_GetAccelerationStructureMemoryRequirementsNV :: #type ();
-PFN_BindAccelerationStructureMemoryNV :: #type ();
-PFN_CmdBuildAccelerationStructureNV :: #type ();
-PFN_CmdCopyAccelerationStructureNV :: #type ();
-PFN_CmdTraceRaysNV :: #type ();
-PFN_CreateRayTracingPipelinesNV :: #type ();
-PFN_GetRayTracingShaderGroupHandlesKHR :: #type ();
-PFN_GetRayTracingShaderGroupHandlesNV :: #type ();
-PFN_GetAccelerationStructureHandleNV :: #type ();
-PFN_CmdWriteAccelerationStructuresPropertiesNV :: #type ();
-PFN_CompileDeferredNV :: #type ();
-PFN_GetMemoryHostPointerPropertiesEXT :: #type ();
-PFN_CmdWriteBufferMarkerAMD :: #type ();
+PFN_CreateAccelerationStructureNV :: #type (
+    device : Device,
+    pCreateInfo : *AccelerationStructureCreateInfoNV,
+    pAllocator : *AllocationCallbacks,
+    pAccelerationStructure : *AccelerationStructureNV
+) -> Result #c_call;
+PFN_DestroyAccelerationStructureNV :: #type (
+    device : Device,
+    accelerationStructure : AccelerationStructureNV,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_GetAccelerationStructureMemoryRequirementsNV :: #type (
+    device : Device,
+    pInfo : *AccelerationStructureMemoryRequirementsInfoNV,
+    pMemoryRequirements : *MemoryRequirements2KHR
+) #c_call;
+PFN_BindAccelerationStructureMemoryNV :: #type (
+    device : Device,
+    bindInfoCount : u32,
+    pBindInfos : *BindAccelerationStructureMemoryInfoNV
+) -> Result #c_call;
+PFN_CmdBuildAccelerationStructureNV :: #type (
+    commandBuffer : CommandBuffer,
+    pInfo : *AccelerationStructureInfoNV,
+    instanceData : Buffer,
+    instanceOffset : DeviceSize,
+    update : Bool32,
+    dst : AccelerationStructureNV,
+    src : AccelerationStructureNV,
+    scratch : Buffer,
+    scratchOffset : DeviceSize
+) #c_call;
+PFN_CmdCopyAccelerationStructureNV :: #type (
+    commandBuffer : CommandBuffer,
+    dst : AccelerationStructureNV,
+    src : AccelerationStructureNV,
+    mode : CopyAccelerationStructureModeKHR
+) #c_call;
+PFN_CmdTraceRaysNV :: #type (
+    commandBuffer : CommandBuffer,
+    raygenShaderBindingTableBuffer : Buffer,
+    raygenShaderBindingOffset : DeviceSize,
+    missShaderBindingTableBuffer : Buffer,
+    missShaderBindingOffset : DeviceSize,
+    missShaderBindingStride : DeviceSize,
+    hitShaderBindingTableBuffer : Buffer,
+    hitShaderBindingOffset : DeviceSize,
+    hitShaderBindingStride : DeviceSize,
+    callableShaderBindingTableBuffer : Buffer,
+    callableShaderBindingOffset : DeviceSize,
+    callableShaderBindingStride : DeviceSize,
+    width : u32,
+    height : u32,
+    depth : u32
+) #c_call;
+PFN_CreateRayTracingPipelinesNV :: #type (
+    device : Device,
+    pipelineCache : PipelineCache,
+    createInfoCount : u32,
+    pCreateInfos : *RayTracingPipelineCreateInfoNV,
+    pAllocator : *AllocationCallbacks,
+    pPipelines : *Pipeline
+) -> Result #c_call;
+PFN_GetRayTracingShaderGroupHandlesKHR :: #type (
+    device : Device,
+    pipeline : Pipeline,
+    firstGroup : u32,
+    groupCount : u32,
+    dataSize : u64,
+    pData : *void
+) -> Result #c_call;
+PFN_GetRayTracingShaderGroupHandlesNV :: #type (
+    device : Device,
+    pipeline : Pipeline,
+    firstGroup : u32,
+    groupCount : u32,
+    dataSize : u64,
+    pData : *void
+) -> Result #c_call;
+PFN_GetAccelerationStructureHandleNV :: #type (
+    device : Device,
+    accelerationStructure : AccelerationStructureNV,
+    dataSize : u64,
+    pData : *void
+) -> Result #c_call;
+PFN_CmdWriteAccelerationStructuresPropertiesNV :: #type (
+    commandBuffer : CommandBuffer,
+    accelerationStructureCount : u32,
+    pAccelerationStructures : *AccelerationStructureNV,
+    queryType : QueryType,
+    queryPool : QueryPool,
+    firstQuery : u32
+) #c_call;
+PFN_CompileDeferredNV :: #type (
+    device : Device,
+    pipeline : Pipeline,
+    shader : u32
+) -> Result #c_call;
+PFN_GetMemoryHostPointerPropertiesEXT :: #type (
+    device : Device,
+    handleType : ExternalMemoryHandleTypeFlagBits,
+    pHostPointer : *void,
+    pMemoryHostPointerProperties : *MemoryHostPointerPropertiesEXT
+) -> Result #c_call;
+PFN_CmdWriteBufferMarkerAMD :: #type (
+    commandBuffer : CommandBuffer,
+    pipelineStage : PipelineStageFlagBits,
+    dstBuffer : Buffer,
+    dstOffset : DeviceSize,
+    marker : u32
+) #foreign;
 PipelineCompilerControlFlagsAMD :: Flags;
-PFN_GetPhysicalDeviceCalibrateableTimeDomainsEXT :: #type ();
-PFN_GetCalibratedTimestampsEXT :: #type ();
+PFN_GetPhysicalDeviceCalibrateableTimeDomainsEXT :: #type (
+    physicalDevice : PhysicalDevice,
+    pTimeDomainCount : *u32,
+    pTimeDomains : *TimeDomainEXT
+) -> Result #c_call;
+PFN_GetCalibratedTimestampsEXT :: #type (
+    device : Device,
+    timestampCount : u32,
+    pTimestampInfos : *CalibratedTimestampInfoEXT,
+    pTimestamps : *u64,
+    pMaxDeviation : *u64
+) -> Result #foreign;
 PipelineCreationFeedbackFlagsEXT :: Flags;
-PFN_CmdDrawMeshTasksNV :: #type ();
-PFN_CmdDrawMeshTasksIndirectNV :: #type ();
-PFN_CmdDrawMeshTasksIndirectCountNV :: #type ();
-PFN_CmdSetExclusiveScissorNV :: #type ();
-PFN_CmdSetCheckpointNV :: #type ();
-PFN_GetQueueCheckpointDataNV :: #type ();
+PFN_CmdDrawMeshTasksNV :: #type (
+    commandBuffer : CommandBuffer,
+    taskCount : u32,
+    firstTask : u32
+) #c_call;
+PFN_CmdDrawMeshTasksIndirectNV :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    drawCount : u32,
+    stride : u32
+) #c_call;
+PFN_CmdDrawMeshTasksIndirectCountNV :: #type (
+    commandBuffer : CommandBuffer,
+    buffer : Buffer,
+    offset : DeviceSize,
+    countBuffer : Buffer,
+    countBufferOffset : DeviceSize,
+    maxDrawCount : u32,
+    stride : u32
+) #c_call;
+PFN_CmdSetExclusiveScissorNV :: #type (
+    commandBuffer : CommandBuffer,
+    firstExclusiveScissor : u32,
+    exclusiveScissorCount : u32,
+    pExclusiveScissors : *Rect2D
+) #c_call;
+PFN_CmdSetCheckpointNV :: #type (
+    commandBuffer : CommandBuffer,
+    pCheckpointMarker : *void
+) #c_call;
+PFN_GetQueueCheckpointDataNV :: #type (
+    queue : Queue,
+    pCheckpointDataCount : *u32,
+    pCheckpointData : *CheckpointDataNV
+) #foreign;
 PerformanceConfigurationINTEL :: *PerformanceConfigurationINTELT;
 QueryPoolCreateInfoINTEL :: QueryPoolPerformanceQueryCreateInfoINTEL;
-PFN_InitializePerformanceApiINTEL :: #type ();
-PFN_UninitializePerformanceApiINTEL :: #type ();
-PFN_CmdSetPerformanceMarkerINTEL :: #type ();
-PFN_CmdSetPerformanceStreamMarkerINTEL :: #type ();
-PFN_CmdSetPerformanceOverrideINTEL :: #type ();
-PFN_AcquirePerformanceConfigurationINTEL :: #type ();
-PFN_ReleasePerformanceConfigurationINTEL :: #type ();
-PFN_QueueSetPerformanceConfigurationINTEL :: #type ();
-PFN_GetPerformanceParameterINTEL :: #type ();
-PFN_SetLocalDimmingAMD :: #type ();
+PFN_InitializePerformanceApiINTEL :: #type (
+    device : Device,
+    pInitializeInfo : *InitializePerformanceApiInfoINTEL
+) -> Result #c_call;
+PFN_UninitializePerformanceApiINTEL :: #type (device : Device) #c_call;
+PFN_CmdSetPerformanceMarkerINTEL :: #type (
+    commandBuffer : CommandBuffer,
+    pMarkerInfo : *PerformanceMarkerInfoINTEL
+) -> Result #c_call;
+PFN_CmdSetPerformanceStreamMarkerINTEL :: #type (
+    commandBuffer : CommandBuffer,
+    pMarkerInfo : *PerformanceStreamMarkerInfoINTEL
+) -> Result #c_call;
+PFN_CmdSetPerformanceOverrideINTEL :: #type (
+    commandBuffer : CommandBuffer,
+    pOverrideInfo : *PerformanceOverrideInfoINTEL
+) -> Result #c_call;
+PFN_AcquirePerformanceConfigurationINTEL :: #type (
+    device : Device,
+    pAcquireInfo : *PerformanceConfigurationAcquireInfoINTEL,
+    pConfiguration : *PerformanceConfigurationINTEL
+) -> Result #c_call;
+PFN_ReleasePerformanceConfigurationINTEL :: #type (
+    device : Device,
+    configuration : PerformanceConfigurationINTEL
+) -> Result #c_call;
+PFN_QueueSetPerformanceConfigurationINTEL :: #type (
+    queue : Queue,
+    configuration : PerformanceConfigurationINTEL
+) -> Result #c_call;
+PFN_GetPerformanceParameterINTEL :: #type (
+    device : Device,
+    parameter : PerformanceParameterTypeINTEL,
+    pValue : *PerformanceValueINTEL
+) -> Result #c_call;
+PFN_SetLocalDimmingAMD :: #type (
+    device : Device,
+    swapChain : SwapchainKHR,
+    localDimmingEnable : Bool32
+) #foreign;
 PhysicalDeviceScalarBlockLayoutFeaturesEXT :: PhysicalDeviceScalarBlockLayoutFeatures;
 ShaderCorePropertiesFlagsAMD :: Flags;
 PhysicalDeviceBufferAddressFeaturesEXT :: PhysicalDeviceBufferDeviceAddressFeaturesEXT;
 BufferDeviceAddressInfoEXT :: BufferDeviceAddressInfo;
-PFN_GetBufferDeviceAddressEXT :: #type ();
+PFN_GetBufferDeviceAddressEXT :: #type (
+    device : Device,
+    pInfo : *BufferDeviceAddressInfo
+) -> DeviceAddress #foreign;
 ToolPurposeFlagsEXT :: Flags;
-PFN_GetPhysicalDeviceToolPropertiesEXT :: #type ();
+PFN_GetPhysicalDeviceToolPropertiesEXT :: #type (
+    physicalDevice : PhysicalDevice,
+    pToolCount : *u32,
+    pToolProperties : *PhysicalDeviceToolPropertiesEXT
+) -> Result #foreign;
 ImageStencilUsageCreateInfoEXT :: ImageStencilUsageCreateInfo;
-PFN_GetPhysicalDeviceCooperativeMatrixPropertiesNV :: #type ();
+PFN_GetPhysicalDeviceCooperativeMatrixPropertiesNV :: #type (
+    physicalDevice : PhysicalDevice,
+    pPropertyCount : *u32,
+    pProperties : *CooperativeMatrixPropertiesNV
+) -> Result #foreign;
 PipelineCoverageReductionStateCreateFlagsNV :: Flags;
-PFN_GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV :: #type ();
+PFN_GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV :: #type (
+    physicalDevice : PhysicalDevice,
+    pCombinationCount : *u32,
+    pCombinations : *FramebufferMixedSamplesCombinationNV
+) -> Result #foreign;
 HeadlessSurfaceCreateFlagsEXT :: Flags;
-PFN_CreateHeadlessSurfaceEXT :: #type ();
-PFN_CmdSetLineStippleEXT :: #type ();
+PFN_CreateHeadlessSurfaceEXT :: #type (
+    instance : Instance,
+    pCreateInfo : *HeadlessSurfaceCreateInfoEXT,
+    pAllocator : *AllocationCallbacks,
+    pSurface : *SurfaceKHR
+) -> Result #c_call;
+PFN_CmdSetLineStippleEXT :: #type (
+    commandBuffer : CommandBuffer,
+    lineStippleFactor : u32,
+    lineStipplePattern : u16
+) #foreign;
 PhysicalDeviceHostQueryResetFeaturesEXT :: PhysicalDeviceHostQueryResetFeatures;
-PFN_ResetQueryPoolEXT :: #type ();
-PFN_CmdSetCullModeEXT :: #type ();
-PFN_CmdSetFrontFaceEXT :: #type ();
-PFN_CmdSetPrimitiveTopologyEXT :: #type ();
-PFN_CmdSetViewportWithCountEXT :: #type ();
-PFN_CmdSetScissorWithCountEXT :: #type ();
-PFN_CmdBindVertexBuffers2EXT :: #type ();
-PFN_CmdSetDepthTestEnableEXT :: #type ();
-PFN_CmdSetDepthWriteEnableEXT :: #type ();
-PFN_CmdSetDepthCompareOpEXT :: #type ();
-PFN_CmdSetDepthBoundsTestEnableEXT :: #type ();
-PFN_CmdSetStencilTestEnableEXT :: #type ();
-PFN_CmdSetStencilOpEXT :: #type ();
+PFN_ResetQueryPoolEXT :: #type (
+    device : Device,
+    queryPool : QueryPool,
+    firstQuery : u32,
+    queryCount : u32
+) #c_call;
+PFN_CmdSetCullModeEXT :: #type (
+    commandBuffer : CommandBuffer,
+    cullMode : CullModeFlags
+) #c_call;
+PFN_CmdSetFrontFaceEXT :: #type (
+    commandBuffer : CommandBuffer,
+    frontFace : FrontFace
+) #c_call;
+PFN_CmdSetPrimitiveTopologyEXT :: #type (
+    commandBuffer : CommandBuffer,
+    primitiveTopology : PrimitiveTopology
+) #c_call;
+PFN_CmdSetViewportWithCountEXT :: #type (
+    commandBuffer : CommandBuffer,
+    viewportCount : u32,
+    pViewports : *Viewport
+) #c_call;
+PFN_CmdSetScissorWithCountEXT :: #type (
+    commandBuffer : CommandBuffer,
+    scissorCount : u32,
+    pScissors : *Rect2D
+) #c_call;
+PFN_CmdBindVertexBuffers2EXT :: #type (
+    commandBuffer : CommandBuffer,
+    firstBinding : u32,
+    bindingCount : u32,
+    pBuffers : *Buffer,
+    pOffsets : *DeviceSize,
+    pSizes : *DeviceSize,
+    pStrides : *DeviceSize
+) #c_call;
+PFN_CmdSetDepthTestEnableEXT :: #type (
+    commandBuffer : CommandBuffer,
+    depthTestEnable : Bool32
+) #c_call;
+PFN_CmdSetDepthWriteEnableEXT :: #type (
+    commandBuffer : CommandBuffer,
+    depthWriteEnable : Bool32
+) #c_call;
+PFN_CmdSetDepthCompareOpEXT :: #type (
+    commandBuffer : CommandBuffer,
+    depthCompareOp : CompareOp
+) #c_call;
+PFN_CmdSetDepthBoundsTestEnableEXT :: #type (
+    commandBuffer : CommandBuffer,
+    depthBoundsTestEnable : Bool32
+) #c_call;
+PFN_CmdSetStencilTestEnableEXT :: #type (
+    commandBuffer : CommandBuffer,
+    stencilTestEnable : Bool32
+) #c_call;
+PFN_CmdSetStencilOpEXT :: #type (
+    commandBuffer : CommandBuffer,
+    faceMask : StencilFaceFlags,
+    failOp : StencilOp,
+    passOp : StencilOp,
+    depthFailOp : StencilOp,
+    compareOp : CompareOp
+) #foreign;
 IndirectCommandsLayoutNV :: *IndirectCommandsLayoutNVT;
 IndirectStateFlagsNV :: Flags;
 IndirectCommandsLayoutUsageFlagsNV :: Flags;
-PFN_GetGeneratedCommandsMemoryRequirementsNV :: #type ();
-PFN_CmdPreprocessGeneratedCommandsNV :: #type ();
-PFN_CmdExecuteGeneratedCommandsNV :: #type ();
-PFN_CmdBindPipelineShaderGroupNV :: #type ();
-PFN_CreateIndirectCommandsLayoutNV :: #type ();
-PFN_DestroyIndirectCommandsLayoutNV :: #type ();
+PFN_GetGeneratedCommandsMemoryRequirementsNV :: #type (
+    device : Device,
+    pInfo : *GeneratedCommandsMemoryRequirementsInfoNV,
+    pMemoryRequirements : *MemoryRequirements2
+) #c_call;
+PFN_CmdPreprocessGeneratedCommandsNV :: #type (
+    commandBuffer : CommandBuffer,
+    pGeneratedCommandsInfo : *GeneratedCommandsInfoNV
+) #c_call;
+PFN_CmdExecuteGeneratedCommandsNV :: #type (
+    commandBuffer : CommandBuffer,
+    isPreprocessed : Bool32,
+    pGeneratedCommandsInfo : *GeneratedCommandsInfoNV
+) #c_call;
+PFN_CmdBindPipelineShaderGroupNV :: #type (
+    commandBuffer : CommandBuffer,
+    pipelineBindPoint : PipelineBindPoint,
+    pipeline : Pipeline,
+    groupIndex : u32
+) #c_call;
+PFN_CreateIndirectCommandsLayoutNV :: #type (
+    device : Device,
+    pCreateInfo : *IndirectCommandsLayoutCreateInfoNV,
+    pAllocator : *AllocationCallbacks,
+    pIndirectCommandsLayout : *IndirectCommandsLayoutNV
+) -> Result #c_call;
+PFN_DestroyIndirectCommandsLayoutNV :: #type (
+    device : Device,
+    indirectCommandsLayout : IndirectCommandsLayoutNV,
+    pAllocator : *AllocationCallbacks
+) #foreign;
 DeviceMemoryReportFlagsEXT :: Flags;
-PFN_DeviceMemoryReportCallbackEXT :: #type ();
+PFN_DeviceMemoryReportCallbackEXT :: #type (
+    pCallbackData : *DeviceMemoryReportCallbackDataEXT,
+    pUserData : *void
+) #foreign;
 PrivateDataSlotEXT :: *PrivateDataSlotEXTT;
 PrivateDataSlotCreateFlagsEXT :: Flags;
-PFN_CreatePrivateDataSlotEXT :: #type ();
-PFN_DestroyPrivateDataSlotEXT :: #type ();
-PFN_SetPrivateDataEXT :: #type ();
-PFN_GetPrivateDataEXT :: #type ();
+PFN_CreatePrivateDataSlotEXT :: #type (
+    device : Device,
+    pCreateInfo : *PrivateDataSlotCreateInfoEXT,
+    pAllocator : *AllocationCallbacks,
+    pPrivateDataSlot : *PrivateDataSlotEXT
+) -> Result #c_call;
+PFN_DestroyPrivateDataSlotEXT :: #type (
+    device : Device,
+    privateDataSlot : PrivateDataSlotEXT,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_SetPrivateDataEXT :: #type (
+    device : Device,
+    objectType : ObjectType,
+    objectHandle : u64,
+    privateDataSlot : PrivateDataSlotEXT,
+    data : u64
+) -> Result #c_call;
+PFN_GetPrivateDataEXT :: #type (
+    device : Device,
+    objectType : ObjectType,
+    objectHandle : u64,
+    privateDataSlot : PrivateDataSlotEXT,
+    pData : *u64
+) #foreign;
 DeviceDiagnosticsConfigFlagsNV :: Flags;
-PFN_CmdSetFragmentShadingRateEnumNV :: #type ();
+PFN_CmdSetFragmentShadingRateEnumNV :: #type (
+    commandBuffer : CommandBuffer,
+    shadingRate : FragmentShadingRateNV,
+    combinerOps : *FragmentShadingRateCombinerOpKHR
+) #foreign;
 AccelerationStructureKHR :: *AccelerationStructureKHRT;
 AccelerationStructureCreateFlagsKHR :: Flags;
-PFN_CreateAccelerationStructureKHR :: #type ();
-PFN_DestroyAccelerationStructureKHR :: #type ();
-PFN_CmdBuildAccelerationStructuresKHR :: #type ();
-PFN_CmdBuildAccelerationStructuresIndirectKHR :: #type ();
-PFN_BuildAccelerationStructuresKHR :: #type ();
-PFN_CopyAccelerationStructureKHR :: #type ();
-PFN_CopyAccelerationStructureToMemoryKHR :: #type ();
-PFN_CopyMemoryToAccelerationStructureKHR :: #type ();
-PFN_WriteAccelerationStructuresPropertiesKHR :: #type ();
-PFN_CmdCopyAccelerationStructureKHR :: #type ();
-PFN_CmdCopyAccelerationStructureToMemoryKHR :: #type ();
-PFN_CmdCopyMemoryToAccelerationStructureKHR :: #type ();
-PFN_GetAccelerationStructureDeviceAddressKHR :: #type ();
-PFN_CmdWriteAccelerationStructuresPropertiesKHR :: #type ();
-PFN_GetDeviceAccelerationStructureCompatibilityKHR :: #type ();
-PFN_GetAccelerationStructureBuildSizesKHR :: #type ();
-PFN_CmdTraceRaysKHR :: #type ();
-PFN_CreateRayTracingPipelinesKHR :: #type ();
-PFN_GetRayTracingCaptureReplayShaderGroupHandlesKHR :: #type ();
-PFN_CmdTraceRaysIndirectKHR :: #type ();
-PFN_GetRayTracingShaderGroupStackSizeKHR :: #type ();
-PFN_CmdSetRayTracingPipelineStackSizeKHR :: #type ();
+PFN_CreateAccelerationStructureKHR :: #type (
+    device : Device,
+    pCreateInfo : *AccelerationStructureCreateInfoKHR,
+    pAllocator : *AllocationCallbacks,
+    pAccelerationStructure : *AccelerationStructureKHR
+) -> Result #c_call;
+PFN_DestroyAccelerationStructureKHR :: #type (
+    device : Device,
+    accelerationStructure : AccelerationStructureKHR,
+    pAllocator : *AllocationCallbacks
+) #c_call;
+PFN_CmdBuildAccelerationStructuresKHR :: #type (
+    commandBuffer : CommandBuffer,
+    infoCount : u32,
+    pInfos : *AccelerationStructureBuildGeometryInfoKHR,
+    ppBuildRangeInfos : **AccelerationStructureBuildRangeInfoKHR
+) #c_call;
+PFN_CmdBuildAccelerationStructuresIndirectKHR :: #type (
+    commandBuffer : CommandBuffer,
+    infoCount : u32,
+    pInfos : *AccelerationStructureBuildGeometryInfoKHR,
+    pIndirectDeviceAddresses : *DeviceAddress,
+    pIndirectStrides : *u32,
+    ppMaxPrimitiveCounts : **u32
+) #c_call;
+PFN_BuildAccelerationStructuresKHR :: #type (
+    device : Device,
+    deferredOperation : DeferredOperationKHR,
+    infoCount : u32,
+    pInfos : *AccelerationStructureBuildGeometryInfoKHR,
+    ppBuildRangeInfos : **AccelerationStructureBuildRangeInfoKHR
+) -> Result #c_call;
+PFN_CopyAccelerationStructureKHR :: #type (
+    device : Device,
+    deferredOperation : DeferredOperationKHR,
+    pInfo : *CopyAccelerationStructureInfoKHR
+) -> Result #c_call;
+PFN_CopyAccelerationStructureToMemoryKHR :: #type (
+    device : Device,
+    deferredOperation : DeferredOperationKHR,
+    pInfo : *CopyAccelerationStructureToMemoryInfoKHR
+) -> Result #c_call;
+PFN_CopyMemoryToAccelerationStructureKHR :: #type (
+    device : Device,
+    deferredOperation : DeferredOperationKHR,
+    pInfo : *CopyMemoryToAccelerationStructureInfoKHR
+) -> Result #c_call;
+PFN_WriteAccelerationStructuresPropertiesKHR :: #type (
+    device : Device,
+    accelerationStructureCount : u32,
+    pAccelerationStructures : *AccelerationStructureKHR,
+    queryType : QueryType,
+    dataSize : u64,
+    pData : *void,
+    stride : u64
+) -> Result #c_call;
+PFN_CmdCopyAccelerationStructureKHR :: #type (
+    commandBuffer : CommandBuffer,
+    pInfo : *CopyAccelerationStructureInfoKHR
+) #c_call;
+PFN_CmdCopyAccelerationStructureToMemoryKHR :: #type (
+    commandBuffer : CommandBuffer,
+    pInfo : *CopyAccelerationStructureToMemoryInfoKHR
+) #c_call;
+PFN_CmdCopyMemoryToAccelerationStructureKHR :: #type (
+    commandBuffer : CommandBuffer,
+    pInfo : *CopyMemoryToAccelerationStructureInfoKHR
+) #c_call;
+PFN_GetAccelerationStructureDeviceAddressKHR :: #type (
+    device : Device,
+    pInfo : *AccelerationStructureDeviceAddressInfoKHR
+) -> DeviceAddress #c_call;
+PFN_CmdWriteAccelerationStructuresPropertiesKHR :: #type (
+    commandBuffer : CommandBuffer,
+    accelerationStructureCount : u32,
+    pAccelerationStructures : *AccelerationStructureKHR,
+    queryType : QueryType,
+    queryPool : QueryPool,
+    firstQuery : u32
+) #c_call;
+PFN_GetDeviceAccelerationStructureCompatibilityKHR :: #type (
+    device : Device,
+    pVersionInfo : *AccelerationStructureVersionInfoKHR,
+    pCompatibility : *AccelerationStructureCompatibilityKHR
+) #c_call;
+PFN_GetAccelerationStructureBuildSizesKHR :: #type (
+    device : Device,
+    buildType : AccelerationStructureBuildTypeKHR,
+    pBuildInfo : *AccelerationStructureBuildGeometryInfoKHR,
+    pMaxPrimitiveCounts : *u32,
+    pSizeInfo : *AccelerationStructureBuildSizesInfoKHR
+) #c_call;
+PFN_CmdTraceRaysKHR :: #type (
+    commandBuffer : CommandBuffer,
+    pRaygenShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pMissShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pHitShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pCallableShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    width : u32,
+    height : u32,
+    depth : u32
+) #c_call;
+PFN_CreateRayTracingPipelinesKHR :: #type (
+    device : Device,
+    deferredOperation : DeferredOperationKHR,
+    pipelineCache : PipelineCache,
+    createInfoCount : u32,
+    pCreateInfos : *RayTracingPipelineCreateInfoKHR,
+    pAllocator : *AllocationCallbacks,
+    pPipelines : *Pipeline
+) -> Result #c_call;
+PFN_GetRayTracingCaptureReplayShaderGroupHandlesKHR :: #type (
+    device : Device,
+    pipeline : Pipeline,
+    firstGroup : u32,
+    groupCount : u32,
+    dataSize : u64,
+    pData : *void
+) -> Result #c_call;
+PFN_CmdTraceRaysIndirectKHR :: #type (
+    commandBuffer : CommandBuffer,
+    pRaygenShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pMissShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pHitShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    pCallableShaderBindingTable : *StridedDeviceAddressRegionKHR,
+    indirectDeviceAddress : DeviceAddress
+) #c_call;
+PFN_GetRayTracingShaderGroupStackSizeKHR :: #type (
+    device : Device,
+    pipeline : Pipeline,
+    group : u32,
+    groupShader : ShaderGroupShaderKHR
+) -> DeviceSize #c_call;
+PFN_CmdSetRayTracingPipelineStackSizeKHR :: #type (
+    commandBuffer : CommandBuffer,
+    pipelineStackSize : u32
+) #foreign;
 
 Result :: enum s32 {
     Success :: 0;
@@ -6304,7 +8215,7 @@ ImportMemoryFdInfoKHR :: struct {
     sType : StructureType;
     pNext : *void;
     handleType : ExternalMemoryHandleTypeFlagBits;
-    fd : s64;
+    fd : s32;
 }
 
 MemoryFdPropertiesKHR :: struct {
@@ -6326,7 +8237,7 @@ ImportSemaphoreFdInfoKHR :: struct {
     semaphore : Semaphore;
     flags : SemaphoreImportFlags;
     handleType : ExternalSemaphoreHandleTypeFlagBits;
-    fd : s64;
+    fd : s32;
 }
 
 SemaphoreGetFdInfoKHR :: struct {
@@ -6372,7 +8283,7 @@ ImportFenceFdInfoKHR :: struct {
     fence : Fence;
     flags : FenceImportFlags;
     handleType : ExternalFenceHandleTypeFlagBits;
-    fd : s64;
+    fd : s32;
 }
 
 FenceGetFdInfoKHR :: struct {
@@ -9244,7 +11155,7 @@ cmd_set_depth_bias :: (
 
 cmd_set_blend_constants :: (
     commandBuffer : CommandBuffer,
-    blendConstants : *float32 // [4]float32
+    blendConstants : *float32
 ) -> void #foreign libvulkan "vkCmdSetBlendConstants";
 
 cmd_set_depth_bounds :: (
@@ -10032,13 +11943,13 @@ create_shared_swapchains_khr :: (
 // get_memory_fd_khr :: (
 //     device : Device,
 //     pGetFdInfo : *MemoryGetFdInfoKHR,
-//     pFd : *s64
+//     pFd : *s32
 // ) -> Result #foreign libvulkan "vkGetMemoryFdKHR";
 
 // get_memory_fd_properties_khr :: (
 //     device : Device,
 //     handleType : ExternalMemoryHandleTypeFlagBits,
-//     fd : s64,
+//     fd : s32,
 //     pMemoryFdProperties : *MemoryFdPropertiesKHR
 // ) -> Result #foreign libvulkan "vkGetMemoryFdPropertiesKHR";
 
@@ -10056,7 +11967,7 @@ create_shared_swapchains_khr :: (
 // get_semaphore_fd_khr :: (
 //     device : Device,
 //     pGetFdInfo : *SemaphoreGetFdInfoKHR,
-//     pFd : *s64
+//     pFd : *s32
 // ) -> Result #foreign libvulkan "vkGetSemaphoreFdKHR";
 
 // cmd_push_descriptor_set_khr :: (
@@ -10139,7 +12050,7 @@ create_shared_swapchains_khr :: (
 // get_fence_fd_khr :: (
 //     device : Device,
 //     pGetFdInfo : *FenceGetFdInfoKHR,
-//     pFd : *s64
+//     pFd : *s32
 // ) -> Result #foreign libvulkan "vkGetFenceFdKHR";
 
 // enumerate_physical_device_queue_family_performance_query_counters_khr :: (
@@ -10398,13 +12309,13 @@ create_debug_report_callback_ext : (
     pCreateInfo : *DebugReportCallbackCreateInfoEXT,
     pAllocator : *AllocationCallbacks,
     pCallback : *DebugReportCallbackEXT
-) -> Result #foreign;
+) -> Result #foreign; //  libvulkan "vkCreateDebugReportCallbackEXT";
 
 destroy_debug_report_callback_ext : (
     instance : Instance,
     callback : DebugReportCallbackEXT,
     pAllocator : *AllocationCallbacks
-) -> void #foreign;
+) -> void #foreign; // libvulkan "vkDestroyDebugReportCallbackEXT";
 
 // debug_report_message_ext :: (
 //     instance : Instance,
@@ -10623,7 +12534,7 @@ destroy_debug_report_callback_ext : (
 set_debug_utils_object_name_ext : (
     device : Device,
     pNameInfo : *DebugUtilsObjectNameInfoEXT
-) -> Result #foreign;
+) -> Result #foreign; // libvulkan "vkSetDebugUtilsObjectNameEXT";
 
 // set_debug_utils_object_tag_ext :: (
 //     device : Device,
