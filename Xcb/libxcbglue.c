@@ -1,6 +1,7 @@
 // Compiled with:
 // gcc libxcbglue.c -c -fPIC -lxcb -o libxcbglue.o
 // gcc libxcbglue.o -shared -o libxcbglue.so
+// patchelf --set-soname libxcbglue.so libxcbglue.so
 
 #include <xcb/xcb.h>
 
