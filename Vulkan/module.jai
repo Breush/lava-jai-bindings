@@ -6,6 +6,8 @@ Basic :: #import "Basic";
 
 #if OS == .LINUX {
     #load "vulkan-xcb.jai";
+} else #if OS == .WINDOWS {
+    #load "vulkan-win32.jai";
 }
 
 // Helpers
