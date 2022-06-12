@@ -8,6 +8,104 @@ xcb_helper_get_intern_atom :: (
     return intern_atom_reply(connection, cookie, null);
 }
 
+// libxcb-render
+
+libxcbrender :: #foreign_system_library "libxcb-render";
+
+Render :: struct {
+    Pictformat :: u32;
+    Picture :: u32;
+
+    PictType :: enum s32 {
+        Indexed :: 0;
+        Direct :: 1;
+    }
+
+    Directformat :: struct {
+        redShift : u16;
+        redMask : u16;
+        greenShift : u16;
+        greenMask : u16;
+        blueShift : u16;
+        blueMask : u16;
+        alphaShift : u16;
+        alphaMask : u16;
+    }
+
+    Pictforminfo :: struct {
+        id : Pictformat;
+        type : u8;
+        depth : u8;
+        pad0 : [2]u8;
+        direct : Directformat;
+        colormap : Colormap;
+    }
+
+    PictforminfoIterator :: struct {
+        data : *Pictforminfo;
+        rem : s32;
+        index : s32;
+    }
+
+    QueryPictFormatsCookie :: struct {
+        sequence : u32;
+    }
+
+    QueryPictFormatsReply :: struct {
+        response_type : u8;
+        pad0 : u8;
+        sequence : u16;
+        length : u32;
+        numFormats : u32;
+        numScreens : u32;
+        numDepths : u32;
+        numVisuals : u32;
+        numSubpixel : u32;
+        pad1 : [4]u8;
+    }
+
+    create_cursor :: (
+        c : *Connection,
+        cid : Cursor,
+        source : Picture,
+        x : u16,
+        y : u16
+    ) -> VoidCookie #foreign libxcbrender "xcb_render_create_cursor";
+
+    create_picture :: (
+        c : *Connection,
+        pid : Picture,
+        drawable : Drawable,
+        format : Pictformat,
+        value_mask : u32,
+        value_list : *void
+    ) -> VoidCookie #foreign libxcbrender "xcb_render_create_picture";
+
+    free_picture :: (
+        c : *Connection,
+        picture : Picture
+    ) -> VoidCookie #foreign libxcbrender "xcb_render_free_picture";
+
+    pictforminfo_next :: (
+        i : *PictforminfoIterator
+    ) #foreign libxcbrender "xcb_render_pictforminfo_next";
+
+    query_pict_formats :: (
+        c : *Connection
+    ) -> QueryPictFormatsCookie #foreign libxcbrender "xcb_render_query_pict_formats";
+
+    query_pict_formats_formats_iterator :: (
+        r : *QueryPictFormatsReply
+    ) -> PictforminfoIterator #foreign libxcbrender "xcb_render_query_pict_formats_formats_iterator";
+
+    query_pict_formats_reply :: (
+        c : *Connection,
+        cookie : QueryPictFormatsCookie,
+        e : *VoidCookie
+    ) -> *QueryPictFormatsReply #foreign libxcbrender "xcb_render_query_pict_formats_reply";
+}
+
+// libxcb
 // Below was auto-generated.
 
 libxcb :: #foreign_system_library "libxcb";
