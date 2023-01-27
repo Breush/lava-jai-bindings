@@ -1,5 +1,5 @@
-libxkbcommon :: #foreign_system_library "libxkbcommon";
-libxkbcommon_x11 :: #foreign_system_library "libxkbcommon-x11";
+libxkbcommon :: #system_library "libxkbcommon";
+libxkbcommon_x11 :: #system_library "libxkbcommon-x11";
 
 _XKBCOMMON_H_ :: 1;
 KEYCODE_INVALID :: 4294967295;

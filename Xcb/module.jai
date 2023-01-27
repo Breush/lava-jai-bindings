@@ -10,7 +10,7 @@ xcb_helper_get_intern_atom :: (
 
 // libxcb-render
 
-libxcbrender :: #foreign_system_library "libxcb-render";
+libxcbrender :: #system_library "libxcb-render";
 
 Render :: struct {
     Pictformat :: u32;
@@ -108,7 +108,7 @@ Render :: struct {
 // libxcb
 // Below was auto-generated.
 
-libxcb :: #foreign_system_library "libxcb";
+libxcb :: #system_library "libxcb";
 
 __XCB_H__ :: 1;
 X_PROTOCOL :: 11;

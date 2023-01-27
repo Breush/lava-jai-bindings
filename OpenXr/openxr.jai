@@ -1,4 +1,4 @@
-libopenxr :: #foreign_library "libopenxr_loader";
+libopenxr :: #library "libopenxr_loader";
 
 SPACE_VELOCITY_LINEAR_VALID_BIT :: 1;
 SPACE_VELOCITY_ANGULAR_VALID_BIT :: 2;

@@ -1,4 +1,4 @@
-libshaderc :: #foreign_library "libshaderc";
+libshaderc :: #library "libshaderc";
 
 // Version 2021.3
 

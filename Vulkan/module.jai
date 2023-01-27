@@ -1,4 +1,4 @@
-libvulkan :: #foreign_library "libvulkan";
+libvulkan :: #library "libvulkan";
 
 Basic :: #import "Basic";
 

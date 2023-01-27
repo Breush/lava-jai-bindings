@@ -1,4 +1,4 @@
-libstbtruetype :: #foreign_library "libstbtruetype";
+libstbtruetype :: #library "libstbtruetype";
 
 AnonymousEnum0 :: enum s32 {
     Vmove :: 1;
