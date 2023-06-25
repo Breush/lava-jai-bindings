@@ -1,12 +1,17 @@
-xcb_helper_get_intern_atom :: (
+helper_get_intern_atom :: (
     connection : *Connection,
     onlyIfExists : bool,
     str : string
-) -> *InternAtomReply
+) -> Atom
 {
     cookie := intern_atom(connection, cast(u8) onlyIfExists, cast(u16) str.count, str.data);
-    return intern_atom_reply(connection, cookie, null);
+    reply := intern_atom_reply(connection, cookie, null);
+    defer c_free(reply);
+    return reply.atom;
 }
+
+libc :: #system_library "libc";
+c_free :: (data : *void) -> *void #foreign libc "free";
 
 // libxcb-render
 
@@ -462,76 +467,76 @@ Time :: enum s32 {
 }
 
 AtomEnum :: enum s32 {
-    AtomNone :: 0;
-    AtomAny :: 0;
-    AtomPrimary :: 1;
-    AtomSecondary :: 2;
-    AtomArc :: 3;
-    AtomAtom :: 4;
-    AtomBitmap :: 5;
-    AtomCardinal :: 6;
-    AtomColormap :: 7;
-    AtomCursor :: 8;
-    AtomCutBuffer0 :: 9;
-    AtomCutBuffer1 :: 10;
-    AtomCutBuffer2 :: 11;
-    AtomCutBuffer3 :: 12;
-    AtomCutBuffer4 :: 13;
-    AtomCutBuffer5 :: 14;
-    AtomCutBuffer6 :: 15;
-    AtomCutBuffer7 :: 16;
-    AtomDrawable :: 17;
-    AtomFont :: 18;
-    AtomInteger :: 19;
-    AtomPixmap :: 20;
-    AtomPoint :: 21;
-    AtomRectangle :: 22;
-    AtomResourceManager :: 23;
-    AtomRgbColorMap :: 24;
-    AtomRgbBestMap :: 25;
-    AtomRgbBlueMap :: 26;
-    AtomRgbDefaultMap :: 27;
-    AtomRgbGrayMap :: 28;
-    AtomRgbGreenMap :: 29;
-    AtomRgbRedMap :: 30;
-    AtomString :: 31;
-    AtomVisualid :: 32;
-    AtomWindow :: 33;
-    AtomWmCommand :: 34;
-    AtomWmHints :: 35;
-    AtomWmClientMachine :: 36;
-    AtomWmIconName :: 37;
-    AtomWmIconSize :: 38;
-    AtomWmName :: 39;
-    AtomWmNormalHints :: 40;
-    AtomWmSizeHints :: 41;
-    AtomWmZoomHints :: 42;
-    AtomMinSpace :: 43;
-    AtomNormSpace :: 44;
-    AtomMaxSpace :: 45;
-    AtomEndSpace :: 46;
-    AtomSuperscriptX :: 47;
-    AtomSuperscriptY :: 48;
-    AtomSubscriptX :: 49;
-    AtomSubscriptY :: 50;
-    AtomUnderlinePosition :: 51;
-    AtomUnderlineThickness :: 52;
-    AtomStrikeoutAscent :: 53;
-    AtomStrikeoutDescent :: 54;
-    AtomItalicAngle :: 55;
-    AtomX_height :: 56;
-    AtomQuadWidth :: 57;
-    AtomWeight :: 58;
-    AtomPointSize :: 59;
-    AtomResolution :: 60;
-    AtomCopyright :: 61;
-    AtomNotice :: 62;
-    AtomFontName :: 63;
-    AtomFamilyName :: 64;
-    AtomFullName :: 65;
-    AtomCapHeight :: 66;
-    AtomWmClass :: 67;
-    AtomWmTransientFor :: 68;
+    None :: 0;
+    Any :: 0;
+    Primary :: 1;
+    Secondary :: 2;
+    Arc :: 3;
+    Atom :: 4;
+    Bitmap :: 5;
+    Cardinal :: 6;
+    Colormap :: 7;
+    Cursor :: 8;
+    CutBuffer0 :: 9;
+    CutBuffer1 :: 10;
+    CutBuffer2 :: 11;
+    CutBuffer3 :: 12;
+    CutBuffer4 :: 13;
+    CutBuffer5 :: 14;
+    CutBuffer6 :: 15;
+    CutBuffer7 :: 16;
+    Drawable :: 17;
+    Font :: 18;
+    Integer :: 19;
+    Pixmap :: 20;
+    Point :: 21;
+    Rectangle :: 22;
+    ResourceManager :: 23;
+    RgbColorMap :: 24;
+    RgbBestMap :: 25;
+    RgbBlueMap :: 26;
+    RgbDefaultMap :: 27;
+    RgbGrayMap :: 28;
+    RgbGreenMap :: 29;
+    RgbRedMap :: 30;
+    String :: 31;
+    Visualid :: 32;
+    Window :: 33;
+    WmCommand :: 34;
+    WmHints :: 35;
+    WmClientMachine :: 36;
+    WmIconName :: 37;
+    WmIconSize :: 38;
+    WmName :: 39;
+    WmNormalHints :: 40;
+    WmSizeHints :: 41;
+    WmZoomHints :: 42;
+    MinSpace :: 43;
+    NormSpace :: 44;
+    MaxSpace :: 45;
+    EndSpace :: 46;
+    SuperscriptX :: 47;
+    SuperscriptY :: 48;
+    SubscriptX :: 49;
+    SubscriptY :: 50;
+    UnderlinePosition :: 51;
+    UnderlineThickness :: 52;
+    StrikeoutAscent :: 53;
+    StrikeoutDescent :: 54;
+    ItalicAngle :: 55;
+    X_height :: 56;
+    QuadWidth :: 57;
+    Weight :: 58;
+    PointSize :: 59;
+    Resolution :: 60;
+    Copyright :: 61;
+    Notice :: 62;
+    FontName :: 63;
+    FamilyName :: 64;
+    FullName :: 65;
+    CapHeight :: 66;
+    WmClass :: 67;
+    WmTransientFor :: 68;
 }
 
 ColormapState :: enum s32 {
