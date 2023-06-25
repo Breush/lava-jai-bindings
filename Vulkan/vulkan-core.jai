@@ -26,6 +26,8 @@ LUID_SIZE :: 8;
 QUEUE_FAMILY_EXTERNAL :: -2;
 VERSION_1_2 :: 1;
 API_VERSION_1_2 :: 4202496;
+VERSION_1_3 :: 1;
+API_VERSION_1_3 :: (0 << 29) | (1 << 22) | (3 << 12) | (0);
 MAX_DRIVER_NAME_SIZE :: 256;
 MAX_DRIVER_INFO_SIZE :: 256;
 KHR_SURFACE :: 1;
@@ -603,6 +605,9 @@ EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME :: "VK_EXT_pipeline_creation_
 NV_DEVICE_DIAGNOSTICS_CONFIG :: 1;
 NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION :: 1;
 NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME :: "VK_NV_device_diagnostics_config";
+EXT_DESCRIPTOR_BUFFER :: 1;
+EXT_DESCRIPTOR_BUFFER_SPEC_VERSION :: 1;
+EXT_DESCRIPTOR_BUFFER_EXTENSION_NAME :: "VK_EXT_descriptor_buffer";
 QCOM_RENDER_PASS_STORE_OPS :: 1;
 QCOM_RENDER_PASS_STORE_OPS_SPEC_VERSION :: 2;
 QCOM_RENDER_PASS_STORE_OPS_EXTENSION_NAME :: "VK_QCOM_render_pass_store_ops";
@@ -3792,6 +3797,18 @@ StructureType :: enum s32 {
     PhysicalDevicePipelineCreationCacheControlFeaturesExt :: 1000297000;
     PhysicalDeviceDiagnosticsConfigFeaturesNv :: 1000300000;
     DeviceDiagnosticsConfigCreateInfoNv :: 1000300001;
+    PhysicalDeviceDescriptorBufferPropertiesExt :: 1000316000;
+    PhysicalDeviceDescriptorBufferDensityMapPropertiesExt :: 1000316001;
+    PhysicalDeviceDescriptorBufferFeaturesExt :: 1000316002;
+    DescriptorAddressInfoExt :: 1000316003;
+    DescriptorGetInfoExt :: 1000316004;
+    BufferCaptureDescriptorDataInfoExt :: 1000316005;
+    ImageCaptureDescriptorDataInfoExt :: 1000316006;
+    ImageViewCaptureDescriptorDataInfoExt :: 1000316007;
+    SamplerCaptureDescriptorDataInfoExt :: 1000316008;
+    OpaqueCaptureDescriptorDataCreateInfoExt :: 1000316010;
+    DescriptorBufferBindingInfoExt :: 1000316011;
+    DescriptorBufferBindingPushDescriptorBufferHandleExt :: 1000316012;
     PhysicalDeviceFragmentShadingRateEnumsPropertiesNv :: 1000326000;
     PhysicalDeviceFragmentShadingRateEnumsFeaturesNv :: 1000326001;
     PipelineFragmentShadingRateEnumStateCreateInfoNv :: 1000326002;
@@ -4897,6 +4914,7 @@ BufferUsageFlagBits :: enum_flags u32 {
     RayTracingNv :: 1024;
     ShaderDeviceAddressExt :: 131072;
     ShaderDeviceAddressKhr :: 131072;
+    ResourceDescriptorBuffer :: 4194304;
 }
 
 ImageViewCreateFlagBits :: enum_flags u32 {
@@ -4940,6 +4958,7 @@ PipelineCreateFlagBits :: enum_flags u32 {
     EarlyReturnOnFailureExt :: 512;
     ViewIndexFromDeviceIndexKhr :: 8;
     DispatchBaseKhr :: 16;
+    DescriptorBufferExt :: 536870912;
 }
 
 PipelineShaderStageCreateFlagBits :: enum_flags u32 {
@@ -4993,6 +5012,7 @@ DescriptorPoolCreateFlagBits :: enum_flags u32 {
 DescriptorSetLayoutCreateFlagBits :: enum_flags u32 {
     UpdateAfterBindPool :: 2;
     PushDescriptorKhr :: 1;
+    DescriptorBufferExt :: 16;
     UpdateAfterBindPoolExt :: 2;
 }
 
@@ -7968,6 +7988,53 @@ PhysicalDeviceHostQueryResetFeatures :: struct {
     hostQueryReset : Bool32;
 }
 
+PhysicalDeviceDescriptorBufferPropertiesEXT :: struct {
+    sType : StructureType;
+    pNext : *void;
+    combinedImageSamplerDescriptorSingleArray : Bool32;
+    bufferlessPushDescriptors : Bool32;
+    allowSamplerImageViewPostSubmitCreation : Bool32;
+    descriptorBufferOffsetAlignment : DeviceSize;
+    maxDescriptorBufferBindings : u32;
+    maxResourceDescriptorBufferBindings : u32;
+    maxSamplerDescriptorBufferBindings : u32;
+    maxEmbeddedImmutableSamplerBindings : u32;
+    maxEmbeddedImmutableSamplers : u32;
+    bufferCaptureReplayDescriptorDataSize : u64;
+    imageCaptureReplayDescriptorDataSize : u64;
+    imageViewCaptureReplayDescriptorDataSize : u64;
+    samplerCaptureReplayDescriptorDataSize : u64;
+    accelerationStructureCaptureReplayDescriptorDataSize : u64;
+    samplerDescriptorSize : u64;
+    combinedImageSamplerDescriptorSize : u64;
+    sampledImageDescriptorSize : u64;
+    storageImageDescriptorSize : u64;
+    uniformTexelBufferDescriptorSize : u64;
+    robustUniformTexelBufferDescriptorSize : u64;
+    storageTexelBufferDescriptorSize : u64;
+    robustStorageTexelBufferDescriptorSize : u64;
+    uniformBufferDescriptorSize : u64;
+    robustUniformBufferDescriptorSize : u64;
+    storageBufferDescriptorSize : u64;
+    robustStorageBufferDescriptorSize : u64;
+    inputAttachmentDescriptorSize : u64;
+    accelerationStructureDescriptorSize : u64;
+    maxSamplerDescriptorBufferRange : DeviceSize;
+    maxResourceDescriptorBufferRange : DeviceSize;
+    samplerDescriptorBufferAddressSpaceSize : DeviceSize;
+    resourceDescriptorBufferAddressSpaceSize : DeviceSize;
+    descriptorBufferAddressSpaceSize : DeviceSize;
+}
+
+PhysicalDeviceDescriptorBufferFeaturesEXT :: struct {
+    sType : StructureType;
+    pNext : *void;
+    descriptorBuffer : Bool32;
+    descriptorBufferCaptureReplay : Bool32;
+    descriptorBufferImageLayoutIgnored : Bool32;
+    descriptorBufferPushDescriptors : Bool32;
+}
+
 PhysicalDeviceTimelineSemaphoreFeatures :: struct {
     sType : StructureType;
     pNext : *void;
@@ -10481,6 +10548,41 @@ PhysicalDeviceRayQueryFeaturesKHR :: struct {
     rayQuery : Bool32;
 }
 
+DescriptorBufferBindingInfoEXT :: struct {
+    sType : StructureType;
+    pNext : *void;
+    address : DeviceAddress;
+    usage : BufferUsageFlags;
+}
+
+DescriptorAddressInfoEXT :: struct {
+    sType : StructureType;
+    pNext : *void;
+    address : DeviceAddress;
+    range : DeviceSize;
+    format : Format;
+}
+
+DescriptorDataEXT :: union {
+    pSampler : *Sampler;
+    pCombinedImageSampler : *DescriptorImageInfo;
+    pInputAttachmentImage : *DescriptorImageInfo;
+    pSampledImage : *DescriptorImageInfo;
+    pStorageImage : *DescriptorImageInfo;
+    pUniformTexelBuffer : *DescriptorAddressInfoEXT;
+    pStorageTexelBuffer : *DescriptorAddressInfoEXT;
+    pUniformBuffer : *DescriptorAddressInfoEXT;
+    pStorageBuffer : *DescriptorAddressInfoEXT;
+    accelerationStructure : DeviceAddress;
+}
+
+DescriptorGetInfoEXT :: struct {
+    sType : StructureType;
+    pNext : *void;
+    type : DescriptorType;
+    data : DescriptorDataEXT;
+}
+
 ClearColorValue :: union {
     _float32 : [4]float32;
     int32 : [4]s32;
@@ -11859,227 +11961,6 @@ create_shared_swapchains_khr :: (
     pSwapchains : *SwapchainKHR
 ) -> Result #foreign libvulkan "vkCreateSharedSwapchainsKHR";
 
-// get_physical_device_features2_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pFeatures : *PhysicalDeviceFeatures2
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceFeatures2KHR";
-
-// get_physical_device_properties2_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pProperties : *PhysicalDeviceProperties2
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceProperties2KHR";
-
-// get_physical_device_format_properties2_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     format : Format,
-//     pFormatProperties : *FormatProperties2
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceFormatProperties2KHR";
-
-// get_physical_device_image_format_properties2_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pImageFormatInfo : *PhysicalDeviceImageFormatInfo2,
-//     pImageFormatProperties : *ImageFormatProperties2
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceImageFormatProperties2KHR";
-
-// get_physical_device_queue_family_properties2_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pQueueFamilyPropertyCount : *u32,
-//     pQueueFamilyProperties : *QueueFamilyProperties2
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceQueueFamilyProperties2KHR";
-
-// get_physical_device_memory_properties2_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pMemoryProperties : *PhysicalDeviceMemoryProperties2
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceMemoryProperties2KHR";
-
-// get_physical_device_sparse_image_format_properties2_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pFormatInfo : *PhysicalDeviceSparseImageFormatInfo2,
-//     pPropertyCount : *u32,
-//     pProperties : *SparseImageFormatProperties2
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceSparseImageFormatProperties2KHR";
-
-// get_device_group_peer_memory_features_khr :: (
-//     device : Device,
-//     heapIndex : u32,
-//     localDeviceIndex : u32,
-//     remoteDeviceIndex : u32,
-//     pPeerMemoryFeatures : *PeerMemoryFeatureFlags
-// ) -> void #foreign libvulkan "vkGetDeviceGroupPeerMemoryFeaturesKHR";
-
-// cmd_set_device_mask_khr :: (
-//     commandBuffer : CommandBuffer,
-//     deviceMask : u32
-// ) -> void #foreign libvulkan "vkCmdSetDeviceMaskKHR";
-
-// cmd_dispatch_base_khr :: (
-//     commandBuffer : CommandBuffer,
-//     baseGroupX : u32,
-//     baseGroupY : u32,
-//     baseGroupZ : u32,
-//     groupCountX : u32,
-//     groupCountY : u32,
-//     groupCountZ : u32
-// ) -> void #foreign libvulkan "vkCmdDispatchBaseKHR";
-
-// trim_command_pool_khr :: (
-//     device : Device,
-//     commandPool : CommandPool,
-//     flags : CommandPoolTrimFlags
-// ) -> void #foreign libvulkan "vkTrimCommandPoolKHR";
-
-// enumerate_physical_device_groups_khr :: (
-//     instance : Instance,
-//     pPhysicalDeviceGroupCount : *u32,
-//     pPhysicalDeviceGroupProperties : *PhysicalDeviceGroupProperties
-// ) -> Result #foreign libvulkan "vkEnumeratePhysicalDeviceGroupsKHR";
-
-// get_physical_device_external_buffer_properties_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pExternalBufferInfo : *PhysicalDeviceExternalBufferInfo,
-//     pExternalBufferProperties : *ExternalBufferProperties
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceExternalBufferPropertiesKHR";
-
-// get_memory_fd_khr :: (
-//     device : Device,
-//     pGetFdInfo : *MemoryGetFdInfoKHR,
-//     pFd : *s32
-// ) -> Result #foreign libvulkan "vkGetMemoryFdKHR";
-
-// get_memory_fd_properties_khr :: (
-//     device : Device,
-//     handleType : ExternalMemoryHandleTypeFlagBits,
-//     fd : s32,
-//     pMemoryFdProperties : *MemoryFdPropertiesKHR
-// ) -> Result #foreign libvulkan "vkGetMemoryFdPropertiesKHR";
-
-// get_physical_device_external_semaphore_properties_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pExternalSemaphoreInfo : *PhysicalDeviceExternalSemaphoreInfo,
-//     pExternalSemaphoreProperties : *ExternalSemaphoreProperties
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR";
-
-// import_semaphore_fd_khr :: (
-//     device : Device,
-//     pImportSemaphoreFdInfo : *ImportSemaphoreFdInfoKHR
-// ) -> Result #foreign libvulkan "vkImportSemaphoreFdKHR";
-
-// get_semaphore_fd_khr :: (
-//     device : Device,
-//     pGetFdInfo : *SemaphoreGetFdInfoKHR,
-//     pFd : *s32
-// ) -> Result #foreign libvulkan "vkGetSemaphoreFdKHR";
-
-// cmd_push_descriptor_set_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pipelineBindPoint : PipelineBindPoint,
-//     layout : PipelineLayout,
-//     set : u32,
-//     descriptorWriteCount : u32,
-//     pDescriptorWrites : *WriteDescriptorSet
-// ) -> void #foreign libvulkan "vkCmdPushDescriptorSetKHR";
-
-// cmd_push_descriptor_set_with_template_khr :: (
-//     commandBuffer : CommandBuffer,
-//     descriptorUpdateTemplate : DescriptorUpdateTemplate,
-//     layout : PipelineLayout,
-//     set : u32,
-//     pData : *void
-// ) -> void #foreign libvulkan "vkCmdPushDescriptorSetWithTemplateKHR";
-
-// create_descriptor_update_template_khr :: (
-//     device : Device,
-//     pCreateInfo : *DescriptorUpdateTemplateCreateInfo,
-//     pAllocator : *AllocationCallbacks,
-//     pDescriptorUpdateTemplate : *DescriptorUpdateTemplate
-// ) -> Result #foreign libvulkan "vkCreateDescriptorUpdateTemplateKHR";
-
-// destroy_descriptor_update_template_khr :: (
-//     device : Device,
-//     descriptorUpdateTemplate : DescriptorUpdateTemplate,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroyDescriptorUpdateTemplateKHR";
-
-// update_descriptor_set_with_template_khr :: (
-//     device : Device,
-//     descriptorSet : DescriptorSet,
-//     descriptorUpdateTemplate : DescriptorUpdateTemplate,
-//     pData : *void
-// ) -> void #foreign libvulkan "vkUpdateDescriptorSetWithTemplateKHR";
-
-// create_render_pass2_khr :: (
-//     device : Device,
-//     pCreateInfo : *RenderPassCreateInfo2,
-//     pAllocator : *AllocationCallbacks,
-//     pRenderPass : *RenderPass
-// ) -> Result #foreign libvulkan "vkCreateRenderPass2KHR";
-
-// cmd_begin_render_pass2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pRenderPassBegin : *RenderPassBeginInfo,
-//     pSubpassBeginInfo : *SubpassBeginInfo
-// ) -> void #foreign libvulkan "vkCmdBeginRenderPass2KHR";
-
-// cmd_next_subpass2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pSubpassBeginInfo : *SubpassBeginInfo,
-//     pSubpassEndInfo : *SubpassEndInfo
-// ) -> void #foreign libvulkan "vkCmdNextSubpass2KHR";
-
-// cmd_end_render_pass2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pSubpassEndInfo : *SubpassEndInfo
-// ) -> void #foreign libvulkan "vkCmdEndRenderPass2KHR";
-
-// get_swapchain_status_khr :: (
-//     device : Device,
-//     swapchain : SwapchainKHR
-// ) -> Result #foreign libvulkan "vkGetSwapchainStatusKHR";
-
-// get_physical_device_external_fence_properties_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pExternalFenceInfo : *PhysicalDeviceExternalFenceInfo,
-//     pExternalFenceProperties : *ExternalFenceProperties
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceExternalFencePropertiesKHR";
-
-// import_fence_fd_khr :: (
-//     device : Device,
-//     pImportFenceFdInfo : *ImportFenceFdInfoKHR
-// ) -> Result #foreign libvulkan "vkImportFenceFdKHR";
-
-// get_fence_fd_khr :: (
-//     device : Device,
-//     pGetFdInfo : *FenceGetFdInfoKHR,
-//     pFd : *s32
-// ) -> Result #foreign libvulkan "vkGetFenceFdKHR";
-
-// enumerate_physical_device_queue_family_performance_query_counters_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     queueFamilyIndex : u32,
-//     pCounterCount : *u32,
-//     pCounters : *PerformanceCounterKHR,
-//     pCounterDescriptions : *PerformanceCounterDescriptionKHR
-// ) -> Result #foreign libvulkan "vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR";
-
-// get_physical_device_queue_family_performance_query_passes_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pPerformanceQueryCreateInfo : *QueryPoolPerformanceCreateInfoKHR,
-//     pNumPasses : *u32
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR";
-
-// acquire_profiling_lock_khr :: (
-//     device : Device,
-//     pInfo : *AcquireProfilingLockInfoKHR
-// ) -> Result #foreign libvulkan "vkAcquireProfilingLockKHR";
-
-// release_profiling_lock_khr :: (device : Device) -> void #foreign libvulkan "vkReleaseProfilingLockKHR";
-
-// get_physical_device_surface_capabilities2_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pSurfaceInfo : *PhysicalDeviceSurfaceInfo2KHR,
-//     pSurfaceCapabilities : *SurfaceCapabilities2KHR
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceSurfaceCapabilities2KHR";
-
 get_physical_device_surface_formats2_khr :: (
     physicalDevice : PhysicalDevice,
     pSurfaceInfo : *PhysicalDeviceSurfaceInfo2KHR,
@@ -12112,198 +11993,6 @@ get_display_plane_capabilities2_khr :: (
     pCapabilities : *DisplayPlaneCapabilities2KHR
 ) -> Result #foreign libvulkan "vkGetDisplayPlaneCapabilities2KHR";
 
-// get_image_memory_requirements2_khr :: (
-//     device : Device,
-//     pInfo : *ImageMemoryRequirementsInfo2,
-//     pMemoryRequirements : *MemoryRequirements2
-// ) -> void #foreign libvulkan "vkGetImageMemoryRequirements2KHR";
-
-// get_buffer_memory_requirements2_khr :: (
-//     device : Device,
-//     pInfo : *BufferMemoryRequirementsInfo2,
-//     pMemoryRequirements : *MemoryRequirements2
-// ) -> void #foreign libvulkan "vkGetBufferMemoryRequirements2KHR";
-
-// get_image_sparse_memory_requirements2_khr :: (
-//     device : Device,
-//     pInfo : *ImageSparseMemoryRequirementsInfo2,
-//     pSparseMemoryRequirementCount : *u32,
-//     pSparseMemoryRequirements : *SparseImageMemoryRequirements2
-// ) -> void #foreign libvulkan "vkGetImageSparseMemoryRequirements2KHR";
-
-// create_sampler_ycbcr_conversion_khr :: (
-//     device : Device,
-//     pCreateInfo : *SamplerYcbcrConversionCreateInfo,
-//     pAllocator : *AllocationCallbacks,
-//     pYcbcrConversion : *SamplerYcbcrConversion
-// ) -> Result #foreign libvulkan "vkCreateSamplerYcbcrConversionKHR";
-
-// destroy_sampler_ycbcr_conversion_khr :: (
-//     device : Device,
-//     ycbcrConversion : SamplerYcbcrConversion,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroySamplerYcbcrConversionKHR";
-
-// bind_buffer_memory2_khr :: (
-//     device : Device,
-//     bindInfoCount : u32,
-//     pBindInfos : *BindBufferMemoryInfo
-// ) -> Result #foreign libvulkan "vkBindBufferMemory2KHR";
-
-// bind_image_memory2_khr :: (
-//     device : Device,
-//     bindInfoCount : u32,
-//     pBindInfos : *BindImageMemoryInfo
-// ) -> Result #foreign libvulkan "vkBindImageMemory2KHR";
-
-// get_descriptor_set_layout_support_khr :: (
-//     device : Device,
-//     pCreateInfo : *DescriptorSetLayoutCreateInfo,
-//     pSupport : *DescriptorSetLayoutSupport
-// ) -> void #foreign libvulkan "vkGetDescriptorSetLayoutSupportKHR";
-
-// cmd_draw_indirect_count_khr :: (
-//     commandBuffer : CommandBuffer,
-//     buffer : Buffer,
-//     offset : DeviceSize,
-//     countBuffer : Buffer,
-//     countBufferOffset : DeviceSize,
-//     maxDrawCount : u32,
-//     stride : u32
-// ) -> void #foreign libvulkan "vkCmdDrawIndirectCountKHR";
-
-// cmd_draw_indexed_indirect_count_khr :: (
-//     commandBuffer : CommandBuffer,
-//     buffer : Buffer,
-//     offset : DeviceSize,
-//     countBuffer : Buffer,
-//     countBufferOffset : DeviceSize,
-//     maxDrawCount : u32,
-//     stride : u32
-// ) -> void #foreign libvulkan "vkCmdDrawIndexedIndirectCountKHR";
-
-// get_semaphore_counter_value_khr :: (
-//     device : Device,
-//     semaphore : Semaphore,
-//     pValue : *u64
-// ) -> Result #foreign libvulkan "vkGetSemaphoreCounterValueKHR";
-
-// wait_semaphores_khr :: (
-//     device : Device,
-//     pWaitInfo : *SemaphoreWaitInfo,
-//     timeout : u64
-// ) -> Result #foreign libvulkan "vkWaitSemaphoresKHR";
-
-// signal_semaphore_khr :: (
-//     device : Device,
-//     pSignalInfo : *SemaphoreSignalInfo
-// ) -> Result #foreign libvulkan "vkSignalSemaphoreKHR";
-
-// get_physical_device_fragment_shading_rates_khr :: (
-//     physicalDevice : PhysicalDevice,
-//     pFragmentShadingRateCount : *u32,
-//     pFragmentShadingRates : *PhysicalDeviceFragmentShadingRateKHR
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceFragmentShadingRatesKHR";
-
-// cmd_set_fragment_shading_rate_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pFragmentSize : *Extent2D,
-//     combinerOps : [2]FragmentShadingRateCombinerOpKHR
-// ) -> void #foreign libvulkan "vkCmdSetFragmentShadingRateKHR";
-
-// get_buffer_device_address_khr :: (
-//     device : Device,
-//     pInfo : *BufferDeviceAddressInfo
-// ) -> DeviceAddress #foreign libvulkan "vkGetBufferDeviceAddressKHR";
-
-// get_buffer_opaque_capture_address_khr :: (
-//     device : Device,
-//     pInfo : *BufferDeviceAddressInfo
-// ) -> u64 #foreign libvulkan "vkGetBufferOpaqueCaptureAddressKHR";
-
-// get_device_memory_opaque_capture_address_khr :: (
-//     device : Device,
-//     pInfo : *DeviceMemoryOpaqueCaptureAddressInfo
-// ) -> u64 #foreign libvulkan "vkGetDeviceMemoryOpaqueCaptureAddressKHR";
-
-// create_deferred_operation_khr :: (
-//     device : Device,
-//     pAllocator : *AllocationCallbacks,
-//     pDeferredOperation : *DeferredOperationKHR
-// ) -> Result #foreign libvulkan "vkCreateDeferredOperationKHR";
-
-// destroy_deferred_operation_khr :: (
-//     device : Device,
-//     operation : DeferredOperationKHR,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroyDeferredOperationKHR";
-
-// get_deferred_operation_max_concurrency_khr :: (
-//     device : Device,
-//     operation : DeferredOperationKHR
-// ) -> u32 #foreign libvulkan "vkGetDeferredOperationMaxConcurrencyKHR";
-
-// get_deferred_operation_result_khr :: (
-//     device : Device,
-//     operation : DeferredOperationKHR
-// ) -> Result #foreign libvulkan "vkGetDeferredOperationResultKHR";
-
-// deferred_operation_join_khr :: (
-//     device : Device,
-//     operation : DeferredOperationKHR
-// ) -> Result #foreign libvulkan "vkDeferredOperationJoinKHR";
-
-// get_pipeline_executable_properties_khr :: (
-//     device : Device,
-//     pPipelineInfo : *PipelineInfoKHR,
-//     pExecutableCount : *u32,
-//     pProperties : *PipelineExecutablePropertiesKHR
-// ) -> Result #foreign libvulkan "vkGetPipelineExecutablePropertiesKHR";
-
-// get_pipeline_executable_statistics_khr :: (
-//     device : Device,
-//     pExecutableInfo : *PipelineExecutableInfoKHR,
-//     pStatisticCount : *u32,
-//     pStatistics : *PipelineExecutableStatisticKHR
-// ) -> Result #foreign libvulkan "vkGetPipelineExecutableStatisticsKHR";
-
-// get_pipeline_executable_internal_representations_khr :: (
-//     device : Device,
-//     pExecutableInfo : *PipelineExecutableInfoKHR,
-//     pInternalRepresentationCount : *u32,
-//     pInternalRepresentations : *PipelineExecutableInternalRepresentationKHR
-// ) -> Result #foreign libvulkan "vkGetPipelineExecutableInternalRepresentationsKHR";
-
-// cmd_copy_buffer2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pCopyBufferInfo : *CopyBufferInfo2KHR
-// ) -> void #foreign libvulkan "vkCmdCopyBuffer2KHR";
-
-// cmd_copy_image2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pCopyImageInfo : *CopyImageInfo2KHR
-// ) -> void #foreign libvulkan "vkCmdCopyImage2KHR";
-
-// cmd_copy_buffer_to_image2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pCopyBufferToImageInfo : *CopyBufferToImageInfo2KHR
-// ) -> void #foreign libvulkan "vkCmdCopyBufferToImage2KHR";
-
-// cmd_copy_image_to_buffer2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pCopyImageToBufferInfo : *CopyImageToBufferInfo2KHR
-// ) -> void #foreign libvulkan "vkCmdCopyImageToBuffer2KHR";
-
-// cmd_blit_image2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pBlitImageInfo : *BlitImageInfo2KHR
-// ) -> void #foreign libvulkan "vkCmdBlitImage2KHR";
-
-// cmd_resolve_image2_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pResolveImageInfo : *ResolveImageInfo2KHR
-// ) -> void #foreign libvulkan "vkCmdResolveImage2KHR";
-
 create_debug_report_callback_ext : (
     instance : Instance,
     pCreateInfo : *DebugReportCallbackCreateInfoEXT,
@@ -12317,408 +12006,10 @@ destroy_debug_report_callback_ext : (
     pAllocator : *AllocationCallbacks
 ) -> void #foreign; // libvulkan "vkDestroyDebugReportCallbackEXT";
 
-// debug_report_message_ext :: (
-//     instance : Instance,
-//     flags : DebugReportFlagsEXT,
-//     objectType : DebugReportObjectTypeEXT,
-//     object : u64,
-//     location : u64,
-//     messageCode : s32,
-//     pLayerPrefix : *u8,
-//     pMessage : *u8
-// ) -> void #foreign libvulkan "vkDebugReportMessageEXT";
-
-// debug_marker_set_object_tag_ext :: (
-//     device : Device,
-//     pTagInfo : *DebugMarkerObjectTagInfoEXT
-// ) -> Result #foreign libvulkan "vkDebugMarkerSetObjectTagEXT";
-
-// debug_marker_set_object_name_ext :: (
-//     device : Device,
-//     pNameInfo : *DebugMarkerObjectNameInfoEXT
-// ) -> Result #foreign libvulkan "vkDebugMarkerSetObjectNameEXT";
-
-// cmd_debug_marker_begin_ext :: (
-//     commandBuffer : CommandBuffer,
-//     pMarkerInfo : *DebugMarkerMarkerInfoEXT
-// ) -> void #foreign libvulkan "vkCmdDebugMarkerBeginEXT";
-
-// cmd_debug_marker_end_ext :: (commandBuffer : CommandBuffer) -> void #foreign libvulkan "vkCmdDebugMarkerEndEXT";
-
-// cmd_debug_marker_insert_ext :: (
-//     commandBuffer : CommandBuffer,
-//     pMarkerInfo : *DebugMarkerMarkerInfoEXT
-// ) -> void #foreign libvulkan "vkCmdDebugMarkerInsertEXT";
-
-// cmd_bind_transform_feedback_buffers_ext :: (
-//     commandBuffer : CommandBuffer,
-//     firstBinding : u32,
-//     bindingCount : u32,
-//     pBuffers : *Buffer,
-//     pOffsets : *DeviceSize,
-//     pSizes : *DeviceSize
-// ) -> void #foreign libvulkan "vkCmdBindTransformFeedbackBuffersEXT";
-
-// cmd_begin_transform_feedback_ext :: (
-//     commandBuffer : CommandBuffer,
-//     firstCounterBuffer : u32,
-//     counterBufferCount : u32,
-//     pCounterBuffers : *Buffer,
-//     pCounterBufferOffsets : *DeviceSize
-// ) -> void #foreign libvulkan "vkCmdBeginTransformFeedbackEXT";
-
-// cmd_end_transform_feedback_ext :: (
-//     commandBuffer : CommandBuffer,
-//     firstCounterBuffer : u32,
-//     counterBufferCount : u32,
-//     pCounterBuffers : *Buffer,
-//     pCounterBufferOffsets : *DeviceSize
-// ) -> void #foreign libvulkan "vkCmdEndTransformFeedbackEXT";
-
-// cmd_begin_query_indexed_ext :: (
-//     commandBuffer : CommandBuffer,
-//     queryPool : QueryPool,
-//     query : u32,
-//     flags : QueryControlFlags,
-//     index : u32
-// ) -> void #foreign libvulkan "vkCmdBeginQueryIndexedEXT";
-
-// cmd_end_query_indexed_ext :: (
-//     commandBuffer : CommandBuffer,
-//     queryPool : QueryPool,
-//     query : u32,
-//     index : u32
-// ) -> void #foreign libvulkan "vkCmdEndQueryIndexedEXT";
-
-// cmd_draw_indirect_byte_count_ext :: (
-//     commandBuffer : CommandBuffer,
-//     instanceCount : u32,
-//     firstInstance : u32,
-//     counterBuffer : Buffer,
-//     counterBufferOffset : DeviceSize,
-//     counterOffset : u32,
-//     vertexStride : u32
-// ) -> void #foreign libvulkan "vkCmdDrawIndirectByteCountEXT";
-
-// get_image_view_handle_nvx :: (
-//     device : Device,
-//     pInfo : *ImageViewHandleInfoNVX
-// ) -> u32 #foreign libvulkan "vkGetImageViewHandleNVX";
-
-// get_image_view_address_nvx :: (
-//     device : Device,
-//     imageView : ImageView,
-//     pProperties : *ImageViewAddressPropertiesNVX
-// ) -> Result #foreign libvulkan "vkGetImageViewAddressNVX";
-
-// cmd_draw_indirect_count_amd :: (
-//     commandBuffer : CommandBuffer,
-//     buffer : Buffer,
-//     offset : DeviceSize,
-//     countBuffer : Buffer,
-//     countBufferOffset : DeviceSize,
-//     maxDrawCount : u32,
-//     stride : u32
-// ) -> void #foreign libvulkan "vkCmdDrawIndirectCountAMD";
-
-// cmd_draw_indexed_indirect_count_amd :: (
-//     commandBuffer : CommandBuffer,
-//     buffer : Buffer,
-//     offset : DeviceSize,
-//     countBuffer : Buffer,
-//     countBufferOffset : DeviceSize,
-//     maxDrawCount : u32,
-//     stride : u32
-// ) -> void #foreign libvulkan "vkCmdDrawIndexedIndirectCountAMD";
-
-// get_shader_info_amd :: (
-//     device : Device,
-//     pipeline : Pipeline,
-//     shaderStage : ShaderStageFlagBits,
-//     infoType : ShaderInfoTypeAMD,
-//     pInfoSize : *u64,
-//     pInfo : *void
-// ) -> Result #foreign libvulkan "vkGetShaderInfoAMD";
-
-// get_physical_device_external_image_format_properties_nv :: (
-//     physicalDevice : PhysicalDevice,
-//     format : Format,
-//     type : ImageType,
-//     tiling : ImageTiling,
-//     usage : ImageUsageFlags,
-//     flags : ImageCreateFlags,
-//     externalHandleType : ExternalMemoryHandleTypeFlagsNV,
-//     pExternalImageFormatProperties : *ExternalImageFormatPropertiesNV
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceExternalImageFormatPropertiesNV";
-
-// cmd_begin_conditional_rendering_ext :: (
-//     commandBuffer : CommandBuffer,
-//     pConditionalRenderingBegin : *ConditionalRenderingBeginInfoEXT
-// ) -> void #foreign libvulkan "vkCmdBeginConditionalRenderingEXT";
-
-// cmd_end_conditional_rendering_ext :: (commandBuffer : CommandBuffer) -> void #foreign libvulkan "vkCmdEndConditionalRenderingEXT";
-
-// cmd_set_viewport_w_scaling_nv :: (
-//     commandBuffer : CommandBuffer,
-//     firstViewport : u32,
-//     viewportCount : u32,
-//     pViewportWScalings : *ViewportWScalingNV
-// ) -> void #foreign libvulkan "vkCmdSetViewportWScalingNV";
-
-// release_display_ext :: (
-//     physicalDevice : PhysicalDevice,
-//     display : DisplayKHR
-// ) -> Result #foreign libvulkan "vkReleaseDisplayEXT";
-
-// get_physical_device_surface_capabilities2_ext :: (
-//     physicalDevice : PhysicalDevice,
-//     surface : SurfaceKHR,
-//     pSurfaceCapabilities : *SurfaceCapabilities2EXT
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceSurfaceCapabilities2EXT";
-
-// display_power_control_ext :: (
-//     device : Device,
-//     display : DisplayKHR,
-//     pDisplayPowerInfo : *DisplayPowerInfoEXT
-// ) -> Result #foreign libvulkan "vkDisplayPowerControlEXT";
-
-// register_device_event_ext :: (
-//     device : Device,
-//     pDeviceEventInfo : *DeviceEventInfoEXT,
-//     pAllocator : *AllocationCallbacks,
-//     pFence : *Fence
-// ) -> Result #foreign libvulkan "vkRegisterDeviceEventEXT";
-
-// register_display_event_ext :: (
-//     device : Device,
-//     display : DisplayKHR,
-//     pDisplayEventInfo : *DisplayEventInfoEXT,
-//     pAllocator : *AllocationCallbacks,
-//     pFence : *Fence
-// ) -> Result #foreign libvulkan "vkRegisterDisplayEventEXT";
-
-// get_swapchain_counter_ext :: (
-//     device : Device,
-//     swapchain : SwapchainKHR,
-//     counter : SurfaceCounterFlagBitsEXT,
-//     pCounterValue : *u64
-// ) -> Result #foreign libvulkan "vkGetSwapchainCounterEXT";
-
-// get_refresh_cycle_duration_google :: (
-//     device : Device,
-//     swapchain : SwapchainKHR,
-//     pDisplayTimingProperties : *RefreshCycleDurationGOOGLE
-// ) -> Result #foreign libvulkan "vkGetRefreshCycleDurationGOOGLE";
-
-// get_past_presentation_timing_google :: (
-//     device : Device,
-//     swapchain : SwapchainKHR,
-//     pPresentationTimingCount : *u32,
-//     pPresentationTimings : *PastPresentationTimingGOOGLE
-// ) -> Result #foreign libvulkan "vkGetPastPresentationTimingGOOGLE";
-
-// cmd_set_discard_rectangle_ext :: (
-//     commandBuffer : CommandBuffer,
-//     firstDiscardRectangle : u32,
-//     discardRectangleCount : u32,
-//     pDiscardRectangles : *Rect2D
-// ) -> void #foreign libvulkan "vkCmdSetDiscardRectangleEXT";
-
-// set_hdr_metadata_ext :: (
-//     device : Device,
-//     swapchainCount : u32,
-//     pSwapchains : *SwapchainKHR,
-//     pMetadata : *HdrMetadataEXT
-// ) -> void #foreign libvulkan "vkSetHdrMetadataEXT";
-
 set_debug_utils_object_name_ext : (
     device : Device,
     pNameInfo : *DebugUtilsObjectNameInfoEXT
 ) -> Result #foreign; // libvulkan "vkSetDebugUtilsObjectNameEXT";
-
-// set_debug_utils_object_tag_ext :: (
-//     device : Device,
-//     pTagInfo : *DebugUtilsObjectTagInfoEXT
-// ) -> Result #foreign libvulkan "vkSetDebugUtilsObjectTagEXT";
-
-// queue_begin_debug_utils_label_ext :: (
-//     queue : Queue,
-//     pLabelInfo : *DebugUtilsLabelEXT
-// ) -> void #foreign libvulkan "vkQueueBeginDebugUtilsLabelEXT";
-
-// queue_end_debug_utils_label_ext :: (queue : Queue) -> void #foreign libvulkan "vkQueueEndDebugUtilsLabelEXT";
-
-// queue_insert_debug_utils_label_ext :: (
-//     queue : Queue,
-//     pLabelInfo : *DebugUtilsLabelEXT
-// ) -> void #foreign libvulkan "vkQueueInsertDebugUtilsLabelEXT";
-
-// cmd_begin_debug_utils_label_ext :: (
-//     commandBuffer : CommandBuffer,
-//     pLabelInfo : *DebugUtilsLabelEXT
-// ) -> void #foreign libvulkan "vkCmdBeginDebugUtilsLabelEXT";
-
-// cmd_end_debug_utils_label_ext :: (commandBuffer : CommandBuffer) -> void #foreign libvulkan "vkCmdEndDebugUtilsLabelEXT";
-
-// cmd_insert_debug_utils_label_ext :: (
-//     commandBuffer : CommandBuffer,
-//     pLabelInfo : *DebugUtilsLabelEXT
-// ) -> void #foreign libvulkan "vkCmdInsertDebugUtilsLabelEXT";
-
-// create_debug_utils_messenger_ext :: (
-//     instance : Instance,
-//     pCreateInfo : *DebugUtilsMessengerCreateInfoEXT,
-//     pAllocator : *AllocationCallbacks,
-//     pMessenger : *DebugUtilsMessengerEXT
-// ) -> Result #foreign libvulkan "vkCreateDebugUtilsMessengerEXT";
-
-// destroy_debug_utils_messenger_ext :: (
-//     instance : Instance,
-//     messenger : DebugUtilsMessengerEXT,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroyDebugUtilsMessengerEXT";
-
-// submit_debug_utils_message_ext :: (
-//     instance : Instance,
-//     messageSeverity : DebugUtilsMessageSeverityFlagBitsEXT,
-//     messageTypes : DebugUtilsMessageTypeFlagsEXT,
-//     pCallbackData : *DebugUtilsMessengerCallbackDataEXT
-// ) -> void #foreign libvulkan "vkSubmitDebugUtilsMessageEXT";
-
-// cmd_set_sample_locations_ext :: (
-//     commandBuffer : CommandBuffer,
-//     pSampleLocationsInfo : *SampleLocationsInfoEXT
-// ) -> void #foreign libvulkan "vkCmdSetSampleLocationsEXT";
-
-// get_physical_device_multisample_properties_ext :: (
-//     physicalDevice : PhysicalDevice,
-//     samples : SampleCountFlagBits,
-//     pMultisampleProperties : *MultisamplePropertiesEXT
-// ) -> void #foreign libvulkan "vkGetPhysicalDeviceMultisamplePropertiesEXT";
-
-// get_image_drm_format_modifier_properties_ext :: (
-//     device : Device,
-//     image : Image,
-//     pProperties : *ImageDrmFormatModifierPropertiesEXT
-// ) -> Result #foreign libvulkan "vkGetImageDrmFormatModifierPropertiesEXT";
-
-// create_validation_cache_ext :: (
-//     device : Device,
-//     pCreateInfo : *ValidationCacheCreateInfoEXT,
-//     pAllocator : *AllocationCallbacks,
-//     pValidationCache : *ValidationCacheEXT
-// ) -> Result #foreign libvulkan "vkCreateValidationCacheEXT";
-
-// destroy_validation_cache_ext :: (
-//     device : Device,
-//     validationCache : ValidationCacheEXT,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroyValidationCacheEXT";
-
-// merge_validation_caches_ext :: (
-//     device : Device,
-//     dstCache : ValidationCacheEXT,
-//     srcCacheCount : u32,
-//     pSrcCaches : *ValidationCacheEXT
-// ) -> Result #foreign libvulkan "vkMergeValidationCachesEXT";
-
-// get_validation_cache_data_ext :: (
-//     device : Device,
-//     validationCache : ValidationCacheEXT,
-//     pDataSize : *u64,
-//     pData : *void
-// ) -> Result #foreign libvulkan "vkGetValidationCacheDataEXT";
-
-// cmd_bind_shading_rate_image_nv :: (
-//     commandBuffer : CommandBuffer,
-//     imageView : ImageView,
-//     imageLayout : ImageLayout
-// ) -> void #foreign libvulkan "vkCmdBindShadingRateImageNV";
-
-// cmd_set_viewport_shading_rate_palette_nv :: (
-//     commandBuffer : CommandBuffer,
-//     firstViewport : u32,
-//     viewportCount : u32,
-//     pShadingRatePalettes : *ShadingRatePaletteNV
-// ) -> void #foreign libvulkan "vkCmdSetViewportShadingRatePaletteNV";
-
-// cmd_set_coarse_sample_order_nv :: (
-//     commandBuffer : CommandBuffer,
-//     sampleOrderType : CoarseSampleOrderTypeNV,
-//     customSampleOrderCount : u32,
-//     pCustomSampleOrders : *CoarseSampleOrderCustomNV
-// ) -> void #foreign libvulkan "vkCmdSetCoarseSampleOrderNV";
-
-// create_acceleration_structure_nv :: (
-//     device : Device,
-//     pCreateInfo : *AccelerationStructureCreateInfoNV,
-//     pAllocator : *AllocationCallbacks,
-//     pAccelerationStructure : *AccelerationStructureNV
-// ) -> Result #foreign libvulkan "vkCreateAccelerationStructureNV";
-
-// destroy_acceleration_structure_nv :: (
-//     device : Device,
-//     accelerationStructure : AccelerationStructureNV,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroyAccelerationStructureNV";
-
-// get_acceleration_structure_memory_requirements_nv :: (
-//     device : Device,
-//     pInfo : *AccelerationStructureMemoryRequirementsInfoNV,
-//     pMemoryRequirements : *MemoryRequirements2KHR
-// ) -> void #foreign libvulkan "vkGetAccelerationStructureMemoryRequirementsNV";
-
-// bind_acceleration_structure_memory_nv :: (
-//     device : Device,
-//     bindInfoCount : u32,
-//     pBindInfos : *BindAccelerationStructureMemoryInfoNV
-// ) -> Result #foreign libvulkan "vkBindAccelerationStructureMemoryNV";
-
-// cmd_build_acceleration_structure_nv :: (
-//     commandBuffer : CommandBuffer,
-//     pInfo : *AccelerationStructureInfoNV,
-//     instanceData : Buffer,
-//     instanceOffset : DeviceSize,
-//     update : Bool32,
-//     dst : AccelerationStructureNV,
-//     src : AccelerationStructureNV,
-//     scratch : Buffer,
-//     scratchOffset : DeviceSize
-// ) -> void #foreign libvulkan "vkCmdBuildAccelerationStructureNV";
-
-// cmd_copy_acceleration_structure_nv :: (
-//     commandBuffer : CommandBuffer,
-//     dst : AccelerationStructureNV,
-//     src : AccelerationStructureNV,
-//     mode : CopyAccelerationStructureModeKHR
-// ) -> void #foreign libvulkan "vkCmdCopyAccelerationStructureNV";
-
-// cmd_trace_rays_nv :: (
-//     commandBuffer : CommandBuffer,
-//     raygenShaderBindingTableBuffer : Buffer,
-//     raygenShaderBindingOffset : DeviceSize,
-//     missShaderBindingTableBuffer : Buffer,
-//     missShaderBindingOffset : DeviceSize,
-//     missShaderBindingStride : DeviceSize,
-//     hitShaderBindingTableBuffer : Buffer,
-//     hitShaderBindingOffset : DeviceSize,
-//     hitShaderBindingStride : DeviceSize,
-//     callableShaderBindingTableBuffer : Buffer,
-//     callableShaderBindingOffset : DeviceSize,
-//     callableShaderBindingStride : DeviceSize,
-//     width : u32,
-//     height : u32,
-//     depth : u32
-// ) -> void #foreign libvulkan "vkCmdTraceRaysNV";
-
-// create_ray_tracing_pipelines_nv :: (
-//     device : Device,
-//     pipelineCache : PipelineCache,
-//     createInfoCount : u32,
-//     pCreateInfos : *RayTracingPipelineCreateInfoNV,
-//     pAllocator : *AllocationCallbacks,
-//     pPipelines : *Pipeline
-// ) -> Result #foreign libvulkan "vkCreateRayTracingPipelinesNV";
 
 get_ray_tracing_shader_group_handles_khr : (
     device : Device,
@@ -12728,344 +12019,6 @@ get_ray_tracing_shader_group_handles_khr : (
     dataSize : u64,
     pData : *void
 ) -> Result #foreign; // libvulkan "vkGetRayTracingShaderGroupHandlesKHR";
-
-// get_ray_tracing_shader_group_handles_nv :: (
-//     device : Device,
-//     pipeline : Pipeline,
-//     firstGroup : u32,
-//     groupCount : u32,
-//     dataSize : u64,
-//     pData : *void
-// ) -> Result #foreign libvulkan "vkGetRayTracingShaderGroupHandlesNV";
-
-// get_acceleration_structure_handle_nv :: (
-//     device : Device,
-//     accelerationStructure : AccelerationStructureNV,
-//     dataSize : u64,
-//     pData : *void
-// ) -> Result #foreign libvulkan "vkGetAccelerationStructureHandleNV";
-
-// cmd_write_acceleration_structures_properties_nv :: (
-//     commandBuffer : CommandBuffer,
-//     accelerationStructureCount : u32,
-//     pAccelerationStructures : *AccelerationStructureNV,
-//     queryType : QueryType,
-//     queryPool : QueryPool,
-//     firstQuery : u32
-// ) -> void #foreign libvulkan "vkCmdWriteAccelerationStructuresPropertiesNV";
-
-// compile_deferred_nv :: (
-//     device : Device,
-//     pipeline : Pipeline,
-//     shader : u32
-// ) -> Result #foreign libvulkan "vkCompileDeferredNV";
-
-// get_memory_host_pointer_properties_ext :: (
-//     device : Device,
-//     handleType : ExternalMemoryHandleTypeFlagBits,
-//     pHostPointer : *void,
-//     pMemoryHostPointerProperties : *MemoryHostPointerPropertiesEXT
-// ) -> Result #foreign libvulkan "vkGetMemoryHostPointerPropertiesEXT";
-
-// cmd_write_buffer_marker_amd :: (
-//     commandBuffer : CommandBuffer,
-//     pipelineStage : PipelineStageFlagBits,
-//     dstBuffer : Buffer,
-//     dstOffset : DeviceSize,
-//     marker : u32
-// ) -> void #foreign libvulkan "vkCmdWriteBufferMarkerAMD";
-
-// get_physical_device_calibrateable_time_domains_ext :: (
-//     physicalDevice : PhysicalDevice,
-//     pTimeDomainCount : *u32,
-//     pTimeDomains : *TimeDomainEXT
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT";
-
-// get_calibrated_timestamps_ext :: (
-//     device : Device,
-//     timestampCount : u32,
-//     pTimestampInfos : *CalibratedTimestampInfoEXT,
-//     pTimestamps : *u64,
-//     pMaxDeviation : *u64
-// ) -> Result #foreign libvulkan "vkGetCalibratedTimestampsEXT";
-
-// cmd_draw_mesh_tasks_nv :: (
-//     commandBuffer : CommandBuffer,
-//     taskCount : u32,
-//     firstTask : u32
-// ) -> void #foreign libvulkan "vkCmdDrawMeshTasksNV";
-
-// cmd_draw_mesh_tasks_indirect_nv :: (
-//     commandBuffer : CommandBuffer,
-//     buffer : Buffer,
-//     offset : DeviceSize,
-//     drawCount : u32,
-//     stride : u32
-// ) -> void #foreign libvulkan "vkCmdDrawMeshTasksIndirectNV";
-
-// cmd_draw_mesh_tasks_indirect_count_nv :: (
-//     commandBuffer : CommandBuffer,
-//     buffer : Buffer,
-//     offset : DeviceSize,
-//     countBuffer : Buffer,
-//     countBufferOffset : DeviceSize,
-//     maxDrawCount : u32,
-//     stride : u32
-// ) -> void #foreign libvulkan "vkCmdDrawMeshTasksIndirectCountNV";
-
-// cmd_set_exclusive_scissor_nv :: (
-//     commandBuffer : CommandBuffer,
-//     firstExclusiveScissor : u32,
-//     exclusiveScissorCount : u32,
-//     pExclusiveScissors : *Rect2D
-// ) -> void #foreign libvulkan "vkCmdSetExclusiveScissorNV";
-
-// cmd_set_checkpoint_nv :: (
-//     commandBuffer : CommandBuffer,
-//     pCheckpointMarker : *void
-// ) -> void #foreign libvulkan "vkCmdSetCheckpointNV";
-
-// get_queue_checkpoint_data_nv :: (
-//     queue : Queue,
-//     pCheckpointDataCount : *u32,
-//     pCheckpointData : *CheckpointDataNV
-// ) -> void #foreign libvulkan "vkGetQueueCheckpointDataNV";
-
-// initialize_performance_api_intel :: (
-//     device : Device,
-//     pInitializeInfo : *InitializePerformanceApiInfoINTEL
-// ) -> Result #foreign libvulkan "vkInitializePerformanceApiINTEL";
-
-// uninitialize_performance_api_intel :: (device : Device) -> void #foreign libvulkan "vkUninitializePerformanceApiINTEL";
-
-// cmd_set_performance_marker_intel :: (
-//     commandBuffer : CommandBuffer,
-//     pMarkerInfo : *PerformanceMarkerInfoINTEL
-// ) -> Result #foreign libvulkan "vkCmdSetPerformanceMarkerINTEL";
-
-// cmd_set_performance_stream_marker_intel :: (
-//     commandBuffer : CommandBuffer,
-//     pMarkerInfo : *PerformanceStreamMarkerInfoINTEL
-// ) -> Result #foreign libvulkan "vkCmdSetPerformanceStreamMarkerINTEL";
-
-// cmd_set_performance_override_intel :: (
-//     commandBuffer : CommandBuffer,
-//     pOverrideInfo : *PerformanceOverrideInfoINTEL
-// ) -> Result #foreign libvulkan "vkCmdSetPerformanceOverrideINTEL";
-
-// acquire_performance_configuration_intel :: (
-//     device : Device,
-//     pAcquireInfo : *PerformanceConfigurationAcquireInfoINTEL,
-//     pConfiguration : *PerformanceConfigurationINTEL
-// ) -> Result #foreign libvulkan "vkAcquirePerformanceConfigurationINTEL";
-
-// release_performance_configuration_intel :: (
-//     device : Device,
-//     configuration : PerformanceConfigurationINTEL
-// ) -> Result #foreign libvulkan "vkReleasePerformanceConfigurationINTEL";
-
-// queue_set_performance_configuration_intel :: (
-//     queue : Queue,
-//     configuration : PerformanceConfigurationINTEL
-// ) -> Result #foreign libvulkan "vkQueueSetPerformanceConfigurationINTEL";
-
-// get_performance_parameter_intel :: (
-//     device : Device,
-//     parameter : PerformanceParameterTypeINTEL,
-//     pValue : *PerformanceValueINTEL
-// ) -> Result #foreign libvulkan "vkGetPerformanceParameterINTEL";
-
-// set_local_dimming_amd :: (
-//     device : Device,
-//     swapChain : SwapchainKHR,
-//     localDimmingEnable : Bool32
-// ) -> void #foreign libvulkan "vkSetLocalDimmingAMD";
-
-// get_buffer_device_address_ext :: (
-//     device : Device,
-//     pInfo : *BufferDeviceAddressInfo
-// ) -> DeviceAddress #foreign libvulkan "vkGetBufferDeviceAddressEXT";
-
-// get_physical_device_tool_properties_ext :: (
-//     physicalDevice : PhysicalDevice,
-//     pToolCount : *u32,
-//     pToolProperties : *PhysicalDeviceToolPropertiesEXT
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceToolPropertiesEXT";
-
-// get_physical_device_cooperative_matrix_properties_nv :: (
-//     physicalDevice : PhysicalDevice,
-//     pPropertyCount : *u32,
-//     pProperties : *CooperativeMatrixPropertiesNV
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV";
-
-// get_physical_device_supported_framebuffer_mixed_samples_combinations_nv :: (
-//     physicalDevice : PhysicalDevice,
-//     pCombinationCount : *u32,
-//     pCombinations : *FramebufferMixedSamplesCombinationNV
-// ) -> Result #foreign libvulkan "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV";
-
-// create_headless_surface_ext :: (
-//     instance : Instance,
-//     pCreateInfo : *HeadlessSurfaceCreateInfoEXT,
-//     pAllocator : *AllocationCallbacks,
-//     pSurface : *SurfaceKHR
-// ) -> Result #foreign libvulkan "vkCreateHeadlessSurfaceEXT";
-
-// cmd_set_line_stipple_ext :: (
-//     commandBuffer : CommandBuffer,
-//     lineStippleFactor : u32,
-//     lineStipplePattern : u16
-// ) -> void #foreign libvulkan "vkCmdSetLineStippleEXT";
-
-// reset_query_pool_ext :: (
-//     device : Device,
-//     queryPool : QueryPool,
-//     firstQuery : u32,
-//     queryCount : u32
-// ) -> void #foreign libvulkan "vkResetQueryPoolEXT";
-
-// cmd_set_cull_mode_ext :: (
-//     commandBuffer : CommandBuffer,
-//     cullMode : CullModeFlags
-// ) -> void #foreign libvulkan "vkCmdSetCullModeEXT";
-
-// cmd_set_front_face_ext :: (
-//     commandBuffer : CommandBuffer,
-//     frontFace : FrontFace
-// ) -> void #foreign libvulkan "vkCmdSetFrontFaceEXT";
-
-// cmd_set_primitive_topology_ext :: (
-//     commandBuffer : CommandBuffer,
-//     primitiveTopology : PrimitiveTopology
-// ) -> void #foreign libvulkan "vkCmdSetPrimitiveTopologyEXT";
-
-// cmd_set_viewport_with_count_ext :: (
-//     commandBuffer : CommandBuffer,
-//     viewportCount : u32,
-//     pViewports : *Viewport
-// ) -> void #foreign libvulkan "vkCmdSetViewportWithCountEXT";
-
-// cmd_set_scissor_with_count_ext :: (
-//     commandBuffer : CommandBuffer,
-//     scissorCount : u32,
-//     pScissors : *Rect2D
-// ) -> void #foreign libvulkan "vkCmdSetScissorWithCountEXT";
-
-// cmd_bind_vertex_buffers2_ext :: (
-//     commandBuffer : CommandBuffer,
-//     firstBinding : u32,
-//     bindingCount : u32,
-//     pBuffers : *Buffer,
-//     pOffsets : *DeviceSize,
-//     pSizes : *DeviceSize,
-//     pStrides : *DeviceSize
-// ) -> void #foreign libvulkan "vkCmdBindVertexBuffers2EXT";
-
-// cmd_set_depth_test_enable_ext :: (
-//     commandBuffer : CommandBuffer,
-//     depthTestEnable : Bool32
-// ) -> void #foreign libvulkan "vkCmdSetDepthTestEnableEXT";
-
-// cmd_set_depth_write_enable_ext :: (
-//     commandBuffer : CommandBuffer,
-//     depthWriteEnable : Bool32
-// ) -> void #foreign libvulkan "vkCmdSetDepthWriteEnableEXT";
-
-// cmd_set_depth_compare_op_ext :: (
-//     commandBuffer : CommandBuffer,
-//     depthCompareOp : CompareOp
-// ) -> void #foreign libvulkan "vkCmdSetDepthCompareOpEXT";
-
-// cmd_set_depth_bounds_test_enable_ext :: (
-//     commandBuffer : CommandBuffer,
-//     depthBoundsTestEnable : Bool32
-// ) -> void #foreign libvulkan "vkCmdSetDepthBoundsTestEnableEXT";
-
-// cmd_set_stencil_test_enable_ext :: (
-//     commandBuffer : CommandBuffer,
-//     stencilTestEnable : Bool32
-// ) -> void #foreign libvulkan "vkCmdSetStencilTestEnableEXT";
-
-// cmd_set_stencil_op_ext :: (
-//     commandBuffer : CommandBuffer,
-//     faceMask : StencilFaceFlags,
-//     failOp : StencilOp,
-//     passOp : StencilOp,
-//     depthFailOp : StencilOp,
-//     compareOp : CompareOp
-// ) -> void #foreign libvulkan "vkCmdSetStencilOpEXT";
-
-// get_generated_commands_memory_requirements_nv :: (
-//     device : Device,
-//     pInfo : *GeneratedCommandsMemoryRequirementsInfoNV,
-//     pMemoryRequirements : *MemoryRequirements2
-// ) -> void #foreign libvulkan "vkGetGeneratedCommandsMemoryRequirementsNV";
-
-// cmd_preprocess_generated_commands_nv :: (
-//     commandBuffer : CommandBuffer,
-//     pGeneratedCommandsInfo : *GeneratedCommandsInfoNV
-// ) -> void #foreign libvulkan "vkCmdPreprocessGeneratedCommandsNV";
-
-// cmd_execute_generated_commands_nv :: (
-//     commandBuffer : CommandBuffer,
-//     isPreprocessed : Bool32,
-//     pGeneratedCommandsInfo : *GeneratedCommandsInfoNV
-// ) -> void #foreign libvulkan "vkCmdExecuteGeneratedCommandsNV";
-
-// cmd_bind_pipeline_shader_group_nv :: (
-//     commandBuffer : CommandBuffer,
-//     pipelineBindPoint : PipelineBindPoint,
-//     pipeline : Pipeline,
-//     groupIndex : u32
-// ) -> void #foreign libvulkan "vkCmdBindPipelineShaderGroupNV";
-
-// create_indirect_commands_layout_nv :: (
-//     device : Device,
-//     pCreateInfo : *IndirectCommandsLayoutCreateInfoNV,
-//     pAllocator : *AllocationCallbacks,
-//     pIndirectCommandsLayout : *IndirectCommandsLayoutNV
-// ) -> Result #foreign libvulkan "vkCreateIndirectCommandsLayoutNV";
-
-// destroy_indirect_commands_layout_nv :: (
-//     device : Device,
-//     indirectCommandsLayout : IndirectCommandsLayoutNV,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroyIndirectCommandsLayoutNV";
-
-// create_private_data_slot_ext :: (
-//     device : Device,
-//     pCreateInfo : *PrivateDataSlotCreateInfoEXT,
-//     pAllocator : *AllocationCallbacks,
-//     pPrivateDataSlot : *PrivateDataSlotEXT
-// ) -> Result #foreign libvulkan "vkCreatePrivateDataSlotEXT";
-
-// destroy_private_data_slot_ext :: (
-//     device : Device,
-//     privateDataSlot : PrivateDataSlotEXT,
-//     pAllocator : *AllocationCallbacks
-// ) -> void #foreign libvulkan "vkDestroyPrivateDataSlotEXT";
-
-// set_private_data_ext :: (
-//     device : Device,
-//     objectType : ObjectType,
-//     objectHandle : u64,
-//     privateDataSlot : PrivateDataSlotEXT,
-//     data : u64
-// ) -> Result #foreign libvulkan "vkSetPrivateDataEXT";
-
-// get_private_data_ext :: (
-//     device : Device,
-//     objectType : ObjectType,
-//     objectHandle : u64,
-//     privateDataSlot : PrivateDataSlotEXT,
-//     pData : *u64
-// ) -> void #foreign libvulkan "vkGetPrivateDataEXT";
-
-// cmd_set_fragment_shading_rate_enum_nv :: (
-//     commandBuffer : CommandBuffer,
-//     shadingRate : FragmentShadingRateNV,
-//     combinerOps : [2]FragmentShadingRateCombinerOpKHR
-// ) -> void #foreign libvulkan "vkCmdSetFragmentShadingRateEnumNV";
 
 create_acceleration_structure_khr : (
     device : Device,
@@ -13087,85 +12040,10 @@ cmd_build_acceleration_structures_khr : (
     ppBuildRangeInfos : **AccelerationStructureBuildRangeInfoKHR
 ) -> void #foreign; // libvulkan "vkCmdBuildAccelerationStructuresKHR";
 
-// cmd_build_acceleration_structures_indirect_khr :: (
-//     commandBuffer : CommandBuffer,
-//     infoCount : u32,
-//     pInfos : *AccelerationStructureBuildGeometryInfoKHR,
-//     pIndirectDeviceAddresses : *DeviceAddress,
-//     pIndirectStrides : *u32,
-//     ppMaxPrimitiveCounts : **u32
-// ) -> void #foreign libvulkan "vkCmdBuildAccelerationStructuresIndirectKHR";
-
-// build_acceleration_structures_khr :: (
-//     device : Device,
-//     deferredOperation : DeferredOperationKHR,
-//     infoCount : u32,
-//     pInfos : *AccelerationStructureBuildGeometryInfoKHR,
-//     ppBuildRangeInfos : **AccelerationStructureBuildRangeInfoKHR
-// ) -> Result #foreign libvulkan "vkBuildAccelerationStructuresKHR";
-
-// copy_acceleration_structure_khr :: (
-//     device : Device,
-//     deferredOperation : DeferredOperationKHR,
-//     pInfo : *CopyAccelerationStructureInfoKHR
-// ) -> Result #foreign libvulkan "vkCopyAccelerationStructureKHR";
-
-// copy_acceleration_structure_to_memory_khr :: (
-//     device : Device,
-//     deferredOperation : DeferredOperationKHR,
-//     pInfo : *CopyAccelerationStructureToMemoryInfoKHR
-// ) -> Result #foreign libvulkan "vkCopyAccelerationStructureToMemoryKHR";
-
-// copy_memory_to_acceleration_structure_khr :: (
-//     device : Device,
-//     deferredOperation : DeferredOperationKHR,
-//     pInfo : *CopyMemoryToAccelerationStructureInfoKHR
-// ) -> Result #foreign libvulkan "vkCopyMemoryToAccelerationStructureKHR";
-
-// write_acceleration_structures_properties_khr :: (
-//     device : Device,
-//     accelerationStructureCount : u32,
-//     pAccelerationStructures : *AccelerationStructureKHR,
-//     queryType : QueryType,
-//     dataSize : u64,
-//     pData : *void,
-//     stride : u64
-// ) -> Result #foreign libvulkan "vkWriteAccelerationStructuresPropertiesKHR";
-
-// cmd_copy_acceleration_structure_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pInfo : *CopyAccelerationStructureInfoKHR
-// ) -> void #foreign libvulkan "vkCmdCopyAccelerationStructureKHR";
-
-// cmd_copy_acceleration_structure_to_memory_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pInfo : *CopyAccelerationStructureToMemoryInfoKHR
-// ) -> void #foreign libvulkan "vkCmdCopyAccelerationStructureToMemoryKHR";
-
-// cmd_copy_memory_to_acceleration_structure_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pInfo : *CopyMemoryToAccelerationStructureInfoKHR
-// ) -> void #foreign libvulkan "vkCmdCopyMemoryToAccelerationStructureKHR";
-
 get_acceleration_structure_device_address_khr : (
     device : Device,
     pInfo : *AccelerationStructureDeviceAddressInfoKHR
 ) -> DeviceAddress #foreign; // libvulkan "vkGetAccelerationStructureDeviceAddressKHR";
-
-// cmd_write_acceleration_structures_properties_khr :: (
-//     commandBuffer : CommandBuffer,
-//     accelerationStructureCount : u32,
-//     pAccelerationStructures : *AccelerationStructureKHR,
-//     queryType : QueryType,
-//     queryPool : QueryPool,
-//     firstQuery : u32
-// ) -> void #foreign libvulkan "vkCmdWriteAccelerationStructuresPropertiesKHR";
-
-// get_device_acceleration_structure_compatibility_khr :: (
-//     device : Device,
-//     pVersionInfo : *AccelerationStructureVersionInfoKHR,
-//     pCompatibility : *AccelerationStructureCompatibilityKHR
-// ) -> void #foreign libvulkan "vkGetDeviceAccelerationStructureCompatibilityKHR";
 
 get_acceleration_structure_build_sizes_khr : (
     device : Device,
@@ -13196,33 +12074,38 @@ create_ray_tracing_pipelines_khr : (
     pPipelines : *Pipeline
 ) -> Result #foreign; // libvulkan "vkCreateRayTracingPipelinesKHR";
 
-// get_ray_tracing_capture_replay_shader_group_handles_khr :: (
-//     device : Device,
-//     pipeline : Pipeline,
-//     firstGroup : u32,
-//     groupCount : u32,
-//     dataSize : u64,
-//     pData : *void
-// ) -> Result #foreign libvulkan "vkGetRayTracingCaptureReplayShaderGroupHandlesKHR";
+get_descriptor_set_layout_size_ext : (
+    device : Device,
+    layout : DescriptorSetLayout,
+    pLayoutSizeInBytes : *DeviceSize
+) -> void #foreign; // libvulkan "vkGetDescriptorSetLayoutSizeEXT";
 
-// cmd_trace_rays_indirect_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pRaygenShaderBindingTable : *StridedDeviceAddressRegionKHR,
-//     pMissShaderBindingTable : *StridedDeviceAddressRegionKHR,
-//     pHitShaderBindingTable : *StridedDeviceAddressRegionKHR,
-//     pCallableShaderBindingTable : *StridedDeviceAddressRegionKHR,
-//     indirectDeviceAddress : DeviceAddress
-// ) -> void #foreign libvulkan "vkCmdTraceRaysIndirectKHR";
+cmd_bind_descriptor_buffers_ext : (
+    commandBuffer : CommandBuffer,
+    bufferCount : u32,
+    pBindingInfos : *DescriptorBufferBindingInfoEXT
+) -> void #foreign; // libvulkan "vkCmdBindDescriptorBuffersEXT";
 
-// get_ray_tracing_shader_group_stack_size_khr :: (
-//     device : Device,
-//     pipeline : Pipeline,
-//     group : u32,
-//     groupShader : ShaderGroupShaderKHR
-// ) -> DeviceSize #foreign libvulkan "vkGetRayTracingShaderGroupStackSizeKHR";
+cmd_set_descriptor_buffer_offsets_ext : (
+    commandBuffer : CommandBuffer,
+    pipelineBindPoint : PipelineBindPoint,
+    layout : PipelineLayout,
+    firstSet : u32,
+    setCount : u32,
+    pBufferIndices : *u32,
+    pOffsets : *DeviceSize
+) -> void #foreign; // libvulkan "vkCmdSetDescriptorBufferOffsetsEXT";
 
-// cmd_set_ray_tracing_pipeline_stack_size_khr :: (
-//     commandBuffer : CommandBuffer,
-//     pipelineStackSize : u32
-// ) -> void #foreign libvulkan "vkCmdSetRayTracingPipelineStackSizeKHR";
+get_descriptor_ext : (
+    device : Device,
+    pDescriptorInfo : *DescriptorGetInfoEXT,
+    dataSize : u64,
+    pDescriptor : *void
+) -> void #foreign; // libvulkan "vkGetDescriptorEXT";
 
+get_descriptor_set_layout_binding_offset_ext : (
+    device : Device,
+    layout : DescriptorSetLayout,
+    binding : u32,
+    pOffset : *DeviceSize
+) -> void #foreign; // libvulkan "vkGetDescriptorSetLayoutBindingOffsetEXT";
