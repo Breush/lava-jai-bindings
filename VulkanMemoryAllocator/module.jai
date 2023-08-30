@@ -22,14 +22,14 @@ PFN_AllocateDeviceMemoryFunction :: #type (
     memory : Vk.DeviceMemory,
     size : Vk.DeviceSize,
     pUserData : *void
-) #foreign;
+) #c_call;
 PFN_FreeDeviceMemoryFunction :: #type (
     allocator : Allocator,
     memoryType : u32,
     memory : Vk.DeviceMemory,
     size : Vk.DeviceSize,
     pUserData : *void
-) #foreign;
+) #c_call;
 
 AllocatorCreateFlagBits :: enum_flags u32 {
     ExternallySynchronized :: 1;

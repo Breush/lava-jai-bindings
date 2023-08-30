@@ -14,11 +14,11 @@ IncludeResolveFn :: #type (
     type : s64,
     requestingSource : *u8,
     includeDepth : u64
-) -> *IncludeResult #foreign;
+) -> *IncludeResult #c_call;
 IncludeResultReleaseFn :: #type (
     userData : *void,
     includeResult : *IncludeResult
-) #foreign;
+) #c_call;
 CompilationResultT :: *CompilationResult;
 
 SourceLanguage :: enum s32 {

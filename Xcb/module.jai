@@ -391,7 +391,7 @@ ModMask :: enum s32 {
     _3 :: 32;
     _4 :: 64;
     _5 :: 128;
-    Any :: 32768;
+    _Any :: 32768;
 }
 
 KeyButMask :: enum s32 {
@@ -420,7 +420,7 @@ ButtonMask :: enum s32 {
     _3 :: 1024;
     _4 :: 2048;
     _5 :: 4096;
-    Any :: 32768;
+    _Any :: 32768;
 }
 
 Motion :: enum s32 {
@@ -468,7 +468,7 @@ Time :: enum s32 {
 
 AtomEnum :: enum s32 {
     None :: 0;
-    Any :: 0;
+    _Any :: 0;
     Primary :: 1;
     Secondary :: 2;
     Arc :: 3;
@@ -639,7 +639,7 @@ PropMode :: enum s32 {
 }
 
 GetPropertyType :: enum s32 {
-    Any :: 0;
+    _Any :: 0;
 }
 
 SendEventDest :: enum s32 {
@@ -665,7 +665,7 @@ CursorEnum :: enum s32 {
 }
 
 ButtonIndex :: enum s32 {
-    Any :: 0;
+    _Any :: 0;
     _1 :: 1;
     _2 :: 2;
     _3 :: 3;
@@ -674,7 +674,7 @@ ButtonIndex :: enum s32 {
 }
 
 Grab :: enum s32 {
-    Any :: 0;
+    _Any :: 0;
 }
 
 Allow :: enum s32 {
@@ -4652,14 +4652,14 @@ query_text_extents :: (
     c : *Connection,
     font : Fontable,
     stringLen : u32,
-    string : *Char2B
+    _string : *Char2B
 ) -> QueryTextExtentsCookie #foreign libxcb "xcb_query_text_extents";
 
 query_text_extents_unchecked :: (
     c : *Connection,
     font : Fontable,
     stringLen : u32,
-    string : *Char2B
+    _string : *Char2B
 ) -> QueryTextExtentsCookie #foreign libxcb "xcb_query_text_extents_unchecked";
 
 query_text_extents_reply :: (
@@ -5433,7 +5433,7 @@ image_text_8_checked :: (
     gc : Gcontext,
     x : s16,
     y : s16,
-    string : *u8
+    _string : *u8
 ) -> VoidCookie #foreign libxcb "xcb_image_text_8_checked";
 
 image_text_8 :: (
@@ -5443,7 +5443,7 @@ image_text_8 :: (
     gc : Gcontext,
     x : s16,
     y : s16,
-    string : *u8
+    _string : *u8
 ) -> VoidCookie #foreign libxcb "xcb_image_text_8";
 
 image_text_8_string :: (r : *ImageText8_request) -> *u8 #foreign libxcb "xcb_image_text_8_string";
@@ -5461,7 +5461,7 @@ image_text_16_checked :: (
     gc : Gcontext,
     x : s16,
     y : s16,
-    string : *Char2B
+    _string : *Char2B
 ) -> VoidCookie #foreign libxcb "xcb_image_text_16_checked";
 
 image_text_16 :: (
@@ -5471,7 +5471,7 @@ image_text_16 :: (
     gc : Gcontext,
     x : s16,
     y : s16,
-    string : *Char2B
+    _string : *Char2B
 ) -> VoidCookie #foreign libxcb "xcb_image_text_16";
 
 image_text_16_string :: (r : *ImageText16Request) -> *Char2B #foreign libxcb "xcb_image_text_16_string";

@@ -2479,7 +2479,7 @@ StateComponent :: enum s32 {
 }
 
 StateMatch :: enum s32 {
-    Any :: 1;
+    _Any :: 1;
     All :: 2;
     NonExclusive :: 65536;
 }
@@ -2623,7 +2623,7 @@ keymap_new_from_file :: (
 
 keymap_new_from_string :: (
     _context : *Context,
-    string : *u8,
+    _string : *u8,
     format : KeymapFormat,
     flags : KeymapCompileFlags
 ) -> *Keymap #foreign libxkbcommon "xkb_keymap_new_from_string";

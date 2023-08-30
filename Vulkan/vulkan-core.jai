@@ -1542,7 +1542,7 @@ PFN_CmdExecuteCommands :: #type (
     commandBuffer : CommandBuffer,
     commandBufferCount : u32,
     pCommandBuffers : *CommandBuffer
-) #foreign;
+) #c_call;
 SamplerYcbcrConversion :: *SamplerYcbcrConversionT;
 DescriptorUpdateTemplate :: *DescriptorUpdateTemplateT;
 SubgroupFeatureFlags :: Flags;
@@ -1702,7 +1702,7 @@ PFN_GetDescriptorSetLayoutSupport :: #type (
     device : Device,
     pCreateInfo : *DescriptorSetLayoutCreateInfo,
     pSupport : *DescriptorSetLayoutSupport
-) #foreign;
+) #c_call;
 ResolveModeFlags :: Flags;
 DescriptorBindingFlags :: Flags;
 SemaphoreWaitFlags :: Flags;
@@ -1775,7 +1775,7 @@ PFN_GetBufferOpaqueCaptureAddress :: #type (
 PFN_GetDeviceMemoryOpaqueCaptureAddress :: #type (
     device : Device,
     pInfo : *DeviceMemoryOpaqueCaptureAddressInfo
-) -> u64 #foreign;
+) -> u64 #c_call;
 SurfaceKHR :: *SurfaceKHRT;
 CompositeAlphaFlagsKHR :: Flags;
 SurfaceTransformFlagsKHR :: Flags;
@@ -1806,7 +1806,7 @@ PFN_GetPhysicalDeviceSurfacePresentModesKHR :: #type (
     surface : SurfaceKHR,
     pPresentModeCount : *u32,
     pPresentModes : *PresentModeKHR
-) -> Result #foreign;
+) -> Result #c_call;
 SwapchainKHR :: *SwapchainKHRT;
 SwapchainCreateFlagsKHR :: Flags;
 DeviceGroupPresentModeFlagsKHR :: Flags;
@@ -1858,7 +1858,7 @@ PFN_AcquireNextImage2KHR :: #type (
     device : Device,
     pAcquireInfo : *AcquireNextImageInfoKHR,
     pImageIndex : *u32
-) -> Result #foreign;
+) -> Result #c_call;
 DisplayKHR :: *DisplayKHRT;
 DisplayModeKHR :: *DisplayModeKHRT;
 DisplayModeCreateFlagsKHR :: Flags;
@@ -1911,7 +1911,7 @@ PFN_CreateSharedSwapchainsKHR :: #type (
     pCreateInfos : *SwapchainCreateInfoKHR,
     pAllocator : *AllocationCallbacks,
     pSwapchains : *SwapchainKHR
-) -> Result #foreign;
+) -> Result #c_call;
 RenderPassMultiviewCreateInfoKHR :: RenderPassMultiviewCreateInfo;
 PhysicalDeviceMultiviewFeaturesKHR :: PhysicalDeviceMultiviewFeatures;
 PhysicalDeviceMultiviewPropertiesKHR :: PhysicalDeviceMultiviewProperties;
@@ -1956,7 +1956,7 @@ PFN_GetPhysicalDeviceSparseImageFormatProperties2KHR :: #type (
     pFormatInfo : *PhysicalDeviceSparseImageFormatInfo2,
     pPropertyCount : *u32,
     pProperties : *SparseImageFormatProperties2
-) #foreign;
+) #c_call;
 PeerMemoryFeatureFlagsKHR :: PeerMemoryFeatureFlags;
 PeerMemoryFeatureFlagBitsKHR :: PeerMemoryFeatureFlagBits;
 MemoryAllocateFlagsKHR :: MemoryAllocateFlags;
@@ -1987,20 +1987,20 @@ PFN_CmdDispatchBaseKHR :: #type (
     groupCountX : u32,
     groupCountY : u32,
     groupCountZ : u32
-) #foreign;
+) #c_call;
 CommandPoolTrimFlagsKHR :: CommandPoolTrimFlags;
 PFN_TrimCommandPoolKHR :: #type (
     device : Device,
     commandPool : CommandPool,
     flags : CommandPoolTrimFlags
-) #foreign;
+) #c_call;
 PhysicalDeviceGroupPropertiesKHR :: PhysicalDeviceGroupProperties;
 DeviceGroupDeviceCreateInfoKHR :: DeviceGroupDeviceCreateInfo;
 PFN_EnumeratePhysicalDeviceGroupsKHR :: #type (
     instance : Instance,
     pPhysicalDeviceGroupCount : *u32,
     pPhysicalDeviceGroupProperties : *PhysicalDeviceGroupProperties
-) -> Result #foreign;
+) -> Result #c_call;
 ExternalMemoryHandleTypeFlagsKHR :: ExternalMemoryHandleTypeFlags;
 ExternalMemoryHandleTypeFlagBitsKHR :: ExternalMemoryHandleTypeFlagBits;
 ExternalMemoryFeatureFlagsKHR :: ExternalMemoryFeatureFlags;
@@ -2015,7 +2015,7 @@ PFN_GetPhysicalDeviceExternalBufferPropertiesKHR :: #type (
     physicalDevice : PhysicalDevice,
     pExternalBufferInfo : *PhysicalDeviceExternalBufferInfo,
     pExternalBufferProperties : *ExternalBufferProperties
-) #foreign;
+) #c_call;
 ExternalMemoryImageCreateInfoKHR :: ExternalMemoryImageCreateInfo;
 ExternalMemoryBufferCreateInfoKHR :: ExternalMemoryBufferCreateInfo;
 ExportMemoryAllocateInfoKHR :: ExportMemoryAllocateInfo;
@@ -2029,7 +2029,7 @@ PFN_GetMemoryFdPropertiesKHR :: #type (
     handleType : ExternalMemoryHandleTypeFlagBits,
     fd : s32,
     pMemoryFdProperties : *MemoryFdPropertiesKHR
-) -> Result #foreign;
+) -> Result #c_call;
 ExternalSemaphoreHandleTypeFlagsKHR :: ExternalSemaphoreHandleTypeFlags;
 ExternalSemaphoreHandleTypeFlagBitsKHR :: ExternalSemaphoreHandleTypeFlagBits;
 ExternalSemaphoreFeatureFlagsKHR :: ExternalSemaphoreFeatureFlags;
@@ -2040,7 +2040,7 @@ PFN_GetPhysicalDeviceExternalSemaphorePropertiesKHR :: #type (
     physicalDevice : PhysicalDevice,
     pExternalSemaphoreInfo : *PhysicalDeviceExternalSemaphoreInfo,
     pExternalSemaphoreProperties : *ExternalSemaphoreProperties
-) #foreign;
+) #c_call;
 SemaphoreImportFlagsKHR :: SemaphoreImportFlags;
 SemaphoreImportFlagBitsKHR :: SemaphoreImportFlagBits;
 ExportSemaphoreCreateInfoKHR :: ExportSemaphoreCreateInfo;
@@ -2067,7 +2067,7 @@ PFN_CmdPushDescriptorSetWithTemplateKHR :: #type (
     layout : PipelineLayout,
     set : u32,
     pData : *void
-) #foreign;
+) #c_call;
 PhysicalDeviceShaderFloat16Int8FeaturesKHR :: PhysicalDeviceShaderFloat16Int8Features;
 PhysicalDeviceFloat16Int8FeaturesKHR :: PhysicalDeviceShaderFloat16Int8Features;
 PhysicalDevice16BitStorageFeaturesKHR :: PhysicalDevice16BitStorageFeatures;
@@ -2092,7 +2092,7 @@ PFN_UpdateDescriptorSetWithTemplateKHR :: #type (
     descriptorSet : DescriptorSet,
     descriptorUpdateTemplate : DescriptorUpdateTemplate,
     pData : *void
-) #foreign;
+) #c_call;
 PhysicalDeviceImagelessFramebufferFeaturesKHR :: PhysicalDeviceImagelessFramebufferFeatures;
 FramebufferAttachmentsCreateInfoKHR :: FramebufferAttachmentsCreateInfo;
 FramebufferAttachmentImageInfoKHR :: FramebufferAttachmentImageInfo;
@@ -2127,7 +2127,7 @@ PFN_CmdEndRenderPass2KHR :: #type (
 PFN_GetSwapchainStatusKHR :: #type (
     device : Device,
     swapchain : SwapchainKHR
-) -> Result #foreign;
+) -> Result #c_call;
 ExternalFenceHandleTypeFlagsKHR :: ExternalFenceHandleTypeFlags;
 ExternalFenceHandleTypeFlagBitsKHR :: ExternalFenceHandleTypeFlagBits;
 ExternalFenceFeatureFlagsKHR :: ExternalFenceFeatureFlags;
@@ -2138,7 +2138,7 @@ PFN_GetPhysicalDeviceExternalFencePropertiesKHR :: #type (
     physicalDevice : PhysicalDevice,
     pExternalFenceInfo : *PhysicalDeviceExternalFenceInfo,
     pExternalFenceProperties : *ExternalFenceProperties
-) #foreign;
+) #c_call;
 FenceImportFlagsKHR :: FenceImportFlags;
 FenceImportFlagBitsKHR :: FenceImportFlagBits;
 ExportFenceCreateInfoKHR :: ExportFenceCreateInfo;
@@ -2150,7 +2150,7 @@ PFN_GetFenceFdKHR :: #type (
     device : Device,
     pGetFdInfo : *FenceGetFdInfoKHR,
     pFd : *s32
-) -> Result #foreign;
+) -> Result #c_call;
 PerformanceCounterDescriptionFlagsKHR :: Flags;
 AcquireProfilingLockFlagsKHR :: Flags;
 PFN_EnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR :: #type (
@@ -2169,7 +2169,7 @@ PFN_AcquireProfilingLockKHR :: #type (
     device : Device,
     pInfo : *AcquireProfilingLockInfoKHR
 ) -> Result #c_call;
-PFN_ReleaseProfilingLockKHR :: #type (device : Device) #foreign;
+PFN_ReleaseProfilingLockKHR :: #type (device : Device) #c_call;
 PointClippingBehaviorKHR :: PointClippingBehavior;
 TessellationDomainOriginKHR :: TessellationDomainOrigin;
 PhysicalDevicePointClippingPropertiesKHR :: PhysicalDevicePointClippingProperties;
@@ -2187,7 +2187,7 @@ PFN_GetPhysicalDeviceSurfaceFormats2KHR :: #type (
     pSurfaceInfo : *PhysicalDeviceSurfaceInfo2KHR,
     pSurfaceFormatCount : *u32,
     pSurfaceFormats : *SurfaceFormat2KHR
-) -> Result #foreign;
+) -> Result #c_call;
 PhysicalDeviceVariablePointerFeaturesKHR :: PhysicalDeviceVariablePointersFeatures;
 PhysicalDeviceVariablePointersFeaturesKHR :: PhysicalDeviceVariablePointersFeatures;
 PFN_GetPhysicalDeviceDisplayProperties2KHR :: #type (
@@ -2210,7 +2210,7 @@ PFN_GetDisplayPlaneCapabilities2KHR :: #type (
     physicalDevice : PhysicalDevice,
     pDisplayPlaneInfo : *DisplayPlaneInfo2KHR,
     pCapabilities : *DisplayPlaneCapabilities2KHR
-) -> Result #foreign;
+) -> Result #c_call;
 MemoryDedicatedRequirementsKHR :: MemoryDedicatedRequirements;
 MemoryDedicatedAllocateInfoKHR :: MemoryDedicatedAllocateInfo;
 BufferMemoryRequirementsInfo2KHR :: BufferMemoryRequirementsInfo2;
@@ -2233,7 +2233,7 @@ PFN_GetImageSparseMemoryRequirements2KHR :: #type (
     pInfo : *ImageSparseMemoryRequirementsInfo2,
     pSparseMemoryRequirementCount : *u32,
     pSparseMemoryRequirements : *SparseImageMemoryRequirements2
-) #foreign;
+) #c_call;
 ImageFormatListCreateInfoKHR :: ImageFormatListCreateInfo;
 SamplerYcbcrConversionKHR :: SamplerYcbcrConversion;
 SamplerYcbcrModelConversionKHR :: SamplerYcbcrModelConversion;
@@ -2255,7 +2255,7 @@ PFN_DestroySamplerYcbcrConversionKHR :: #type (
     device : Device,
     ycbcrConversion : SamplerYcbcrConversion,
     pAllocator : *AllocationCallbacks
-) #foreign;
+) #c_call;
 BindBufferMemoryInfoKHR :: BindBufferMemoryInfo;
 BindImageMemoryInfoKHR :: BindImageMemoryInfo;
 PFN_BindBufferMemory2KHR :: #type (
@@ -2267,7 +2267,7 @@ PFN_BindImageMemory2KHR :: #type (
     device : Device,
     bindInfoCount : u32,
     pBindInfos : *BindImageMemoryInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PhysicalDeviceMaintenance3PropertiesKHR :: PhysicalDeviceMaintenance3Properties;
 DescriptorSetLayoutSupportKHR :: DescriptorSetLayoutSupport;
 PFN_GetDescriptorSetLayoutSupportKHR :: #type (
@@ -2292,7 +2292,7 @@ PFN_CmdDrawIndexedIndirectCountKHR :: #type (
     countBufferOffset : DeviceSize,
     maxDrawCount : u32,
     stride : u32
-) #foreign;
+) #c_call;
 PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR :: PhysicalDeviceShaderSubgroupExtendedTypesFeatures;
 PhysicalDevice8BitStorageFeaturesKHR :: PhysicalDevice8BitStorageFeatures;
 PhysicalDeviceShaderAtomicInt64FeaturesKHR :: PhysicalDeviceShaderAtomicInt64Features;
@@ -2327,7 +2327,7 @@ PFN_WaitSemaphoresKHR :: #type (
 PFN_SignalSemaphoreKHR :: #type (
     device : Device,
     pSignalInfo : *SemaphoreSignalInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PhysicalDeviceVulkanMemoryModelFeaturesKHR :: PhysicalDeviceVulkanMemoryModelFeatures;
 PFN_GetPhysicalDeviceFragmentShadingRatesKHR :: #type (
     physicalDevice : PhysicalDevice,
@@ -2338,7 +2338,7 @@ PFN_CmdSetFragmentShadingRateKHR :: #type (
     commandBuffer : CommandBuffer,
     pFragmentSize : *Extent2D,
     combinerOps : *FragmentShadingRateCombinerOpKHR
-) #foreign;
+) #c_call;
 PhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR :: PhysicalDeviceSeparateDepthStencilLayoutsFeatures;
 AttachmentReferenceStencilLayoutKHR :: AttachmentReferenceStencilLayout;
 AttachmentDescriptionStencilLayoutKHR :: AttachmentDescriptionStencilLayout;
@@ -2359,7 +2359,7 @@ PFN_GetBufferOpaqueCaptureAddressKHR :: #type (
 PFN_GetDeviceMemoryOpaqueCaptureAddressKHR :: #type (
     device : Device,
     pInfo : *DeviceMemoryOpaqueCaptureAddressInfo
-) -> u64 #foreign;
+) -> u64 #c_call;
 DeferredOperationKHR :: *DeferredOperationKHRT;
 PFN_CreateDeferredOperationKHR :: #type (
     device : Device,
@@ -2424,7 +2424,7 @@ PFN_CmdBlitImage2KHR :: #type (
 PFN_CmdResolveImage2KHR :: #type (
     commandBuffer : CommandBuffer,
     pResolveImageInfo : *ResolveImageInfo2KHR
-) #foreign;
+) #c_call;
 DebugReportCallbackEXT :: *DebugReportCallbackEXTT;
 DebugReportFlagsEXT :: Flags;
 PFN_DebugReportCallbackEXT :: #type (
@@ -2474,7 +2474,7 @@ PFN_CmdDebugMarkerEndEXT :: #type (commandBuffer : CommandBuffer) #c_call;
 PFN_CmdDebugMarkerInsertEXT :: #type (
     commandBuffer : CommandBuffer,
     pMarkerInfo : *DebugMarkerMarkerInfoEXT
-) #foreign;
+) #c_call;
 PipelineRasterizationStateStreamCreateFlagsEXT :: Flags;
 PFN_CmdBindTransformFeedbackBuffersEXT :: #type (
     commandBuffer : CommandBuffer,
@@ -2554,7 +2554,7 @@ PFN_GetShaderInfoAMD :: #type (
     infoType : ShaderInfoTypeAMD,
     pInfoSize : *u64,
     pInfo : *void
-) -> Result #foreign;
+) -> Result #c_call;
 ExternalMemoryHandleTypeFlagsNV :: Flags;
 ExternalMemoryFeatureFlagsNV :: Flags;
 PFN_GetPhysicalDeviceExternalImageFormatPropertiesNV :: #type (
@@ -2566,7 +2566,7 @@ PFN_GetPhysicalDeviceExternalImageFormatPropertiesNV :: #type (
     flags : ImageCreateFlags,
     externalHandleType : ExternalMemoryHandleTypeFlagsNV,
     pExternalImageFormatProperties : *ExternalImageFormatPropertiesNV
-) -> Result #foreign;
+) -> Result #c_call;
 ConditionalRenderingFlagsEXT :: Flags;
 PFN_CmdBeginConditionalRenderingEXT :: #type (
     commandBuffer : CommandBuffer,
@@ -2582,7 +2582,7 @@ PFN_CmdSetViewportWScalingNV :: #type (
 PFN_ReleaseDisplayEXT :: #type (
     physicalDevice : PhysicalDevice,
     display : DisplayKHR
-) -> Result #foreign;
+) -> Result #c_call;
 SurfaceCounterFlagsEXT :: Flags;
 PFN_GetPhysicalDeviceSurfaceCapabilities2EXT :: #type (
     physicalDevice : PhysicalDevice,
@@ -2623,7 +2623,7 @@ PFN_GetPastPresentationTimingGOOGLE :: #type (
     swapchain : SwapchainKHR,
     pPresentationTimingCount : *u32,
     pPresentationTimings : *PastPresentationTimingGOOGLE
-) -> Result #foreign;
+) -> Result #c_call;
 PipelineViewportSwizzleStateCreateFlagsNV :: Flags;
 PipelineDiscardRectangleStateCreateFlagsEXT :: Flags;
 PFN_CmdSetDiscardRectangleEXT :: #type (
@@ -2631,7 +2631,7 @@ PFN_CmdSetDiscardRectangleEXT :: #type (
     firstDiscardRectangle : u32,
     discardRectangleCount : u32,
     pDiscardRectangles : *Rect2D
-) #foreign;
+) #c_call;
 PipelineRasterizationConservativeStateCreateFlagsEXT :: Flags;
 PipelineRasterizationDepthClipStateCreateFlagsEXT :: Flags;
 PFN_SetHdrMetadataEXT :: #type (
@@ -2639,7 +2639,7 @@ PFN_SetHdrMetadataEXT :: #type (
     swapchainCount : u32,
     pSwapchains : *SwapchainKHR,
     pMetadata : *HdrMetadataEXT
-) #foreign;
+) #c_call;
 DebugUtilsMessengerEXT :: *DebugUtilsMessengerEXTT;
 DebugUtilsMessengerCallbackDataFlagsEXT :: Flags;
 DebugUtilsMessageTypeFlagsEXT :: Flags;
@@ -2693,7 +2693,7 @@ PFN_SubmitDebugUtilsMessageEXT :: #type (
     messageSeverity : DebugUtilsMessageSeverityFlagBitsEXT,
     messageTypes : DebugUtilsMessageTypeFlagsEXT,
     pCallbackData : *DebugUtilsMessengerCallbackDataEXT
-) #foreign;
+) #c_call;
 SamplerReductionModeEXT :: SamplerReductionMode;
 SamplerReductionModeCreateInfoEXT :: SamplerReductionModeCreateInfo;
 PhysicalDeviceSamplerFilterMinmaxPropertiesEXT :: PhysicalDeviceSamplerFilterMinmaxProperties;
@@ -2705,14 +2705,14 @@ PFN_GetPhysicalDeviceMultisamplePropertiesEXT :: #type (
     physicalDevice : PhysicalDevice,
     samples : SampleCountFlagBits,
     pMultisampleProperties : *MultisamplePropertiesEXT
-) #foreign;
+) #c_call;
 PipelineCoverageToColorStateCreateFlagsNV :: Flags;
 PipelineCoverageModulationStateCreateFlagsNV :: Flags;
 PFN_GetImageDrmFormatModifierPropertiesEXT :: #type (
     device : Device,
     image : Image,
     pProperties : *ImageDrmFormatModifierPropertiesEXT
-) -> Result #foreign;
+) -> Result #c_call;
 ValidationCacheEXT :: *ValidationCacheEXTT;
 ValidationCacheCreateFlagsEXT :: Flags;
 PFN_CreateValidationCacheEXT :: #type (
@@ -2737,7 +2737,7 @@ PFN_GetValidationCacheDataEXT :: #type (
     validationCache : ValidationCacheEXT,
     pDataSize : *u64,
     pData : *void
-) -> Result #foreign;
+) -> Result #c_call;
 DescriptorBindingFlagBitsEXT :: DescriptorBindingFlagBits;
 DescriptorBindingFlagsEXT :: DescriptorBindingFlags;
 DescriptorSetLayoutBindingFlagsCreateInfoEXT :: DescriptorSetLayoutBindingFlagsCreateInfo;
@@ -2761,7 +2761,7 @@ PFN_CmdSetCoarseSampleOrderNV :: #type (
     sampleOrderType : CoarseSampleOrderTypeNV,
     customSampleOrderCount : u32,
     pCustomSampleOrders : *CoarseSampleOrderCustomNV
-) #foreign;
+) #c_call;
 AccelerationStructureNV :: *AccelerationStructureNVT;
 RayTracingShaderGroupTypeNV :: RayTracingShaderGroupTypeKHR;
 GeometryTypeNV :: GeometryTypeKHR;
@@ -2889,7 +2889,7 @@ PFN_CmdWriteBufferMarkerAMD :: #type (
     dstBuffer : Buffer,
     dstOffset : DeviceSize,
     marker : u32
-) #foreign;
+) #c_call;
 PipelineCompilerControlFlagsAMD :: Flags;
 PFN_GetPhysicalDeviceCalibrateableTimeDomainsEXT :: #type (
     physicalDevice : PhysicalDevice,
@@ -2902,7 +2902,7 @@ PFN_GetCalibratedTimestampsEXT :: #type (
     pTimestampInfos : *CalibratedTimestampInfoEXT,
     pTimestamps : *u64,
     pMaxDeviation : *u64
-) -> Result #foreign;
+) -> Result #c_call;
 PipelineCreationFeedbackFlagsEXT :: Flags;
 PFN_CmdDrawMeshTasksNV :: #type (
     commandBuffer : CommandBuffer,
@@ -2939,7 +2939,7 @@ PFN_GetQueueCheckpointDataNV :: #type (
     queue : Queue,
     pCheckpointDataCount : *u32,
     pCheckpointData : *CheckpointDataNV
-) #foreign;
+) #c_call;
 PerformanceConfigurationINTEL :: *PerformanceConfigurationINTELT;
 QueryPoolCreateInfoINTEL :: QueryPoolPerformanceQueryCreateInfoINTEL;
 PFN_InitializePerformanceApiINTEL :: #type (
@@ -2981,7 +2981,7 @@ PFN_SetLocalDimmingAMD :: #type (
     device : Device,
     swapChain : SwapchainKHR,
     localDimmingEnable : Bool32
-) #foreign;
+) #c_call;
 PhysicalDeviceScalarBlockLayoutFeaturesEXT :: PhysicalDeviceScalarBlockLayoutFeatures;
 ShaderCorePropertiesFlagsAMD :: Flags;
 PhysicalDeviceBufferAddressFeaturesEXT :: PhysicalDeviceBufferDeviceAddressFeaturesEXT;
@@ -2989,25 +2989,25 @@ BufferDeviceAddressInfoEXT :: BufferDeviceAddressInfo;
 PFN_GetBufferDeviceAddressEXT :: #type (
     device : Device,
     pInfo : *BufferDeviceAddressInfo
-) -> DeviceAddress #foreign;
+) -> DeviceAddress #c_call;
 ToolPurposeFlagsEXT :: Flags;
 PFN_GetPhysicalDeviceToolPropertiesEXT :: #type (
     physicalDevice : PhysicalDevice,
     pToolCount : *u32,
     pToolProperties : *PhysicalDeviceToolPropertiesEXT
-) -> Result #foreign;
+) -> Result #c_call;
 ImageStencilUsageCreateInfoEXT :: ImageStencilUsageCreateInfo;
 PFN_GetPhysicalDeviceCooperativeMatrixPropertiesNV :: #type (
     physicalDevice : PhysicalDevice,
     pPropertyCount : *u32,
     pProperties : *CooperativeMatrixPropertiesNV
-) -> Result #foreign;
+) -> Result #c_call;
 PipelineCoverageReductionStateCreateFlagsNV :: Flags;
 PFN_GetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV :: #type (
     physicalDevice : PhysicalDevice,
     pCombinationCount : *u32,
     pCombinations : *FramebufferMixedSamplesCombinationNV
-) -> Result #foreign;
+) -> Result #c_call;
 HeadlessSurfaceCreateFlagsEXT :: Flags;
 PFN_CreateHeadlessSurfaceEXT :: #type (
     instance : Instance,
@@ -3019,7 +3019,7 @@ PFN_CmdSetLineStippleEXT :: #type (
     commandBuffer : CommandBuffer,
     lineStippleFactor : u32,
     lineStipplePattern : u16
-) #foreign;
+) #c_call;
 PhysicalDeviceHostQueryResetFeaturesEXT :: PhysicalDeviceHostQueryResetFeatures;
 PFN_ResetQueryPoolEXT :: #type (
     device : Device,
@@ -3085,7 +3085,7 @@ PFN_CmdSetStencilOpEXT :: #type (
     passOp : StencilOp,
     depthFailOp : StencilOp,
     compareOp : CompareOp
-) #foreign;
+) #c_call;
 IndirectCommandsLayoutNV :: *IndirectCommandsLayoutNVT;
 IndirectStateFlagsNV :: Flags;
 IndirectCommandsLayoutUsageFlagsNV :: Flags;
@@ -3119,12 +3119,12 @@ PFN_DestroyIndirectCommandsLayoutNV :: #type (
     device : Device,
     indirectCommandsLayout : IndirectCommandsLayoutNV,
     pAllocator : *AllocationCallbacks
-) #foreign;
+) #c_call;
 DeviceMemoryReportFlagsEXT :: Flags;
 PFN_DeviceMemoryReportCallbackEXT :: #type (
     pCallbackData : *DeviceMemoryReportCallbackDataEXT,
     pUserData : *void
-) #foreign;
+) #c_call;
 PrivateDataSlotEXT :: *PrivateDataSlotEXTT;
 PrivateDataSlotCreateFlagsEXT :: Flags;
 PFN_CreatePrivateDataSlotEXT :: #type (
@@ -3151,13 +3151,13 @@ PFN_GetPrivateDataEXT :: #type (
     objectHandle : u64,
     privateDataSlot : PrivateDataSlotEXT,
     pData : *u64
-) #foreign;
+) #c_call;
 DeviceDiagnosticsConfigFlagsNV :: Flags;
 PFN_CmdSetFragmentShadingRateEnumNV :: #type (
     commandBuffer : CommandBuffer,
     shadingRate : FragmentShadingRateNV,
     combinerOps : *FragmentShadingRateCombinerOpKHR
-) #foreign;
+) #c_call;
 AccelerationStructureKHR :: *AccelerationStructureKHRT;
 AccelerationStructureCreateFlagsKHR :: Flags;
 PFN_CreateAccelerationStructureKHR :: #type (
@@ -3296,7 +3296,7 @@ PFN_GetRayTracingShaderGroupStackSizeKHR :: #type (
 PFN_CmdSetRayTracingPipelineStackSizeKHR :: #type (
     commandBuffer : CommandBuffer,
     pipelineStackSize : u32
-) #foreign;
+) #c_call;
 
 Result :: enum s32 {
     Success :: 0;
@@ -5312,7 +5312,7 @@ DescriptorBindingFlagBits :: enum_flags u32 {
 }
 
 SemaphoreWaitFlagBits :: enum_flags u32 {
-    Any :: 1;
+    _Any :: 1;
     AnyKhr :: 1;
 }
 
@@ -11998,18 +11998,18 @@ create_debug_report_callback_ext : (
     pCreateInfo : *DebugReportCallbackCreateInfoEXT,
     pAllocator : *AllocationCallbacks,
     pCallback : *DebugReportCallbackEXT
-) -> Result #foreign; //  libvulkan "vkCreateDebugReportCallbackEXT";
+) -> Result #c_call; //  libvulkan "vkCreateDebugReportCallbackEXT";
 
 destroy_debug_report_callback_ext : (
     instance : Instance,
     callback : DebugReportCallbackEXT,
     pAllocator : *AllocationCallbacks
-) -> void #foreign; // libvulkan "vkDestroyDebugReportCallbackEXT";
+) -> void #c_call; // libvulkan "vkDestroyDebugReportCallbackEXT";
 
 set_debug_utils_object_name_ext : (
     device : Device,
     pNameInfo : *DebugUtilsObjectNameInfoEXT
-) -> Result #foreign; // libvulkan "vkSetDebugUtilsObjectNameEXT";
+) -> Result #c_call; // libvulkan "vkSetDebugUtilsObjectNameEXT";
 
 get_ray_tracing_shader_group_handles_khr : (
     device : Device,
@@ -12018,32 +12018,32 @@ get_ray_tracing_shader_group_handles_khr : (
     groupCount : u32,
     dataSize : u64,
     pData : *void
-) -> Result #foreign; // libvulkan "vkGetRayTracingShaderGroupHandlesKHR";
+) -> Result #c_call; // libvulkan "vkGetRayTracingShaderGroupHandlesKHR";
 
 create_acceleration_structure_khr : (
     device : Device,
     pCreateInfo : *AccelerationStructureCreateInfoKHR,
     pAllocator : *AllocationCallbacks,
     pAccelerationStructure : *AccelerationStructureKHR
-) -> Result #foreign; // libvulkan "vkCreateAccelerationStructureKHR";
+) -> Result #c_call; // libvulkan "vkCreateAccelerationStructureKHR";
 
 destroy_acceleration_structure_khr : (
     device : Device,
     accelerationStructure : AccelerationStructureKHR,
     pAllocator : *AllocationCallbacks
-) -> void #foreign; // libvulkan "vkDestroyAccelerationStructureKHR";
+) -> void #c_call; // libvulkan "vkDestroyAccelerationStructureKHR";
 
 cmd_build_acceleration_structures_khr : (
     commandBuffer : CommandBuffer,
     infoCount : u32,
     pInfos : *AccelerationStructureBuildGeometryInfoKHR,
     ppBuildRangeInfos : **AccelerationStructureBuildRangeInfoKHR
-) -> void #foreign; // libvulkan "vkCmdBuildAccelerationStructuresKHR";
+) -> void #c_call; // libvulkan "vkCmdBuildAccelerationStructuresKHR";
 
 get_acceleration_structure_device_address_khr : (
     device : Device,
     pInfo : *AccelerationStructureDeviceAddressInfoKHR
-) -> DeviceAddress #foreign; // libvulkan "vkGetAccelerationStructureDeviceAddressKHR";
+) -> DeviceAddress #c_call; // libvulkan "vkGetAccelerationStructureDeviceAddressKHR";
 
 get_acceleration_structure_build_sizes_khr : (
     device : Device,
@@ -12051,7 +12051,7 @@ get_acceleration_structure_build_sizes_khr : (
     pBuildInfo : *AccelerationStructureBuildGeometryInfoKHR,
     pMaxPrimitiveCounts : *u32,
     pSizeInfo : *AccelerationStructureBuildSizesInfoKHR
-) -> void #foreign; // libvulkan "vkGetAccelerationStructureBuildSizesKHR";
+) -> void #c_call; // libvulkan "vkGetAccelerationStructureBuildSizesKHR";
 
 cmd_trace_rays_khr : (
     commandBuffer : CommandBuffer,
@@ -12062,7 +12062,7 @@ cmd_trace_rays_khr : (
     width : u32,
     height : u32,
     depth : u32
-) -> void #foreign; // libvulkan "vkCmdTraceRaysKHR";
+) -> void #c_call; // libvulkan "vkCmdTraceRaysKHR";
 
 create_ray_tracing_pipelines_khr : (
     device : Device,
@@ -12072,19 +12072,19 @@ create_ray_tracing_pipelines_khr : (
     pCreateInfos : *RayTracingPipelineCreateInfoKHR,
     pAllocator : *AllocationCallbacks,
     pPipelines : *Pipeline
-) -> Result #foreign; // libvulkan "vkCreateRayTracingPipelinesKHR";
+) -> Result #c_call; // libvulkan "vkCreateRayTracingPipelinesKHR";
 
 get_descriptor_set_layout_size_ext : (
     device : Device,
     layout : DescriptorSetLayout,
     pLayoutSizeInBytes : *DeviceSize
-) -> void #foreign; // libvulkan "vkGetDescriptorSetLayoutSizeEXT";
+) -> void #c_call; // libvulkan "vkGetDescriptorSetLayoutSizeEXT";
 
 cmd_bind_descriptor_buffers_ext : (
     commandBuffer : CommandBuffer,
     bufferCount : u32,
     pBindingInfos : *DescriptorBufferBindingInfoEXT
-) -> void #foreign; // libvulkan "vkCmdBindDescriptorBuffersEXT";
+) -> void #c_call; // libvulkan "vkCmdBindDescriptorBuffersEXT";
 
 cmd_set_descriptor_buffer_offsets_ext : (
     commandBuffer : CommandBuffer,
@@ -12094,18 +12094,18 @@ cmd_set_descriptor_buffer_offsets_ext : (
     setCount : u32,
     pBufferIndices : *u32,
     pOffsets : *DeviceSize
-) -> void #foreign; // libvulkan "vkCmdSetDescriptorBufferOffsetsEXT";
+) -> void #c_call; // libvulkan "vkCmdSetDescriptorBufferOffsetsEXT";
 
 get_descriptor_ext : (
     device : Device,
     pDescriptorInfo : *DescriptorGetInfoEXT,
     dataSize : u64,
     pDescriptor : *void
-) -> void #foreign; // libvulkan "vkGetDescriptorEXT";
+) -> void #c_call; // libvulkan "vkGetDescriptorEXT";
 
 get_descriptor_set_layout_binding_offset_ext : (
     device : Device,
     layout : DescriptorSetLayout,
     binding : u32,
     pOffset : *DeviceSize
-) -> void #foreign; // libvulkan "vkGetDescriptorSetLayoutBindingOffsetEXT";
+) -> void #c_call; // libvulkan "vkGetDescriptorSetLayoutBindingOffsetEXT";

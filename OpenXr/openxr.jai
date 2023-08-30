@@ -76,56 +76,56 @@ SwapchainUsageFlags :: Flags64;
 CompositionLayerFlags :: Flags64;
 ViewStateFlags :: Flags64;
 InputSourceLocalizedNameFlags :: Flags64;
-PFN_VoidFunction :: #type () #foreign;
+PFN_VoidFunction :: #type () #c_call;
 PFN_GetInstanceProcAddr :: #type (
     instance : Instance,
     name : *u8,
     function : *PFN_VoidFunction
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EnumerateApiLayerProperties :: #type (
     propertyCapacityInput : u32,
     propertyCountOutput : *u32,
     properties : *ApiLayerProperties
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EnumerateInstanceExtensionProperties :: #type (
     layerName : *u8,
     propertyCapacityInput : u32,
     propertyCountOutput : *u32,
     properties : *ExtensionProperties
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateInstance :: #type (
     createInfo : *InstanceCreateInfo,
     instance : *Instance
-) -> Result #foreign;
-PFN_DestroyInstance :: #type (instance : Instance) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroyInstance :: #type (instance : Instance) -> Result #c_call;
 PFN_GetInstanceProperties :: #type (
     instance : Instance,
     instanceProperties : *InstanceProperties
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_PollEvent :: #type (
     instance : Instance,
     eventData : *EventDataBuffer
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_ResultToString :: #type (
     instance : Instance,
     value : Result,
     buffer : *u8 // [64]u8
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_StructureTypeToString :: #type (
     instance : Instance,
     value : StructureType,
     buffer : *u8 // [64]u8
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetSystem :: #type (
     instance : Instance,
     getInfo : *SystemGetInfo,
     systemId : *SystemId
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetSystemProperties :: #type (
     instance : Instance,
     systemId : SystemId,
     properties : *SystemProperties
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EnumerateEnvironmentBlendModes :: #type (
     instance : Instance,
     systemId : SystemId,
@@ -133,54 +133,54 @@ PFN_EnumerateEnvironmentBlendModes :: #type (
     environmentBlendModeCapacityInput : u32,
     environmentBlendModeCountOutput : *u32,
     environmentBlendModes : *EnvironmentBlendMode
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateSession :: #type (
     instance : Instance,
     createInfo : *SessionCreateInfo,
     session : *Session
-) -> Result #foreign;
-PFN_DestroySession :: #type (session : Session) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroySession :: #type (session : Session) -> Result #c_call;
 PFN_EnumerateReferenceSpaces :: #type (
     session : Session,
     spaceCapacityInput : u32,
     spaceCountOutput : *u32,
     spaces : *ReferenceSpaceType
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateReferenceSpace :: #type (
     session : Session,
     createInfo : *ReferenceSpaceCreateInfo,
     space : *Space
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetReferenceSpaceBoundsRect :: #type (
     session : Session,
     referenceSpaceType : ReferenceSpaceType,
     bounds : *Extent2Df
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateActionSpace :: #type (
     session : Session,
     createInfo : *ActionSpaceCreateInfo,
     space : *Space
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_LocateSpace :: #type (
     space : Space,
     baseSpace : Space,
     time : Time,
     location : *SpaceLocation
-) -> Result #foreign;
-PFN_DestroySpace :: #type (space : Space) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroySpace :: #type (space : Space) -> Result #c_call;
 PFN_EnumerateViewConfigurations :: #type (
     instance : Instance,
     systemId : SystemId,
     viewConfigurationTypeCapacityInput : u32,
     viewConfigurationTypeCountOutput : *u32,
     viewConfigurationTypes : *ViewConfigurationType
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetViewConfigurationProperties :: #type (
     instance : Instance,
     systemId : SystemId,
     viewConfigurationType : ViewConfigurationType,
     configurationProperties : *ViewConfigurationProperties
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EnumerateViewConfigurationViews :: #type (
     instance : Instance,
     systemId : SystemId,
@@ -188,57 +188,57 @@ PFN_EnumerateViewConfigurationViews :: #type (
     viewCapacityInput : u32,
     viewCountOutput : *u32,
     views : *ViewConfigurationView
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EnumerateSwapchainFormats :: #type (
     session : Session,
     formatCapacityInput : u32,
     formatCountOutput : *u32,
     formats : *s64
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateSwapchain :: #type (
     session : Session,
     createInfo : *SwapchainCreateInfo,
     swapchain : *Swapchain
-) -> Result #foreign;
-PFN_DestroySwapchain :: #type (swapchain : Swapchain) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroySwapchain :: #type (swapchain : Swapchain) -> Result #c_call;
 PFN_EnumerateSwapchainImages :: #type (
     swapchain : Swapchain,
     imageCapacityInput : u32,
     imageCountOutput : *u32,
     images : *SwapchainImageBaseHeader
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_AcquireSwapchainImage :: #type (
     swapchain : Swapchain,
     acquireInfo : *SwapchainImageAcquireInfo,
     index : *u32
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_WaitSwapchainImage :: #type (
     swapchain : Swapchain,
     waitInfo : *SwapchainImageWaitInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_ReleaseSwapchainImage :: #type (
     swapchain : Swapchain,
     releaseInfo : *SwapchainImageReleaseInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_BeginSession :: #type (
     session : Session,
     beginInfo : *SessionBeginInfo
-) -> Result #foreign;
-PFN_EndSession :: #type (session : Session) -> Result #foreign;
-PFN_RequestExitSession :: #type (session : Session) -> Result #foreign;
+) -> Result #c_call;
+PFN_EndSession :: #type (session : Session) -> Result #c_call;
+PFN_RequestExitSession :: #type (session : Session) -> Result #c_call;
 PFN_WaitFrame :: #type (
     session : Session,
     frameWaitInfo : *FrameWaitInfo,
     frameState : *FrameState
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_BeginFrame :: #type (
     session : Session,
     frameBeginInfo : *FrameBeginInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EndFrame :: #type (
     session : Session,
     frameEndInfo : *FrameEndInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_LocateViews :: #type (
     session : Session,
     viewLocateInfo : *ViewLocateInfo,
@@ -246,111 +246,111 @@ PFN_LocateViews :: #type (
     viewCapacityInput : u32,
     viewCountOutput : *u32,
     views : *View
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_StringToPath :: #type (
     instance : Instance,
     pathString : *u8,
     path : *Path
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_PathToString :: #type (
     instance : Instance,
     path : Path,
     bufferCapacityInput : u32,
     bufferCountOutput : *u32,
     buffer : *u8
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateActionSet :: #type (
     instance : Instance,
     createInfo : *ActionSetCreateInfo,
     actionSet : *ActionSet
-) -> Result #foreign;
-PFN_DestroyActionSet :: #type (actionSet : ActionSet) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroyActionSet :: #type (actionSet : ActionSet) -> Result #c_call;
 PFN_CreateAction :: #type (
     actionSet : ActionSet,
     createInfo : *ActionCreateInfo,
     action : *Action
-) -> Result #foreign;
-PFN_DestroyAction :: #type (action : Action) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroyAction :: #type (action : Action) -> Result #c_call;
 PFN_SuggestInteractionProfileBindings :: #type (
     instance : Instance,
     suggestedBindings : *InteractionProfileSuggestedBinding
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_AttachSessionActionSets :: #type (
     session : Session,
     attachInfo : *SessionActionSetsAttachInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetCurrentInteractionProfile :: #type (
     session : Session,
     topLevelUserPath : Path,
     interactionProfile : *InteractionProfileState
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetActionStateBoolean :: #type (
     session : Session,
     getInfo : *ActionStateGetInfo,
     state : *ActionStateBoolean
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetActionStateFloat :: #type (
     session : Session,
     getInfo : *ActionStateGetInfo,
     state : *ActionStateFloat
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetActionStateVector2f :: #type (
     session : Session,
     getInfo : *ActionStateGetInfo,
     state : *ActionStateVector2f
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetActionStatePose :: #type (
     session : Session,
     getInfo : *ActionStateGetInfo,
     state : *ActionStatePose
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_SyncActions :: #type (
     session : Session,
     syncInfo : *ActionsSyncInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EnumerateBoundSourcesForAction :: #type (
     session : Session,
     enumerateInfo : *BoundSourcesForActionEnumerateInfo,
     sourceCapacityInput : u32,
     sourceCountOutput : *u32,
     sources : *Path
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetInputSourceLocalizedName :: #type (
     session : Session,
     getInfo : *InputSourceLocalizedNameGetInfo,
     bufferCapacityInput : u32,
     bufferCountOutput : *u32,
     buffer : *u8
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_ApplyHapticFeedback :: #type (
     session : Session,
     hapticActionInfo : *HapticActionInfo,
     hapticFeedback : *HapticBaseHeader
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_StopHapticFeedback :: #type (
     session : Session,
     hapticActionInfo : *HapticActionInfo
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetVisibilityMaskKHR :: #type (
     session : Session,
     viewConfigurationType : ViewConfigurationType,
     viewIndex : u32,
     visibilityMaskType : VisibilityMaskTypeKHR,
     visibilityMask : *VisibilityMaskKHR
-) -> Result #foreign;
-PFN_InitializeLoaderKHR :: #type (loaderInitInfo : *LoaderInitInfoBaseHeaderKHR) -> Result #foreign;
+) -> Result #c_call;
+PFN_InitializeLoaderKHR :: #type (loaderInitInfo : *LoaderInitInfoBaseHeaderKHR) -> Result #c_call;
 PFN_PerfSettingsSetPerformanceLevelEXT :: #type (
     session : Session,
     domain : PerfSettingsDomainEXT,
     level : PerfSettingsLevelEXT
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_ThermalGetTemperatureTrendEXT :: #type (
     session : Session,
     domain : PerfSettingsDomainEXT,
     notificationLevel : *PerfSettingsNotificationLevelEXT,
     tempHeadroom : *float32,
     tempSlope : *float32
-) -> Result #foreign;
+) -> Result #c_call;
 DebugUtilsMessengerEXT :: u64;
 DebugUtilsMessageSeverityFlagsEXT :: Flags64;
 DebugUtilsMessageTypeFlagsEXT :: Flags64;
@@ -359,32 +359,32 @@ PFN_DebugUtilsMessengerCallbackEXT :: #type (
     messageTypes : DebugUtilsMessageTypeFlagsEXT,
     callbackData : *DebugUtilsMessengerCallbackDataEXT,
     userData : *void
-) -> Bool32 #foreign;
+) -> Bool32 #c_call;
 PFN_SetDebugUtilsObjectNameEXT :: #type (
     instance : Instance,
     nameInfo : *DebugUtilsObjectNameInfoEXT
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateDebugUtilsMessengerEXT :: #type (
     instance : Instance,
     createInfo : *DebugUtilsMessengerCreateInfoEXT,
     messenger : *DebugUtilsMessengerEXT
-) -> Result #foreign;
-PFN_DestroyDebugUtilsMessengerEXT :: #type (messenger : DebugUtilsMessengerEXT) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroyDebugUtilsMessengerEXT :: #type (messenger : DebugUtilsMessengerEXT) -> Result #c_call;
 PFN_SubmitDebugUtilsMessageEXT :: #type (
     instance : Instance,
     messageSeverity : DebugUtilsMessageSeverityFlagsEXT,
     messageTypes : DebugUtilsMessageTypeFlagsEXT,
     callbackData : *DebugUtilsMessengerCallbackDataEXT
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_SessionBeginDebugUtilsLabelRegionEXT :: #type (
     session : Session,
     labelInfo : *DebugUtilsLabelEXT
-) -> Result #foreign;
-PFN_SessionEndDebugUtilsLabelRegionEXT :: #type (session : Session) -> Result #foreign;
+) -> Result #c_call;
+PFN_SessionEndDebugUtilsLabelRegionEXT :: #type (session : Session) -> Result #c_call;
 PFN_SessionInsertDebugUtilsLabelEXT :: #type (
     session : Session,
     labelInfo : *DebugUtilsLabelEXT
-) -> Result #foreign;
+) -> Result #c_call;
 OverlaySessionCreateFlagsEXTX :: Flags64;
 OverlayMainSessionFlagsEXTX :: Flags64;
 SpatialAnchorMSFT :: u64;
@@ -392,147 +392,147 @@ PFN_CreateSpatialAnchorMSFT :: #type (
     session : Session,
     createInfo : *SpatialAnchorCreateInfoMSFT,
     anchor : *SpatialAnchorMSFT
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateSpatialAnchorSpaceMSFT :: #type (
     session : Session,
     createInfo : *SpatialAnchorSpaceCreateInfoMSFT,
     space : *Space
-) -> Result #foreign;
-PFN_DestroySpatialAnchorMSFT :: #type (anchor : SpatialAnchorMSFT) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroySpatialAnchorMSFT :: #type (anchor : SpatialAnchorMSFT) -> Result #c_call;
 PFN_SetInputDeviceActiveEXT :: #type (
     session : Session,
     interactionProfile : Path,
     topLevelPath : Path,
     isActive : Bool32
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_SetInputDeviceStateBoolEXT :: #type (
     session : Session,
     topLevelPath : Path,
     inputSourcePath : Path,
     state : Bool32
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_SetInputDeviceStateFloatEXT :: #type (
     session : Session,
     topLevelPath : Path,
     inputSourcePath : Path,
     state : float32
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_SetInputDeviceStateVector2fEXT :: #type (
     session : Session,
     topLevelPath : Path,
     inputSourcePath : Path,
     state : Vector2f
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_SetInputDeviceLocationEXT :: #type (
     session : Session,
     topLevelPath : Path,
     inputSourcePath : Path,
     space : Space,
     pose : Posef
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateSpatialGraphNodeSpaceMSFT :: #type (
     session : Session,
     createInfo : *SpatialGraphNodeSpaceCreateInfoMSFT,
     space : *Space
-) -> Result #foreign;
+) -> Result #c_call;
 HandTrackerEXT :: u64;
 PFN_CreateHandTrackerEXT :: #type (
     session : Session,
     createInfo : *HandTrackerCreateInfoEXT,
     handTracker : *HandTrackerEXT
-) -> Result #foreign;
-PFN_DestroyHandTrackerEXT :: #type (handTracker : HandTrackerEXT) -> Result #foreign;
+) -> Result #c_call;
+PFN_DestroyHandTrackerEXT :: #type (handTracker : HandTrackerEXT) -> Result #c_call;
 PFN_LocateHandJointsEXT :: #type (
     handTracker : HandTrackerEXT,
     locateInfo : *HandJointsLocateInfoEXT,
     locations : *HandJointLocationsEXT
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_CreateHandMeshSpaceMSFT :: #type (
     handTracker : HandTrackerEXT,
     createInfo : *HandMeshSpaceCreateInfoMSFT,
     space : *Space
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_UpdateHandMeshMSFT :: #type (
     handTracker : HandTrackerEXT,
     updateInfo : *HandMeshUpdateInfoMSFT,
     handMesh : *HandMeshMSFT
-) -> Result #foreign;
+) -> Result #c_call;
 ControllerModelKeyMSFT :: u64;
 PFN_GetControllerModelKeyMSFT :: #type (
     session : Session,
     topLevelUserPath : Path,
     controllerModelKeyState : *ControllerModelKeyStateMSFT
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_LoadControllerModelMSFT :: #type (
     session : Session,
     modelKey : ControllerModelKeyMSFT,
     bufferCapacityInput : u32,
     bufferCountOutput : *u32,
     buffer : *u8
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetControllerModelPropertiesMSFT :: #type (
     session : Session,
     modelKey : ControllerModelKeyMSFT,
     properties : *ControllerModelPropertiesMSFT
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetControllerModelStateMSFT :: #type (
     session : Session,
     modelKey : ControllerModelKeyMSFT,
     state : *ControllerModelStateMSFT
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EnumerateDisplayRefreshRatesFB :: #type (
     session : Session,
     displayRefreshRateCapacityInput : u32,
     displayRefreshRateCountOutput : *u32,
     displayRefreshRates : *float32
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetDisplayRefreshRateFB :: #type (
     session : Session,
     displayRefreshRate : *float32
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_RequestDisplayRefreshRateFB :: #type (
     session : Session,
     displayRefreshRate : float32
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_EnumerateColorSpacesFB :: #type (
     session : Session,
     colorSpaceCapacityInput : u32,
     colorSpaceCountOutput : *u32,
     colorSpaces : *ColorSpaceFB
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_SetColorSpaceFB :: #type (
     session : Session,
     colorspace : ColorSpaceFB
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_SetEnvironmentDepthEstimationVARJO :: #type (
     session : Session,
     enabled : Bool32
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetVulkanInstanceExtensionsKHR :: #type (
     instance : Instance,
     systemId : SystemId,
     bufferCapacityInput : u32,
     bufferCountOutput : *u32,
     buffer : *u8
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetVulkanDeviceExtensionsKHR :: #type (
     instance : Instance,
     systemId : SystemId,
     bufferCapacityInput : u32,
     bufferCountOutput : *u32,
     buffer : *u8
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetVulkanGraphicsDeviceKHR :: #type (
     instance : Instance,
     systemId : SystemId,
     vkInstance : *void, // VkInstance,
     vkPhysicalDevice : *void
-) -> Result #foreign;
+) -> Result #c_call;
 PFN_GetVulkanGraphicsRequirementsKHR :: #type (
     instance : Instance,
     systemId : SystemId,
     graphicsRequirements : *GraphicsRequirementsVulkanKHR
-) -> Result #foreign;
+) -> Result #c_call;
 VulkanInstanceCreateFlagsKHR :: Flags64;
 
 Result :: enum s32 {
